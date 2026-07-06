@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var atIndex = email.indexOf("@");
     var dotIndex = email.lastIndexOf(".com");
 
+    // Email validation
     if (email === "") {
       email_error.textContent = "Email Address cannot be empty";
       valid = false;
@@ -97,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       valid = false;
     }
 
+    // Password validation
     if (pass === "") {
       pass_error.textContent = "Please enter your password";
       valid = false;

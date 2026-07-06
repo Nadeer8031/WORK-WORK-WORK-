@@ -165,7 +165,13 @@
           <h2 class="font-headline-md text-headline-md text-on-surface mb-8">
             Sign In
           </h2>
-          <form action="#" class="space-y-6" method="POST">
+          <form
+            action="#"
+            class="space-y-6"
+            id="loginForm"
+            method="POST"
+            novalidate
+          >
             <!-- Email Field -->
             <div class="space-y-1">
               <label
@@ -183,10 +189,13 @@
                   id="email"
                   name="email"
                   placeholder="name@example.com"
-                  required=""
                   type="email"
                 />
               </div>
+              <div
+                class="errors font-label-sm text-label-sm text-error min-h-[16px]"
+                id="email_error"
+              ></div>
             </div>
             <!-- Password Field -->
             <div class="space-y-1">
@@ -211,7 +220,6 @@
                   class="custom-input w-full bg-transparent border-t-0 border-x-0 border-b border-secondary-container py-3 pl-9 pr-10 font-body-md text-on-surface transition-slow"
                   id="password"
                   name="password"
-                  required=""
                   type="password"
                 />
                 <button
@@ -221,6 +229,10 @@
                   <span class="material-symbols-outlined">visibility</span>
                 </button>
               </div>
+              <div
+                class="errors font-label-sm text-label-sm text-error min-h-[16px]"
+                id="pass_error"
+              ></div>
             </div>
             <!-- CTA Button -->
             <div class="pt-4">
