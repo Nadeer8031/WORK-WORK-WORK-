@@ -109,9 +109,9 @@ p {
 .btn-ghost:hover {
   background: var(--sage-pale);
 }
-
+/* 
 /* NAV */
-nav {
+/* nav {
   position: sticky;
   top: 0;
   z-index: 50;
@@ -169,7 +169,7 @@ nav .wrap {
   .nav-links {
     display: none;
   }
-}
+}  */
 
 /* HERO */
 .hero {
@@ -671,7 +671,7 @@ section {
   margin-top: 10px;
   min-height: 18px;
 }
-
+/* 
 footer {
   padding: 56px 0 40px;
   border-top: 1px solid var(--line);
@@ -701,7 +701,7 @@ footer {
   font-size: 13px;
   color: var(--ink-faint);
   margin-top: 18px;
-}
+} */
 
 @media (prefers-reduced-motion: reduce) {
   * {

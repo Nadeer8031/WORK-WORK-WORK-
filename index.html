@@ -1,444 +1,279 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadence — The medicine cabinet that keeps time</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/index.css">
-    
-  </head>
-  <body>
-    <nav>
-      <div class="wrap">
-        <div class="logo">
-          <span class="logo-mark">
-            <svg viewBox="0 0 26 26" fill="none">
-              <rect x="2" y="2" width="22" height="22" rx="6" fill="#33513f" />
-              <rect x="7" y="7" width="5" height="5" rx="1.4" fill="#d98f2b" />
-              <rect x="14" y="7" width="5" height="5" rx="1.4" fill="#dbe6dd" />
-              <rect x="7" y="14" width="5" height="5" rx="1.4" fill="#dbe6dd" />
-              <rect
-                x="14"
-                y="14"
-                width="5"
-                height="5"
-                rx="1.4"
-                fill="#dbe6dd"
-              />
-            </svg>
-          </span>
-          Cadence
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadence — The medicine cabinet that keeps time</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/index.css">
+<link rel="stylesheet" href="./css/nav-footer.css">
+</head>
+<body>
+
+<div id="nav-slot"></div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Smart medicine cabinet</div>
+      <h1>Right dose. Right time. <em>Right person.</em></h1>
+      <p class="lede">Cadence chimes when it's time for a dose, unlocks only the compartment that's due, and lets everything else stay put. No sorting pillboxes. No guessing what's left.</p>
+      <div class="hero-actions">
+        <a href="#get" class="btn btn-primary">Get Cadence — $249</a>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="hero-note">Ships with the app · Works with any pill, capsule, or blister pack</div>
+    </div>
+
+    <div class="cabinet-stage">
+      <div class="cabinet" id="cabinet">
+        <div class="cabinet-header">
+          <span class="cabinet-brand">Cadence · Kitchen</span>
+          <span class="cabinet-clock" id="clockDisplay">8:00 AM</span>
         </div>
-        <div class="nav-links">
-          <a href="#how">How it works</a>
-          <a href="#features">Features</a>
-          <a href="#caregivers">For families</a>
-          <a href="#trust">Safety</a>
-        </div>
-        <div class="nav-cta">
-          <a href="#get" class="btn btn-primary">Get Cadence</a>
+        <div class="grid7" id="grid7"></div>
+        <div class="cabinet-footer">
+          <span class="status-chip" id="statusChip"><span class="dot"></span> Morning dose ready</span>
         </div>
       </div>
-    </nav>
+    </div>
+  </div>
+</section>
 
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Smart medicine cabinet</div>
-          <h1>Right dose. Right time. <em>Right person.</em></h1>
-          <p class="lede">
-            Cadence chimes when it's time for a dose, unlocks only the
-            compartment that's due, and lets everything else stay put. No
-            sorting pillboxes. No guessing what's left.
-          </p>
-          <div class="hero-actions">
-            <a href="#get" class="btn btn-primary">Get Cadence — $249</a>
-            <a href="#how" class="btn btn-ghost">See how it works</a>
-          </div>
-          <div class="hero-note">
-            Ships with the app · Works with any pill, capsule, or blister pack
-          </div>
-        </div>
-
-        <div class="cabinet-stage">
-          <div class="cabinet" id="cabinet">
-            <div class="cabinet-header">
-              <span class="cabinet-brand">Cadence · Kitchen</span>
-              <span class="cabinet-clock" id="clockDisplay">8:00 AM</span>
-            </div>
-            <div class="grid7" id="grid7"></div>
-            <div class="cabinet-footer">
-              <span class="status-chip" id="statusChip"
-                ><span class="dot"></span> Morning dose ready</span
-              >
-            </div>
-          </div>
-        </div>
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Three things happen automatically, every single day.</h2>
+      <p>You fill it once a week. Cadence handles the rest — the timing, the unlocking, the reminding.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01 — Sunday</span>
+        <h3>Load the week</h3>
+        <p>Sort each medication into its labeled compartment. Cadence scans what's inside and confirms the count against the schedule you've set.</p>
       </div>
-    </section>
-
-    <section id="how">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">How it works</div>
-          <h2>Three things happen automatically, every single day.</h2>
-          <p>
-            You fill it once a week. Cadence handles the rest — the timing, the
-            unlocking, the reminding.
-          </p>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <span class="step-num">01 — Sunday</span>
-            <h3>Load the week</h3>
-            <p>
-              Sort each medication into its labeled compartment. Cadence scans
-              what's inside and confirms the count against the schedule you've
-              set.
-            </p>
-          </div>
-          <div class="step">
-            <span class="step-num">02 — Dose time</span>
-            <h3>It chimes, then it opens</h3>
-            <p>
-              At the scheduled time, Cadence sounds a soft alarm and unlocks
-              only that day's compartment — the rest of the cabinet stays
-              sealed.
-            </p>
-          </div>
-          <div class="step">
-            <span class="step-num">03 — After</span>
-            <h3>It confirms and logs</h3>
-            <p>
-              A weight sensor detects the dose was removed. If it wasn't,
-              Cadence reminds again — and can notify a caregiver if it's still
-              untouched.
-            </p>
-          </div>
-        </div>
+      <div class="step">
+        <span class="step-num">02 — Dose time</span>
+        <h3>It chimes, then it opens</h3>
+        <p>At the scheduled time, Cadence sounds a soft alarm and unlocks only that day's compartment — the rest of the cabinet stays sealed.</p>
       </div>
-    </section>
-
-    <section id="features">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Built into every cabinet</div>
-          <h2>Quiet precision, not another gadget to manage.</h2>
-          <p>
-            Cadence is designed to disappear into a routine, not add a new one.
-          </p>
-        </div>
-        <div class="features-grid">
-          <div class="feature">
-            <div class="fi">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M12 6v6l4 2" />
-                <circle cx="12" cy="12" r="9" />
-              </svg>
-            </div>
-            <h3>Dose alarms that adapt</h3>
-            <p>
-              Set once, adjusts for sleep-ins, travel, and time zone changes
-              without missing a beat.
-            </p>
-          </div>
-          <div class="feature">
-            <div class="fi">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <rect x="4" y="3" width="16" height="18" rx="2" />
-                <path d="M9 3v18M15 3v18" />
-              </svg>
-            </div>
-            <h3>One compartment at a time</h3>
-            <p>
-              Only the due dose unlocks. Everything else stays locked, so
-              tomorrow's medication is never touched today.
-            </p>
-          </div>
-          <div class="feature">
-            <div class="fi">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M3 12a9 9 0 1 0 9-9" />
-                <path d="M3 4v8h8" />
-              </svg>
-            </div>
-            <h3>Refill reminders</h3>
-            <p>
-              Cadence weighs each compartment and lets you know when a
-              prescription is running low — days before it runs out.
-            </p>
-          </div>
-          <div class="feature">
-            <div class="fi">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M20 21a8 8 0 1 0-16 0" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <h3>Caregiver alerts</h3>
-            <p>
-              If a dose sits untouched thirty minutes past its time, a family
-              member or aide gets a message — not the person needing help.
-            </p>
-          </div>
-          <div class="feature">
-            <div class="fi">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <rect x="3" y="11" width="18" height="10" rx="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-            </div>
-            <h3>Tamper-aware lock</h3>
-            <p>
-              A physical lock on every compartment door means doses can't be
-              reached early, on purpose or by accident.
-            </p>
-          </div>
-          <div class="feature">
-            <div class="fi">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M4 12h4l2-7 4 14 2-7h4" />
-              </svg>
-            </div>
-            <h3>A record, not a guess</h3>
-            <p>
-              Every open, every skip, every refill is timestamped, so the next
-              doctor's visit starts with facts instead of memory.
-            </p>
-          </div>
-        </div>
+      <div class="step">
+        <span class="step-num">03 — After</span>
+        <h3>It confirms and logs</h3>
+        <p>A weight sensor detects the dose was removed. If it wasn't, Cadence reminds again — and can notify a caregiver if it's still untouched.</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="caregivers">
-      <div class="wrap">
-        <div class="caregiver">
-          <div class="caregiver-grid">
-            <div>
-              <div class="eyebrow">For families and caregivers</div>
-              <h2>Peace of mind that doesn't require a phone call.</h2>
-              <p>
-                Cadence's companion app shows what's been taken, what's due, and
-                what's running low — so checking in doesn't mean asking.
-              </p>
-              <ul class="caregiver-list">
-                <li>
-                  See dose history across every compartment, updated in real
-                  time
-                </li>
-                <li>Get a message if a dose goes untouched past its window</li>
-                <li>
-                  Share access with siblings, aides, or a home health nurse
-                </li>
-                <li>Adjust schedules remotely when a prescription changes</li>
-              </ul>
-            </div>
-            <div class="phone-mock">
-              <div class="ph-head">
-                <span class="ph-title">Cadence</span>
-                <span class="ph-time">Today</span>
-              </div>
-              <div class="ph-card">
-                <div class="ph-row">
-                  <span class="ph-name">Morning dose</span>
-                  <span class="ph-badge taken">Taken · 8:02 AM</span>
-                </div>
-                <div class="ph-sub">Compartment 1 · Lisinopril</div>
-              </div>
-              <div class="ph-card">
-                <div class="ph-row">
-                  <span class="ph-name">Midday dose</span>
-                  <span class="ph-badge due">Due · 1:00 PM</span>
-                </div>
-                <div class="ph-sub">Compartment 2 · Metformin</div>
-              </div>
-              <div class="ph-card">
-                <div class="ph-row">
-                  <span class="ph-name">Refill</span>
-                  <span class="ph-badge due">4 doses left</span>
-                </div>
-                <div class="ph-sub">Compartment 4 · Atorvastatin</div>
-              </div>
-            </div>
-          </div>
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Built into every cabinet</div>
+      <h2>Quiet precision, not another gadget to manage.</h2>
+      <p>Cadence is designed to disappear into a routine, not add a new one.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="fi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
         </div>
+        <h3>Dose alarms that adapt</h3>
+        <p>Set once, adjusts for sleep-ins, travel, and time zone changes without missing a beat.</p>
       </div>
-    </section>
-
-    <section id="trust">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Safety, plainly stated</div>
-          <h2>A cabinet, not a diagnosis.</h2>
-          <p>
-            Cadence keeps time and keeps compartments locked until they're due.
-            It doesn't identify pills, adjust dosages, or replace medical
-            advice.
-          </p>
+      <div class="feature">
+        <div class="fi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v18M15 3v18"/></svg>
         </div>
-        <div class="trust-grid">
-          <div class="trust-item">
-            <span class="num">7</span>
-            <span class="label">Locked compartments, one per day</span>
-          </div>
-          <div class="trust-item">
-            <span class="num">4</span>
-            <span class="label">Dose times per day, fully adjustable</span>
-          </div>
-          <div class="trust-item">
-            <span class="num">30 min</span>
-            <span class="label">Before a caregiver alert is sent</span>
-          </div>
-          <div class="trust-item">
-            <span class="num">10 hr</span>
-            <span class="label">Battery backup if the power goes out</span>
-          </div>
-        </div>
-        <p class="fine">
-          Cadence is a scheduling and dispensing aid. It does not diagnose,
-          prescribe, or verify medication contents. Always follow your
-          prescriber's and pharmacist's instructions, and consult them before
-          changing any schedule.
-        </p>
+        <h3>One compartment at a time</h3>
+        <p>Only the due dose unlocks. Everything else stays locked, so tomorrow's medication is never touched today.</p>
       </div>
-    </section>
-
-    <section id="get">
-      <div class="wrap">
-        <div class="cta-band">
-          <div>
-            <h2>Set a schedule once. Trust it every day after.</h2>
-            <p>Cadence ships in 2–3 weeks. Free shipping, 30-night trial.</p>
-          </div>
-          <div>
-            <form class="cta-form" id="waitlistForm">
-              <input
-                type="email"
-                placeholder="you@example.com"
-                required
-                aria-label="Email address"
-              />
-              <button type="submit" class="btn btn-primary">
-                Reserve mine
-              </button>
-            </form>
-            <div class="cta-msg" id="ctaMsg"></div>
-          </div>
+      <div class="feature">
+        <div class="fi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v8h8"/></svg>
         </div>
+        <h3>Refill reminders</h3>
+        <p>Cadence weighs each compartment and lets you know when a prescription is running low — days before it runs out.</p>
       </div>
-    </section>
+      <div class="feature">
+        <div class="fi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Caregiver alerts</h3>
+        <p>If a dose sits untouched thirty minutes past its time, a family member or aide gets a message — not the person needing help.</p>
+      </div>
+      <div class="feature">
+        <div class="fi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Tamper-aware lock</h3>
+        <p>A physical lock on every compartment door means doses can't be reached early, on purpose or by accident.</p>
+      </div>
+      <div class="feature">
+        <div class="fi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg>
+        </div>
+        <h3>A record, not a guess</h3>
+        <p>Every open, every skip, every refill is timestamped, so the next doctor's visit starts with facts instead of memory.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-      <div class="wrap footer-grid">
+<section id="caregivers">
+  <div class="wrap">
+    <div class="caregiver">
+      <div class="caregiver-grid">
         <div>
-          <div class="logo" style="margin-bottom: 10px">
-            <span class="logo-mark">
-              <svg viewBox="0 0 26 26" fill="none">
-                <rect
-                  x="2"
-                  y="2"
-                  width="22"
-                  height="22"
-                  rx="6"
-                  fill="#33513f"
-                />
-                <rect
-                  x="7"
-                  y="7"
-                  width="5"
-                  height="5"
-                  rx="1.4"
-                  fill="#d98f2b"
-                />
-                <rect
-                  x="14"
-                  y="7"
-                  width="5"
-                  height="5"
-                  rx="1.4"
-                  fill="#dbe6dd"
-                />
-                <rect
-                  x="7"
-                  y="14"
-                  width="5"
-                  height="5"
-                  rx="1.4"
-                  fill="#dbe6dd"
-                />
-                <rect
-                  x="14"
-                  y="14"
-                  width="5"
-                  height="5"
-                  rx="1.4"
-                  fill="#dbe6dd"
-                />
-              </svg>
-            </span>
-            Cadence
-          </div>
-          <p class="footer-copy">
-            Cadence Home Inc. · A dispensing aid, not a medical device.
-          </p>
+          <div class="eyebrow">For families and caregivers</div>
+          <h2>Peace of mind that doesn't require a phone call.</h2>
+          <p>Cadence's companion app shows what's been taken, what's due, and what's running low — so checking in doesn't mean asking.</p>
+          <ul class="caregiver-list">
+            <li>See dose history across every compartment, updated in real time</li>
+            <li>Get a message if a dose goes untouched past its window</li>
+            <li>Share access with siblings, aides, or a home health nurse</li>
+            <li>Adjust schedules remotely when a prescription changes</li>
+          </ul>
         </div>
-        <div class="footer-links">
-          <a href="#how">How it works</a>
-          <a href="#features">Features</a>
-          <a href="#caregivers">For families</a>
-          <a href="#trust">Safety</a>
+        <div class="phone-mock">
+          <div class="ph-head">
+            <span class="ph-title">Cadence</span>
+            <span class="ph-time">Today</span>
+          </div>
+          <div class="ph-card">
+            <div class="ph-row">
+              <span class="ph-name">Morning dose</span>
+              <span class="ph-badge taken">Taken · 8:02 AM</span>
+            </div>
+            <div class="ph-sub">Compartment 1 · Lisinopril</div>
+          </div>
+          <div class="ph-card">
+            <div class="ph-row">
+              <span class="ph-name">Midday dose</span>
+              <span class="ph-badge due">Due · 1:00 PM</span>
+            </div>
+            <div class="ph-sub">Compartment 2 · Metformin</div>
+          </div>
+          <div class="ph-card">
+            <div class="ph-row">
+              <span class="ph-name">Refill</span>
+              <span class="ph-badge due">4 doses left</span>
+            </div>
+            <div class="ph-sub">Compartment 4 · Atorvastatin</div>
+          </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <script></script>
-  </body>
+<section id="trust">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Safety, plainly stated</div>
+      <h2>A cabinet, not a diagnosis.</h2>
+      <p>Cadence keeps time and keeps compartments locked until they're due. It doesn't identify pills, adjust dosages, or replace medical advice.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="num">7</span>
+        <span class="label">Locked compartments, one per day</span>
+      </div>
+      <div class="trust-item">
+        <span class="num">4</span>
+        <span class="label">Dose times per day, fully adjustable</span>
+      </div>
+      <div class="trust-item">
+        <span class="num">30 min</span>
+        <span class="label">Before a caregiver alert is sent</span>
+      </div>
+      <div class="trust-item">
+        <span class="num">10 hr</span>
+        <span class="label">Battery backup if the power goes out</span>
+      </div>
+    </div>
+    <p class="fine">Cadence is a scheduling and dispensing aid. It does not diagnose, prescribe, or verify medication contents. Always follow your prescriber's and pharmacist's instructions, and consult them before changing any schedule.</p>
+  </div>
+</section>
+
+<section id="get">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Set a schedule once. Trust it every day after.</h2>
+        <p>Cadence ships in 2–3 weeks. Free shipping, 30-night trial.</p>
+      </div>
+      <div>
+        <form class="cta-form" id="waitlistForm">
+          <input type="email" placeholder="you@example.com" required aria-label="Email address">
+          <button type="submit" class="btn btn-primary">Reserve mine</button>
+        </form>
+        <div class="cta-msg" id="ctaMsg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+
+<script>
+  // Load nav and footer from their own files and drop them into the page
+  async function loadPartial(url, slotId){
+    try{
+      const res = await fetch(url);
+      if(!res.ok) throw new Error(res.status);
+      document.getElementById(slotId).outerHTML = await res.text();
+    }catch(err){
+      console.error(`Couldn't load ${url}:`, err);
+    }
+  }
+  loadPartial('nav.html', 'nav-slot');
+  loadPartial('footer.html', 'footer-slot');
+
+  // Build the 7-day compartment grid, with the current-ish slot glowing/opening
+  const days = ["MON","TUE","WED","THU","FRI","SAT","SUN"];
+  const times = ["8:00","1:00","6:00","8:00","8:00","9:00","9:00"];
+  const grid = document.getElementById('grid7');
+  let activeIndex = 0;
+
+  days.forEach((d, i) => {
+    const el = document.createElement('div');
+    el.className = 'compartment';
+    el.innerHTML = `<span class="day">${d}</span><span class="pill"></span><span class="time">${times[i]}</span>`;
+    grid.appendChild(el);
+  });
+  // 8th tile: today's "due now" slot, larger emphasis via ordering handled by CSS grid auto-flow
+  const compartments = () => document.querySelectorAll('.compartment');
+
+  function setActive(i){
+    compartments().forEach((c, idx) => c.classList.toggle('active', idx === i));
+  }
+  setActive(0);
+
+  const chip = document.getElementById('statusChip');
+  const clockDisplay = document.getElementById('clockDisplay');
+  const labels = ["8:00 AM","1:00 PM","6:00 PM","8:00 AM","8:00 AM","9:00 AM","9:00 AM"];
+  const doseNames = ["Morning dose","Midday dose","Evening dose","Morning dose","Morning dose","Morning dose","Morning dose"];
+
+  setInterval(() => {
+    activeIndex = (activeIndex + 1) % days.length;
+    setActive(activeIndex);
+    clockDisplay.textContent = labels[activeIndex];
+    chip.innerHTML = `<span class="dot"></span> ${doseNames[activeIndex]} ready`;
+  }, 3200);
+
+  // CTA form (static demo — no backend)
+  const form = document.getElementById('waitlistForm');
+  const msg = document.getElementById('ctaMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    msg.textContent = "You're on the list — we'll email you when Cadence ships.";
+    form.reset();
+  });
+</script>
+
+</body>
 </html>
