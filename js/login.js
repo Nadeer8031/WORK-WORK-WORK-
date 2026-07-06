@@ -105,6 +105,19 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (/\s/.test(pass)) {
       pass_error.textContent = "Password cannot contain spaces";
       valid = false;
+    } else if (pass.length < 8) {
+      pass_error.textContent = "Password must be at least 8 characters";
+      valid = false;
+    } else if (pass.length > 16) {
+      pass_error.textContent = "Password must be less than 16 characters";
+      valid = false;
+    } else if (!/[A-Z]/.test(pass)) {
+      pass_error.textContent =
+        "Password must contain at least one uppercase letter";
+      valid = false;
+    } else if (!/[0-9]/.test(pass)) {
+      pass_error.textContent = "Password must contain at least one number";
+      valid = false;
     }
 
     return valid;

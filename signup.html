@@ -185,7 +185,13 @@
               Join the circle of precision health care.
             </p>
           </div>
-          <form class="space-y-6" onsubmit="event.preventDefault()">
+          <form
+            action="#"
+            class="space-y-6"
+            id="signupForm"
+            method="POST"
+            novalidate
+          >
             <!-- Username Field -->
             <div class="space-y-2">
               <label
@@ -206,6 +212,10 @@
                   >person</span
                 >
               </div>
+              <div
+                class="errors font-label-sm text-label-sm text-error min-h-[16px]"
+                id="username_error"
+              ></div>
             </div>
             <!-- Email Field -->
             <div class="space-y-2">
@@ -227,6 +237,10 @@
                   >mail</span
                 >
               </div>
+              <div
+                class="errors font-label-sm text-label-sm text-error min-h-[16px]"
+                id="email_error"
+              ></div>
             </div>
             <!-- Password Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -250,6 +264,10 @@
                     >lock</span
                   >
                 </div>
+                <div
+                  class="errors font-label-sm text-label-sm text-error min-h-[16px]"
+                  id="pass_error"
+                ></div>
               </div>
               <!-- Confirm Password Field -->
               <div class="space-y-2">
@@ -271,6 +289,10 @@
                     >shield</span
                   >
                 </div>
+                <div
+                  class="errors font-label-sm text-label-sm text-error min-h-[16px]"
+                  id="confirm_password_error"
+                ></div>
               </div>
             </div>
             <!-- Terms Checkbox -->
@@ -294,6 +316,10 @@
                 >.
               </label>
             </div>
+            <div
+              class="errors font-label-sm text-label-sm text-error min-h-[16px] -mt-4"
+              id="terms_error"
+            ></div>
             <!-- Submit Button -->
             <button
               class="w-full h-14 bg-primary-container text-white font-label-md rounded-lg ambient-shadow hover:bg-opacity-90 active:scale-[0.98] transition-all duration-250 flex items-center justify-center gap-2"
