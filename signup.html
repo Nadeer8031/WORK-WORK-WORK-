@@ -1,196 +1,457 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sign Up | AuraMed Smart Systems</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="js/signup.config.js"></script>
-<link rel="stylesheet" href="css/signup.css" />
-</head>
-<body class="font-body-md text-on-surface selection:bg-primary-fixed-dim selection:text-primary-container">
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container">
-<div class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4">
-<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"/></a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="home.html">Home</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="products.html">Products &amp; Bundles</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="schedule.html">Schedule</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="profile.html">Profile</a>
-</nav>
-<div class="flex items-center gap-4 md:gap-5">
-<a aria-label="View cart" class="text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">
-<span class="material-symbols-outlined">shopping_cart</span>
-</a>
-<a class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250" href="login.html">Log In</a>
-<a class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250" href="signup.html">Sign Up</a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden text-on-surface flex items-center justify-center" id="mobile-menu-btn" type="button">
-<span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
-</button>
-</div>
-</div>
-<div class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile" id="mobile-menu">
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="home.html">Home</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="products.html">Products &amp; Bundles</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="schedule.html">Schedule</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="profile.html">Profile</a>
-<div class="flex items-center gap-4 py-4">
-<a class="font-label-md text-label-md text-secondary" href="login.html">Log In</a>
-<a class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md" href="signup.html">Sign Up</a>
-</div>
-</div>
-</header>
-<div aria-hidden="true" class="md:hidden" id="mobile-menu-spacer" style="height:0px;overflow:hidden;transition:height 300ms ease;"></div>
-<!-- Main Content Wrapper -->
-<main class="min-h-screen flex flex-col md:flex-row items-stretch pt-20">
-<!-- Branding / Visual Sidebar (Desktop Only) -->
-<section class="hidden md:flex md:w-5/12 lg:w-1/2 relative bg-surface-container flex-col justify-between p-margin-desktop overflow-hidden border-r border-outline-variant">
-
-<div class="relative z-10">
-<a class="flex items-center gap-2" href="home.html">
-<img src="assets/logo.svg" alt="AuraMed" class="h-9 w-auto"/>
-</a>
-</div>
-<div class="relative z-10 max-w-md">
-<h1 class="font-headline-lg text-headline-lg text-primary mb-6">Experience Reliable Sophistication.</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Your health journey is personal. AuraMed integrates clinical precision with home sanctuary aesthetics to provide a seamless management experience.</p>
-</div>
-<div class="relative z-10">
-<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">© 2024 AuraMed Smart Systems</p>
-</div>
-</section>
-<!-- Sign Up Form Section -->
-<section class="flex-1 flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface">
-<!-- Mobile Header -->
-<div class="md:hidden w-full mb-12 flex justify-center">
-<img src="assets/logo.svg" alt="AuraMed" class="h-9 w-auto"/>
-</div>
-<div class="w-full max-w-[440px]">
-<div class="mb-10 text-center md:text-left">
-<h2 class="font-headline-md text-headline-md text-primary mb-2">Create your account</h2>
-<p class="font-body-md text-on-surface-variant">Join the circle of precision health care.</p>
-</div>
-<form class="space-y-6" onsubmit="event.preventDefault();">
-<!-- Username Field -->
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-outline" for="username">Username</label>
-<div class="relative">
-<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="username" name="username" placeholder="e.g. jsmith" type="text"/>
-<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">person</span>
-</div>
-</div>
-<!-- Email Field -->
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-outline" for="email">Email Address</label>
-<div class="relative">
-<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="email" name="email" placeholder="name@example.com" type="email"/>
-<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
-</div>
-</div>
-<!-- Password Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<!-- Password Field -->
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-outline" for="password">Password</label>
-<div class="relative">
-<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="password" name="password" placeholder="••••••••" type="password"/>
-<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
-</div>
-</div>
-<!-- Confirm Password Field -->
-<div class="space-y-2">
-<label class="font-label-md text-label-md text-outline" for="confirm-password">Confirm</label>
-<div class="relative">
-<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="confirm-password" name="confirm-password" placeholder="••••••••" type="password"/>
-<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">shield</span>
-</div>
-</div>
-</div>
-<!-- Terms Checkbox -->
-<div class="flex items-start gap-3 py-2">
-<input class="mt-1 rounded-sm border-secondary-container text-primary-container focus:ring-primary-fixed-dim" id="terms" type="checkbox"/>
-<label class="font-label-md text-label-md text-on-surface-variant leading-tight" for="terms">
-                            I agree to the <a class="text-primary hover:underline transition-all" href="#">Terms of Service</a> and <a class="text-primary hover:underline transition-all" href="#">Privacy Policy</a>.
-                        </label>
-</div>
-<!-- Submit Button -->
-<button class="w-full h-14 bg-primary-container text-white font-label-md rounded-lg ambient-shadow hover:bg-opacity-90 active:scale-[0.98] transition-all duration-250 flex items-center justify-center gap-2" type="submit">
-                        Create Account
-                        <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-<!-- Alternative Login -->
-<div class="relative flex items-center py-4">
-<div class="flex-grow border-t border-secondary-container"></div>
-<span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline">OR CONTINUE WITH</span>
-<div class="flex-grow border-t border-secondary-container"></div>
-</div>
-<div class="grid grid-cols-2 gap-4">
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign Up | AuraMed Smart Systems</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/signup.config.js"></script>
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
+  <body
+    class="font-body-md text-on-surface selection:bg-primary-fixed-dim selection:text-primary-container"
+  >
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4"
+      >
+        <a
+          class="shrink-0 flex items-center"
+          href="home.html"
+          aria-label="AuraMed Home"
+          ><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"
+        /></a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="home.html"
+            >Home</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="products.html"
+            >Products &amp; Bundles</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="schedule.html"
+            >Schedule</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="profile.html"
+            >Profile</a
+          >
+        </nav>
+        <div class="flex items-center gap-4 md:gap-5">
+          <a
+            aria-label="View cart"
+            class="text-on-surface-variant hover:text-primary transition-colors duration-250"
+            href="cart.html"
+          >
+            <span class="material-symbols-outlined">shopping_cart</span>
+          </a>
+          <a
+            class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250"
+            href="signup.html"
+            >Sign Up</a
+          >
+          <button
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+            class="md:hidden text-on-surface flex items-center justify-center"
+            id="mobile-menu-btn"
+            type="button"
+          >
+            <span class="material-symbols-outlined" id="mobile-menu-icon"
+              >menu</span
+            >
+          </button>
+        </div>
+      </div>
+      <div
+        class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile"
+        id="mobile-menu"
+      >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="home.html"
+          >Home</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="products.html"
+          >Products &amp; Bundles</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="schedule.html"
+          >Schedule</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="profile.html"
+          >Profile</a
+        >
+        <div class="flex items-center gap-4 py-4">
+          <a
+            class="font-label-md text-label-md text-secondary"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md"
+            href="signup.html"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </header>
+    <div
+      aria-hidden="true"
+      class="md:hidden"
+      id="mobile-menu-spacer"
+      style="height: 0px; overflow: hidden; transition: height 300ms ease"
+    ></div>
+    <!-- Main Content Wrapper -->
+    <main class="min-h-screen flex flex-col md:flex-row items-stretch pt-20">
+      <!-- Branding / Visual Sidebar (Desktop Only) -->
+      <section
+        class="hidden md:flex md:w-5/12 lg:w-1/2 relative bg-surface-container flex-col justify-between p-margin-desktop overflow-hidden border-r border-outline-variant"
+      >
+        <div class="relative z-10">
+          <a class="flex items-center gap-2" href="home.html">
+            <img src="assets/logo.svg" alt="AuraMed" class="h-9 w-auto" />
+          </a>
+        </div>
+        <div class="relative z-10 max-w-md">
+          <h1 class="font-headline-lg text-headline-lg text-primary mb-6">
+            Experience Reliable Sophistication.
+          </h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant">
+            Your health journey is personal. AuraMed integrates clinical
+            precision with home sanctuary aesthetics to provide a seamless
+            management experience.
+          </p>
+        </div>
+        <div class="relative z-10">
+          <p
+            class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant"
+          >
+            © 2024 AuraMed Smart Systems
+          </p>
+        </div>
+      </section>
+      <!-- Sign Up Form Section -->
+      <section
+        class="flex-1 flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface"
+      >
+        <!-- Mobile Header -->
+        <div class="md:hidden w-full mb-12 flex justify-center">
+          <img src="assets/logo.svg" alt="AuraMed" class="h-9 w-auto" />
+        </div>
+        <div class="w-full max-w-[440px]">
+          <div class="mb-10 text-center md:text-left">
+            <h2 class="font-headline-md text-headline-md text-primary mb-2">
+              Create your account
+            </h2>
+            <p class="font-body-md text-on-surface-variant">
+              Join the circle of precision health care.
+            </p>
+          </div>
+          <form class="space-y-6" onsubmit="event.preventDefault()">
+            <!-- Username Field -->
+            <div class="space-y-2">
+              <label
+                class="font-label-md text-label-md text-outline"
+                for="username"
+                >Username</label
+              >
+              <div class="relative">
+                <input
+                  class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
+                  id="username"
+                  name="username"
+                  placeholder="e.g. jsmith"
+                  type="text"
+                />
+                <span
+                  class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+                  >person</span
+                >
+              </div>
+            </div>
+            <!-- Email Field -->
+            <div class="space-y-2">
+              <label
+                class="font-label-md text-label-md text-outline"
+                for="email"
+                >Email Address</label
+              >
+              <div class="relative">
+                <input
+                  class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
+                  id="email"
+                  name="email"
+                  placeholder="name@example.com"
+                  type="email"
+                />
+                <span
+                  class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+                  >mail</span
+                >
+              </div>
+            </div>
+            <!-- Password Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Password Field -->
+              <div class="space-y-2">
+                <label
+                  class="font-label-md text-label-md text-outline"
+                  for="password"
+                  >Password</label
+                >
+                <div class="relative">
+                  <input
+                    class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
+                    id="password"
+                    name="password"
+                    placeholder="••••••••"
+                    type="password"
+                  />
+                  <span
+                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+                    >lock</span
+                  >
+                </div>
+              </div>
+              <!-- Confirm Password Field -->
+              <div class="space-y-2">
+                <label
+                  class="font-label-md text-label-md text-outline"
+                  for="confirm-password"
+                  >Confirm</label
+                >
+                <div class="relative">
+                  <input
+                    class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
+                    id="confirm-password"
+                    name="confirm-password"
+                    placeholder="••••••••"
+                    type="password"
+                  />
+                  <span
+                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+                    >shield</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Terms Checkbox -->
+            <div class="flex items-start gap-3 py-2">
+              <input
+                class="mt-1 rounded-sm border-secondary-container text-primary-container focus:ring-primary-fixed-dim"
+                id="terms"
+                type="checkbox"
+              />
+              <label
+                class="font-label-md text-label-md text-on-surface-variant leading-tight"
+                for="terms"
+              >
+                I agree to the
+                <a class="text-primary hover:underline transition-all" href="#"
+                  >Terms of Service</a
+                >
+                and
+                <a class="text-primary hover:underline transition-all" href="#"
+                  >Privacy Policy</a
+                >.
+              </label>
+            </div>
+            <!-- Submit Button -->
+            <button
+              class="w-full h-14 bg-primary-container text-white font-label-md rounded-lg ambient-shadow hover:bg-opacity-90 active:scale-[0.98] transition-all duration-250 flex items-center justify-center gap-2"
+              type="submit"
+            >
+              Create Account
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+            <!-- Alternative Login -->
+            <div class="relative flex items-center py-4">
+              <div class="flex-grow border-t border-secondary-container"></div>
+              <!-- <span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline">OR CONTINUE WITH</span> -->
+              <div class="flex-grow border-t border-secondary-container"></div>
+            </div>
+            <!-- <div class="grid grid-cols-2 gap-4">
 <button class="flex items-center justify-center h-12 border border-secondary-container rounded-lg bg-white font-label-md text-primary hover:bg-surface-container-low transition-all duration-250" type="button">
                             Google
                         </button>
 <button class="flex items-center justify-center h-12 border border-secondary-container rounded-lg bg-white font-label-md text-primary hover:bg-surface-container-low transition-all duration-250" type="button">
                             Apple ID
                         </button>
-</div>
-<div class="pt-6 text-center">
-<p class="font-body-md text-on-surface-variant">
-                            Already have an account? 
-                            <a class="text-primary font-semibold hover:underline transition-all ml-1" href="login.html">Log In</a>
-</p>
-</div>
-</form>
-</div>
-</section>
-</main>
-<!-- Simple Footer for Legal -->
-<footer class="w-full bg-surface-container border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
-<div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
-<div class="mb-3"><img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto"/></div>
-<p class="font-body-md text-on-surface-variant max-w-xs">Reliable sophistication in home health technology. Precision medication management for the modern sanctuary.</p>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Shop</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="products.html">Products &amp; Bundles</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="schedule.html">Schedule</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">Cart</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Account</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="login.html">Log In</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="signup.html">Sign Up</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="profile.html">Profile</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Legal</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Terms of Service</a></li>
-</ul>
-</div>
-</div>
-<div class="border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3">
-<p class="font-label-sm text-label-sm text-outline text-center">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
-<div class="flex gap-6">
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
-<script src="js/signup.js"></script>
-
-</body></html>
+</div> -->
+            <div class="pt-6 text-center">
+              <p class="font-body-md text-on-surface-variant">
+                Already have an account?
+                <a
+                  class="text-primary font-semibold hover:underline transition-all ml-1"
+                  href="login.html"
+                  >Log In</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <!-- Simple Footer for Legal -->
+    <footer
+      class="w-full bg-surface-container border-t border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10"
+      >
+        <div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
+          <div class="mb-3">
+            <img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto" />
+          </div>
+          <p class="font-body-md text-on-surface-variant max-w-xs">
+            Reliable sophistication in home health technology. Precision
+            medication management for the modern sanctuary.
+          </p>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Shop
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="products.html"
+                >Products &amp; Bundles</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="schedule.html"
+                >Schedule</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="cart.html"
+                >Cart</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Account
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="login.html"
+                >Log In</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="signup.html"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="profile.html"
+                >Profile</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Legal
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-secondary-container">
+        <div
+          class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3"
+        >
+          <p class="font-label-sm text-label-sm text-outline text-center">
+            © 2024 AuraMed Smart Systems. Reliable Sophistication in Health.
+          </p>
+          <div class="flex gap-6">
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Privacy Policy</a
+            >
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/signup.js"></script>
+  </body>
+</html>

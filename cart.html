@@ -1,162 +1,403 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Your Cart | AuraMed Smart Systems</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Source+Serif+4:wght@600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Source+Serif+4:wght@100..900&display=swap" rel="stylesheet"/>
-<script src="js/cart.config.js"></script>
-<link rel="stylesheet" href="css/cart.css" />
-</head>
-<body class="font-body-md text-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
-<!-- TopNavBar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container">
-<div class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4">
-<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"/></a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="home.html">Home</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="products.html">Products &amp; Bundles</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="schedule.html">Schedule</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="profile.html">Profile</a>
-</nav>
-<div class="flex items-center gap-4 md:gap-5">
-<a aria-label="View cart" class="text-on-surface-variant hover:text-primary transition-colors duration-250" style="color:#350e1b" href="cart.html">
-<span class="material-symbols-outlined">shopping_cart</span>
-</a>
-<a class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250" href="login.html">Log In</a>
-<a class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250" href="signup.html">Sign Up</a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden text-on-surface flex items-center justify-center" id="mobile-menu-btn" type="button">
-<span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
-</button>
-</div>
-</div>
-<div class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile" id="mobile-menu">
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="home.html">Home</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="products.html">Products &amp; Bundles</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="schedule.html">Schedule</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="profile.html">Profile</a>
-<div class="flex items-center gap-4 py-4">
-<a class="font-label-md text-label-md text-secondary" href="login.html">Log In</a>
-<a class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md" href="signup.html">Sign Up</a>
-</div>
-</div>
-</header>
-<div aria-hidden="true" class="md:hidden" id="mobile-menu-spacer" style="height:0px;overflow:hidden;transition:height 300ms ease;"></div>
-<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<div class="mb-12">
-<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Shopping Cart</h1>
-<p class="text-secondary font-body-md">Review your selections for a more sophisticated health routine.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
-<!-- Cart Items Section -->
-<!-- BACKEND HOOK: populate #cart-items with item cards (see markup pattern in cart.html history/design system); hide #cart-empty-state once items exist -->
-<div class="lg:col-span-8 space-y-6" id="cart-items">
-<!-- Empty state (default until backend adds items) -->
-<div class="flex flex-col items-center justify-center text-center gap-4 p-16 bg-surface-container-lowest border border-secondary-container luxury-shadow" id="cart-empty-state">
-<span class="material-symbols-outlined text-5xl text-secondary" data-icon="shopping_cart">shopping_cart</span>
-<h3 class="font-headline-md text-headline-md text-primary">Your cart is empty</h3>
-<p class="text-secondary font-body-md max-w-sm">Items you add from Products &amp; Bundles will show up here.</p>
-<a class="mt-2 inline-flex items-center justify-center bg-primary-container text-white px-6 py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all duration-250" href="products.html">Browse Products &amp; Bundles</a>
-</div>
-</div>
-<!-- Summary Section -->
-<div class="lg:col-span-4 space-y-6">
-<div class="bg-surface-container p-8 border border-secondary-container">
-<h2 class="font-headline-md text-headline-md text-primary mb-6">Order Summary</h2>
-<!-- BACKEND HOOK: replace $0.00 placeholders below (ids provided) once cart totals are calculated -->
-<div class="space-y-4 mb-8" id="order-summary-lines">
-<div class="flex justify-between text-secondary font-body-md">
-<span>Subtotal</span>
-<span class="text-on-surface" id="summary-subtotal">$0.00</span>
-</div>
-<div class="flex justify-between text-secondary font-body-md">
-<span>Shipping</span>
-<span class="text-primary-container font-semibold" id="summary-shipping">—</span>
-</div>
-<div class="flex justify-between text-secondary font-body-md">
-<span>Estimated Taxes</span>
-<span class="text-on-surface" id="summary-tax">$0.00</span>
-</div>
-<div class="border-t border-secondary-container pt-4 flex justify-between">
-<span class="font-headline-md text-primary">Total</span>
-<span class="font-headline-md text-primary" id="summary-total">$0.00</span>
-</div>
-</div>
-<div class="space-y-3">
-<a class="w-full bg-primary text-on-primary py-4 px-6 font-label-md text-label-md hover:bg-primary-container transition-all duration-250 flex items-center justify-center gap-2 group" href="checkout.html">
-                            Proceed to Checkout
-                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</a>
-<a class="w-full border border-secondary-container text-primary py-4 px-6 font-label-md text-label-md hover:bg-surface-container-high transition-all duration-250 flex items-center justify-center" href="products.html">
-                            Continue Shopping
-                        </a>
-</div>
-<div class="mt-8 pt-8 border-t border-secondary-container">
-<p class="text-secondary font-label-sm flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
-                            Secure Professional Checkout
-                        </p>
-<p class="text-secondary font-label-sm flex items-center gap-2">
-<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
-                            Complimentary White-Glove Delivery
-                        </p>
-</div>
-</div>
-<!-- Promotion Card: BACKEND HOOK — swap copy/link for the current recommended cross-sell item, or remove this block entirely if there's none -->
-<div class="bg-primary-container p-6 border border-primary text-on-primary-container" id="cart-promo-card">
-<p class="font-label-md mb-2">Exclusive Offer</p>
-<p class="font-body-md text-sm mb-4" id="cart-promo-copy">Explore our Products &amp; Bundles to find add-ons that pair with your order.</p>
-<a class="text-on-primary-container font-bold text-sm underline hover:opacity-80 transition-opacity flex items-center gap-1 w-fit" href="products.html">
-                        View Product <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
-</a>
-</div>
-</div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full bg-surface-container border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
-<div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
-<div class="mb-3"><img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto"/></div>
-<p class="font-body-md text-on-surface-variant max-w-xs">Reliable sophistication in home health technology. Precision medication management for the modern sanctuary.</p>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Shop</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="products.html">Products &amp; Bundles</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="schedule.html">Schedule</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">Cart</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Account</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="login.html">Log In</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="signup.html">Sign Up</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="profile.html">Profile</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Legal</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Terms of Service</a></li>
-</ul>
-</div>
-</div>
-<div class="border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3">
-<p class="font-label-sm text-label-sm text-outline text-center">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
-<div class="flex gap-6">
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
-<script src="js/cart.js"></script>
-
-</body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Your Cart | AuraMed Smart Systems</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Source+Serif+4:wght@600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Source+Serif+4:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/cart.config.js"></script>
+    <link rel="stylesheet" href="css/cart.css" />
+  </head>
+  <body
+    class="font-body-md text-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed"
+  >
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4"
+      >
+        <a
+          class="shrink-0 flex items-center"
+          href="home.html"
+          aria-label="AuraMed Home"
+          ><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"
+        /></a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="home.html"
+            >Home</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="products.html"
+            >Products &amp; Bundles</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="schedule.html"
+            >Schedule</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="profile.html"
+            >Profile</a
+          >
+        </nav>
+        <div class="flex items-center gap-4 md:gap-5">
+          <a
+            aria-label="View cart"
+            class="text-on-surface-variant hover:text-primary transition-colors duration-250"
+            style="color: #350e1b"
+            href="cart.html"
+          >
+            <span class="material-symbols-outlined">shopping_cart</span>
+          </a>
+          <a
+            class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250"
+            href="signup.html"
+            >Sign Up</a
+          >
+          <button
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+            class="md:hidden text-on-surface flex items-center justify-center"
+            id="mobile-menu-btn"
+            type="button"
+          >
+            <span class="material-symbols-outlined" id="mobile-menu-icon"
+              >menu</span
+            >
+          </button>
+        </div>
+      </div>
+      <div
+        class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile"
+        id="mobile-menu"
+      >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="home.html"
+          >Home</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="products.html"
+          >Products &amp; Bundles</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="schedule.html"
+          >Schedule</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="profile.html"
+          >Profile</a
+        >
+        <div class="flex items-center gap-4 py-4">
+          <a
+            class="font-label-md text-label-md text-secondary"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md"
+            href="signup.html"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </header>
+    <div
+      aria-hidden="true"
+      class="md:hidden"
+      id="mobile-menu-spacer"
+      style="height: 0px; overflow: hidden; transition: height 300ms ease"
+    ></div>
+    <main
+      class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto"
+    >
+      <div class="mb-12">
+        <h1
+          class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2"
+        >
+          Shopping Cart
+        </h1>
+        <p class="text-secondary font-body-md">
+          Review your selections for a more sophisticated health routine.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+        <!-- Cart Items Section -->
+        <!-- BACKEND HOOK: populate #cart-items with item cards (see markup pattern in cart.html history/design system); hide #cart-empty-state once items exist -->
+        <div class="lg:col-span-8 space-y-6" id="cart-items">
+          <!-- Empty state (default until backend adds items) -->
+          <div
+            class="flex flex-col items-center justify-center text-center gap-4 p-16 bg-surface-container-lowest border border-secondary-container luxury-shadow"
+            id="cart-empty-state"
+          >
+            <span
+              class="material-symbols-outlined text-5xl text-secondary"
+              data-icon="shopping_cart"
+              >shopping_cart</span
+            >
+            <h3 class="font-headline-md text-headline-md text-primary">
+              Your cart is empty
+            </h3>
+            <p class="text-secondary font-body-md max-w-sm">
+              Items you add from Products &amp; Bundles will show up here.
+            </p>
+            <a
+              class="mt-2 inline-flex items-center justify-center bg-primary-container text-white px-6 py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all duration-250"
+              href="products.html"
+              >Browse Products &amp; Bundles</a
+            >
+          </div>
+        </div>
+        <!-- Summary Section -->
+        <div class="lg:col-span-4 space-y-6">
+          <div
+            class="bg-surface-container p-8 border border-secondary-container"
+          >
+            <h2 class="font-headline-md text-headline-md text-primary mb-6">
+              Order Summary
+            </h2>
+            <!-- BACKEND HOOK: replace $0.00 placeholders below (ids provided) once cart totals are calculated -->
+            <div class="space-y-4 mb-8" id="order-summary-lines">
+              <div class="flex justify-between text-secondary font-body-md">
+                <span>Subtotal</span>
+                <span class="text-on-surface" id="summary-subtotal">$0.00</span>
+              </div>
+              <div class="flex justify-between text-secondary font-body-md">
+                <span>Shipping</span>
+                <span
+                  class="text-primary-container font-semibold"
+                  id="summary-shipping"
+                  >—</span
+                >
+              </div>
+              <div class="flex justify-between text-secondary font-body-md">
+                <span>Estimated Taxes</span>
+                <span class="text-on-surface" id="summary-tax">$0.00</span>
+              </div>
+              <div
+                class="border-t border-secondary-container pt-4 flex justify-between"
+              >
+                <span class="font-headline-md text-primary">Total</span>
+                <span class="font-headline-md text-primary" id="summary-total"
+                  >$0.00</span
+                >
+              </div>
+            </div>
+            <div class="space-y-3">
+              <a
+                class="w-full bg-primary text-on-primary py-4 px-6 font-label-md text-label-md hover:bg-primary-container transition-all duration-250 flex items-center justify-center gap-2 group"
+                href="checkout.html"
+              >
+                Proceed to Checkout
+                <span
+                  class="material-symbols-outlined group-hover:translate-x-1 transition-transform"
+                  data-icon="arrow_forward"
+                  >arrow_forward</span
+                >
+              </a>
+              <a
+                class="w-full border border-secondary-container text-primary py-4 px-6 font-label-md text-label-md hover:bg-surface-container-high transition-all duration-250 flex items-center justify-center"
+                href="products.html"
+              >
+                Continue Shopping
+              </a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-secondary-container">
+              <p
+                class="text-secondary font-label-sm flex items-center gap-2 mb-2"
+              >
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="verified"
+                  >verified</span
+                >
+                Secure Professional Checkout
+              </p>
+              <p class="text-secondary font-label-sm flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="local_shipping"
+                  >local_shipping</span
+                >
+                Complimentary White-Glove Delivery
+              </p>
+            </div>
+          </div>
+          <!-- Promotion Card: BACKEND HOOK — swap copy/link for the current recommended cross-sell item, or remove this block entirely if there's none -->
+          <div
+            class="bg-primary-container p-6 border border-primary text-on-primary-container"
+            id="cart-promo-card"
+          >
+            <p class="font-label-md mb-2">Exclusive Offer</p>
+            <p class="font-body-md text-sm mb-4" id="cart-promo-copy">
+              Explore our Products &amp; Bundles to find add-ons that pair with
+              your order.
+            </p>
+            <a
+              class="text-on-primary-container font-bold text-sm underline hover:opacity-80 transition-opacity flex items-center gap-1 w-fit"
+              href="products.html"
+            >
+              View Product
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="open_in_new"
+                >open_in_new</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full bg-surface-container border-t border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10"
+      >
+        <div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
+          <div class="mb-3">
+            <img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto" />
+          </div>
+          <p class="font-body-md text-on-surface-variant max-w-xs">
+            Reliable sophistication in home health technology. Precision
+            medication management for the modern sanctuary.
+          </p>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Shop
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="products.html"
+                >Products &amp; Bundles</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="schedule.html"
+                >Schedule</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="cart.html"
+                >Cart</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Account
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="login.html"
+                >Log In</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="signup.html"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="profile.html"
+                >Profile</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Legal
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-secondary-container">
+        <div
+          class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3"
+        >
+          <p class="font-label-sm text-label-sm text-outline text-center">
+            © 2024 AuraMed Smart Systems. Reliable Sophistication in Health.
+          </p>
+          <div class="flex gap-6">
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Privacy Policy</a
+            >
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/cart.js"></script>
+  </body>
+</html>

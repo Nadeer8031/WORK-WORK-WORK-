@@ -55,3 +55,116 @@
         }
     });
 })();
+
+(function () {
+  var form = document.getElementById("signupForm");
+  if (!form) return;
+
+  function validateForm() {
+    var username = document.getElementById("username").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var pass = document.getElementById("password").value;
+    var confirmPass = document.getElementById("confirm-password").value;
+    var terms = document.getElementById("terms");
+
+    var username_error = document.getElementById("username_error");
+    var email_error = document.getElementById("email_error");
+    var pass_error = document.getElementById("pass_error");
+    var confirm_password_error = document.getElementById("confirm_password_error");
+    var terms_error = document.getElementById("terms_error");
+
+    username_error.textContent = "";
+    email_error.textContent = "";
+    pass_error.textContent = "";
+    confirm_password_error.textContent = "";
+    terms_error.textContent = "";
+
+    var valid = true;
+    var atIndex = email.indexOf("@");
+    var dotIndex = email.lastIndexOf(".com");
+
+    if (username === "") {
+      username_error.textContent = "Username cannot be empty";
+      valid = false;
+    }
+
+    if (email === "") {
+      email_error.textContent = "Email Address cannot be empty";
+      valid = false;
+    } else if (
+      atIndex === -1 ||
+      atIndex === 0 ||
+      dotIndex <= atIndex + 1 ||
+      !email.endsWith(".com") ||
+      email.length > dotIndex + 4
+    ) {
+      if (!email.endsWith(".com")) {
+        email_error.textContent = "Email must end with .com";
+      } else if (email.length > dotIndex + 4) {
+        email_error.textContent = "Nothing should come after .com";
+      } else if (atIndex === -1) {
+        email_error.textContent = "Email must contain @";
+      } else if (atIndex === 0) {
+        email_error.textContent = "Email must not start with @";
+      } else if (dotIndex <= atIndex + 1) {
+        email_error.textContent = "Email must contain a domain (ex: @gmail)";
+      } else {
+        email_error.textContent = "Invalid Email Address";
+      }
+      valid = false;
+    }
+
+    if (pass === "") {
+      pass_error.textContent = "Password cannot be empty";
+      valid = false;
+    } else if (pass.length < 8) {
+      pass_error.textContent = "Password must be at least 8 characters";
+      valid = false;
+    } else if (pass.length > 20) {
+      pass_error.textContent = "Password must be less than 20 characters";
+      valid = false;
+    } else if (!/[A-Z]/.test(pass)) {
+      pass_error.textContent =
+        "Password must contain at least one uppercase letter";
+      valid = false;
+    } else if (!/[a-z]/.test(pass)) {
+      pass_error.textContent =
+        "Password must contain at least one lowercase letter";
+      valid = false;
+    } else if (!/[0-9]/.test(pass)) {
+      pass_error.textContent = "Password must contain at least one number";
+      valid = false;
+    } else if (!/[!@#$%^&*]/.test(pass)) {
+      pass_error.textContent =
+        "Password must contain at least one special character (!@#$%^&*)";
+      valid = false;
+    } else if (/\s/.test(pass)) {
+      pass_error.textContent = "Password cannot contain spaces";
+      valid = false;
+    }
+
+    if (confirmPass === "") {
+      confirm_password_error.textContent = "Confirm Password cannot be empty";
+      valid = false;
+    } else if (confirmPass !== pass) {
+      confirm_password_error.textContent = "Passwords do not match";
+      valid = false;
+    }
+
+    if (!terms.checked) {
+      terms_error.textContent = "You must agree to the Terms and Conditions";
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  form.addEventListener("submit", function (e) {
+    var isValid = validateForm();
+    if (!isValid) {
+      e.preventDefault();
+    }
+    // If valid, the browser submits the form normally to the
+    // action/method set on #signupForm, so your PHP backend receives it.
+  });
+})();

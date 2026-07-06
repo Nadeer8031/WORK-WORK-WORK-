@@ -1,23 +1,31 @@
-        body {
-            background-color: #fff8f8; /* background from theme */
-            overflow-x: hidden;
-        }
-        .ambient-shadow {
-            box-shadow: 0 10px 30px -5px rgba(53, 14, 27, 0.04), 0 4px 6px -2px rgba(53, 14, 27, 0.02);
-        }
-        .burgundy-accent {
-            color: #350e1b;
-        }
-        .bg-burgundy {
-            background-color: #350e1b;
-        }
-        .input-focus:focus {
-            border-color: #350e1b;
-            outline: none;
-            box-shadow: 0 0 0 1px #350e1b;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-    
+body {
+  background-color: #fff8f8; /* background from theme */
+  overflow-x: hidden;
+}
+.ambient-shadow {
+  box-shadow:
+    0 10px 30px -5px rgba(53, 14, 27, 0.04),
+    0 4px 6px -2px rgba(53, 14, 27, 0.02);
+}
+.burgundy-accent {
+  color: #350e1b;
+}
+.bg-burgundy {
+  background-color: #350e1b;
+}
+.input-focus:focus {
+  border-color: #350e1b;
+  outline: none;
+  box-shadow: 0 0 0 1px #350e1b;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 300,
+    "GRAD" 0,
+    "opsz" 24;
+  vertical-align: middle;
+}
+.h-9 {
+    height: 10.25rem !important; 
+}

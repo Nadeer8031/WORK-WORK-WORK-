@@ -1,262 +1,606 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>User Profile | AuraMed</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/profile.css" />
-<script src="js/profile.config.js"></script>
-</head>
-<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed selection:text-primary">
-<!-- TopNavBar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container">
-<div class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4">
-<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"/></a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="home.html">Home</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="products.html">Products &amp; Bundles</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="schedule.html">Schedule</a>
-<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md" href="profile.html">Profile</a>
-</nav>
-<div class="flex items-center gap-4 md:gap-5">
-<a aria-label="View cart" class="text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">
-<span class="material-symbols-outlined">shopping_cart</span>
-</a>
-<a class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250" href="login.html">Log In</a>
-<a class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250" href="signup.html">Sign Up</a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden text-on-surface flex items-center justify-center" id="mobile-menu-btn" type="button">
-<span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
-</button>
-</div>
-</div>
-<div class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile" id="mobile-menu">
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="home.html">Home</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="products.html">Products &amp; Bundles</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="schedule.html">Schedule</a>
-<a class="text-primary font-semibold font-label-md text-label-md py-3 border-b border-secondary-container" href="profile.html">Profile</a>
-<div class="flex items-center gap-4 py-4">
-<a class="font-label-md text-label-md text-secondary" href="login.html">Log In</a>
-<a class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md" href="signup.html">Sign Up</a>
-</div>
-</div>
-</header>
-<div aria-hidden="true" class="md:hidden" id="mobile-menu-spacer" style="height:0px;overflow:hidden;transition:height 300ms ease;"></div>
-<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
-<!-- Header Section -->
-<section class="mb-12">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-<div>
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-[#B5A391] mb-2 block">Member Account</span>
-<h2 class="font-headline-lg text-headline-lg text-primary">Welcome, Julianne</h2>
-</div>
-<div class="flex gap-4">
-<button class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded transition-all hover:opacity-90">Edit Profile</button>
-<a class="px-6 py-3 border border-[#DFDCD4] text-primary font-label-md text-label-md rounded hover:bg-surface-container-low transition-all flex items-center" href="login.html">Logout</a>
-</div>
-</div>
-</section>
-<!-- Profile Bento Grid -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Personal Info Card -->
-<div class="md:col-span-4 glass-card p-8 rounded-xl flex flex-col gap-8 shadow-[0px_20px_40px_rgba(52,13,26,0.04)]">
-<div class="flex flex-col items-center text-center">
-<div class="w-24 h-24 rounded-full border-2 border-[#DFDCD4] p-1 mb-4">
-<div class="w-full h-full rounded-full overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover" data-alt="Close-up portrait of a woman with a professional and calm demeanor, looking directly at the camera with a slight smile. The background is a soft-focus, minimalist health clinic interior with warm cream and beige tones. High-end lighting creates soft shadows, suggesting a premium, reliable atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQhFULFx4DBH0UyOcVi86jZFdBTeEGMRRM3B0m4tEaf8gP8etseHxdSTT_tF90jQxdBRVhktapO6GCWnOnjhfyRG7bk1CVRhPIozdFlvnDC_QANrYC9G0ubILLjl2tOi7LvDE4NK92gtz0k0YTLbHX-42fgIxqLP5McK-dIYNaTckT8k1rF8LKlslqmJ6Ss9oC4xSXJEXDeQSHpow9X-9e6l-ZOzrqahNw3kbzERk7ZpYLwu5Kcwa8qb5LR8S8N6B_tIehDCYd0Q"/>
-</div>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Julianne V.</h3>
-<p class="text-label-md text-[#B5A391]">Gold Tier Member since 2022</p>
-</div>
-<div class="space-y-4 pt-4 border-t border-[#DFDCD4]">
-<div>
-<label class="text-label-sm text-[#B5A391] uppercase">Email Address</label>
-<p class="font-body-md text-on-surface">j.vance@auramed-concierge.com</p>
-</div>
-<div>
-<label class="text-label-sm text-[#B5A391] uppercase">Contact Number</label>
-<p class="font-body-md text-on-surface">+1 (555) 012-8843</p>
-</div>
-<div>
-<label class="text-label-sm text-[#B5A391] uppercase">Primary Location</label>
-<p class="font-body-md text-on-surface">San Francisco, CA</p>
-</div>
-</div>
-</div>
-<!-- Dashboard / Order History -->
-<div class="md:col-span-8 flex flex-col gap-gutter">
-<!-- Quick Stats -->
-<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
-<div class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg">
-<span class="material-symbols-outlined text-primary mb-2">package_2</span>
-<h4 class="text-label-sm text-[#B5A391] uppercase">Active Subscriptions</h4>
-<p class="font-headline-md text-headline-md">3</p>
-</div>
-<div class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg">
-<span class="material-symbols-outlined text-primary mb-2">calendar_today</span>
-<h4 class="text-label-sm text-[#B5A391] uppercase">Next Refill</h4>
-<p class="font-headline-md text-headline-md">Oct 14</p>
-</div>
-<div class="hidden md:block bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg">
-<span class="material-symbols-outlined text-primary mb-2">verified_user</span>
-<h4 class="text-label-sm text-[#B5A391] uppercase">Health Score</h4>
-<p class="font-headline-md text-headline-md">98%</p>
-</div>
-</div>
-<!-- Order History Section -->
-<div class="bg-white border border-[#DFDCD4] rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(0,0,0,0.02)]">
-<div class="px-8 py-6 border-b border-[#DFDCD4] flex justify-between items-center bg-surface-container-low">
-<h3 class="font-headline-md text-headline-md text-primary">Order History</h3>
-<button class="text-label-md text-primary hover:underline transition-all">View All</button>
-</div>
-<div class="divide-y divide-[#DFDCD4]">
-<!-- Order Row 1 -->
-<div class="px-8 py-6 hover:bg-surface-bright transition-colors group">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div class="flex items-center gap-6">
-<div class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300">
-<span class="material-symbols-outlined text-3xl">medication</span>
-</div>
-<div>
-<p class="font-label-sm text-label-sm text-[#B5A391] uppercase">Order #AM-88421</p>
-<h4 class="font-body-lg text-body-lg text-primary font-medium">Luxe Wellness Bundle — Q4</h4>
-<p class="text-label-md text-secondary">Delivered on Sept 28, 2024</p>
-</div>
-</div>
-<div class="flex items-center gap-8">
-<div class="text-right">
-<p class="font-label-md text-label-md text-primary font-bold">$249.00</p>
-<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider">
-<span class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"></span>
-                                            Success
-                                        </span>
-</div>
-<button class="material-symbols-outlined text-[#B5A391] hover:text-primary">chevron_right</button>
-</div>
-</div>
-</div>
-<!-- Order Row 2 -->
-<div class="px-8 py-6 hover:bg-surface-bright transition-colors group">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div class="flex items-center gap-6">
-<div class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300">
-<span class="material-symbols-outlined text-3xl">biotech</span>
-</div>
-<div>
-<p class="font-label-sm text-label-sm text-[#B5A391] uppercase">Order #AM-88104</p>
-<h4 class="font-body-lg text-body-lg text-primary font-medium">AuraMed Smart Sensor Kit</h4>
-<p class="text-label-md text-secondary">Delivered on Aug 12, 2024</p>
-</div>
-</div>
-<div class="flex items-center gap-8">
-<div class="text-right">
-<p class="font-label-md text-label-md text-primary font-bold">$1,200.00</p>
-<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider">
-<span class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"></span>
-                                            Success
-                                        </span>
-</div>
-<button class="material-symbols-outlined text-[#B5A391] hover:text-primary">chevron_right</button>
-</div>
-</div>
-</div>
-<!-- Order Row 3 -->
-<div class="px-8 py-6 hover:bg-surface-bright transition-colors group">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div class="flex items-center gap-6">
-<div class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300">
-<span class="material-symbols-outlined text-3xl">pill</span>
-</div>
-<div>
-<p class="font-label-sm text-label-sm text-[#B5A391] uppercase">Order #AM-87552</p>
-<h4 class="font-body-lg text-body-lg text-primary font-medium">Metabolic Balance Refill</h4>
-<p class="text-label-md text-secondary">Delivered on June 05, 2024</p>
-</div>
-</div>
-<div class="flex items-center gap-8">
-<div class="text-right">
-<p class="font-label-md text-label-md text-primary font-bold">$89.00</p>
-<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider">
-<span class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"></span>
-                                            Success
-                                        </span>
-</div>
-<button class="material-symbols-outlined text-[#B5A391] hover:text-primary">chevron_right</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Inventory Gauge Preview (Custom Component) -->
-<section class="mt-12 bg-primary text-on-primary rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative">
-<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-
-</div>
-<div class="z-10 max-w-lg">
-<h3 class="font-headline-md text-headline-md mb-2">Automated Inventory Status</h3>
-<p class="text-on-primary/80 mb-6">Your AuraMed hub is tracking your current dosage levels. We will automatically prepare your next shipment when levels reach 15%.</p>
-<div class="space-y-4">
-<div class="flex justify-between font-label-md text-label-md">
-<span>Vitality Complex II</span>
-<span>64% Remaining</span>
-</div>
-<div class="h-1.5 w-full bg-on-primary/20 rounded-full overflow-hidden">
-<div class="h-full bg-primary-fixed-dim transition-all duration-1000 ease-out" style="width: 64%"></div>
-</div>
-</div>
-</div>
-<div class="z-10">
-<a class="px-8 py-4 bg-white text-primary font-label-md text-label-md rounded-full shadow-lg hover:bg-primary-fixed transition-colors inline-block" href="schedule.html">Manage Prescriptions</a>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full bg-surface-container border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
-<div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
-<div class="mb-3"><img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto"/></div>
-<p class="font-body-md text-on-surface-variant max-w-xs">Reliable sophistication in home health technology. Precision medication management for the modern sanctuary.</p>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Shop</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="products.html">Products &amp; Bundles</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="schedule.html">Schedule</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">Cart</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Account</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="login.html">Log In</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="signup.html">Sign Up</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="profile.html">Profile</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Legal</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Terms of Service</a></li>
-</ul>
-</div>
-</div>
-<div class="border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3">
-<p class="font-label-sm text-label-sm text-outline text-center">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
-<div class="flex gap-6">
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
-<script src="js/profile.js"></script>
-
-</body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>User Profile | AuraMed</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/profile.css" />
+    <script src="js/profile.config.js"></script>
+  </head>
+  <body
+    class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed selection:text-primary"
+  >
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4"
+      >
+        <a
+          class="shrink-0 flex items-center"
+          href="home.html"
+          aria-label="AuraMed Home"
+          ><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"
+        /></a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="home.html"
+            >Home</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="products.html"
+            >Products &amp; Bundles</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="schedule.html"
+            >Schedule</a
+          >
+          <a
+            class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md"
+            href="profile.html"
+            >Profile</a
+          >
+        </nav>
+        <div class="flex items-center gap-4 md:gap-5">
+          <a
+            aria-label="View cart"
+            class="text-on-surface-variant hover:text-primary transition-colors duration-250"
+            href="cart.html"
+          >
+            <span class="material-symbols-outlined">shopping_cart</span>
+          </a>
+          <a
+            class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250"
+            href="signup.html"
+            >Sign Up</a
+          >
+          <button
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+            class="md:hidden text-on-surface flex items-center justify-center"
+            id="mobile-menu-btn"
+            type="button"
+          >
+            <span class="material-symbols-outlined" id="mobile-menu-icon"
+              >menu</span
+            >
+          </button>
+        </div>
+      </div>
+      <div
+        class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile"
+        id="mobile-menu"
+      >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="home.html"
+          >Home</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="products.html"
+          >Products &amp; Bundles</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="schedule.html"
+          >Schedule</a
+        >
+        <a
+          class="text-primary font-semibold font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="profile.html"
+          >Profile</a
+        >
+        <div class="flex items-center gap-4 py-4">
+          <a
+            class="font-label-md text-label-md text-secondary"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md"
+            href="signup.html"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </header>
+    <div
+      aria-hidden="true"
+      class="md:hidden"
+      id="mobile-menu-spacer"
+      style="height: 0px; overflow: hidden; transition: height 300ms ease"
+    ></div>
+    <main
+      class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-screen"
+    >
+      <!-- Header Section -->
+      <section class="mb-12">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div>
+            <span
+              class="font-label-sm text-label-sm uppercase tracking-widest text-[#B5A391] mb-2 block"
+              >Member Account</span
+            >
+            <h2 class="font-headline-lg text-headline-lg text-primary">
+              Welcome, Julianne
+            </h2>
+          </div>
+          <div class="flex gap-4">
+            <button
+              class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded transition-all hover:opacity-90"
+            >
+              Edit Profile
+            </button>
+            <a
+              class="px-6 py-3 border border-[#DFDCD4] text-primary font-label-md text-label-md rounded hover:bg-surface-container-low transition-all flex items-center"
+              href="login.html"
+              >Logout</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Profile Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+        <!-- Personal Info Card -->
+        <div
+          class="md:col-span-4 glass-card p-8 rounded-xl flex flex-col gap-8 shadow-[0px_20px_40px_rgba(52,13,26,0.04)]"
+        >
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="w-24 h-24 rounded-full border-2 border-[#DFDCD4] p-1 mb-4"
+            >
+              <div
+                class="w-full h-full rounded-full overflow-hidden bg-surface-container"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  data-alt="Close-up portrait of a woman with a professional and calm demeanor, looking directly at the camera with a slight smile. The background is a soft-focus, minimalist health clinic interior with warm cream and beige tones. High-end lighting creates soft shadows, suggesting a premium, reliable atmosphere."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQhFULFx4DBH0UyOcVi86jZFdBTeEGMRRM3B0m4tEaf8gP8etseHxdSTT_tF90jQxdBRVhktapO6GCWnOnjhfyRG7bk1CVRhPIozdFlvnDC_QANrYC9G0ubILLjl2tOi7LvDE4NK92gtz0k0YTLbHX-42fgIxqLP5McK-dIYNaTckT8k1rF8LKlslqmJ6Ss9oC4xSXJEXDeQSHpow9X-9e6l-ZOzrqahNw3kbzERk7ZpYLwu5Kcwa8qb5LR8S8N6B_tIehDCYd0Q"
+                />
+              </div>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">
+              Julianne V.
+            </h3>
+            <p class="text-label-md text-[#B5A391]">
+              Gold Tier Member since 2022
+            </p>
+          </div>
+          <div class="space-y-4 pt-4 border-t border-[#DFDCD4]">
+            <div>
+              <label class="text-label-sm text-[#B5A391] uppercase"
+                >Email Address</label
+              >
+              <p class="font-body-md text-on-surface">
+                j.vance@auramed-concierge.com
+              </p>
+            </div>
+            <div>
+              <label class="text-label-sm text-[#B5A391] uppercase"
+                >Contact Number</label
+              >
+              <p class="font-body-md text-on-surface">+1 (555) 012-8843</p>
+            </div>
+            <div>
+              <label class="text-label-sm text-[#B5A391] uppercase"
+                >Primary Location</label
+              >
+              <p class="font-body-md text-on-surface">San Francisco, CA</p>
+            </div>
+          </div>
+        </div>
+        <!-- Dashboard / Order History -->
+        <div class="md:col-span-8 flex flex-col gap-gutter">
+          <!-- Quick Stats -->
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+            <div
+              class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
+            >
+              <span class="material-symbols-outlined text-primary mb-2"
+                >package_2</span
+              >
+              <h4 class="text-label-sm text-[#B5A391] uppercase">
+                Active Subscriptions
+              </h4>
+              <p class="font-headline-md text-headline-md">3</p>
+            </div>
+            <div
+              class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
+            >
+              <span class="material-symbols-outlined text-primary mb-2"
+                >calendar_today</span
+              >
+              <h4 class="text-label-sm text-[#B5A391] uppercase">
+                Next Refill
+              </h4>
+              <p class="font-headline-md text-headline-md">Oct 14</p>
+            </div>
+            <div
+              class="hidden md:block bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
+            >
+              <span class="material-symbols-outlined text-primary mb-2"
+                >verified_user</span
+              >
+              <h4 class="text-label-sm text-[#B5A391] uppercase">
+                Health Score
+              </h4>
+              <p class="font-headline-md text-headline-md">98%</p>
+            </div>
+          </div>
+          <!-- Order History Section -->
+          <div
+            class="bg-white border border-[#DFDCD4] rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(0,0,0,0.02)]"
+          >
+            <div
+              class="px-8 py-6 border-b border-[#DFDCD4] flex justify-between items-center bg-surface-container-low"
+            >
+              <h3 class="font-headline-md text-headline-md text-primary">
+                Order History
+              </h3>
+              <button
+                class="text-label-md text-primary hover:underline transition-all"
+              >
+                View All
+              </button>
+            </div>
+            <div class="divide-y divide-[#DFDCD4]">
+              <!-- Order Row 1 -->
+              <div
+                class="px-8 py-6 hover:bg-surface-bright transition-colors group"
+              >
+                <div
+                  class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+                >
+                  <div class="flex items-center gap-6">
+                    <div
+                      class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300"
+                    >
+                      <span class="material-symbols-outlined text-3xl"
+                        >medication</span
+                      >
+                    </div>
+                    <div>
+                      <p
+                        class="font-label-sm text-label-sm text-[#B5A391] uppercase"
+                      >
+                        Order #AM-88421
+                      </p>
+                      <h4
+                        class="font-body-lg text-body-lg text-primary font-medium"
+                      >
+                        Luxe Wellness Bundle — Q4
+                      </h4>
+                      <p class="text-label-md text-secondary">
+                        Delivered on Sept 28, 2024
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-8">
+                    <div class="text-right">
+                      <p
+                        class="font-label-md text-label-md text-primary font-bold"
+                      >
+                        $249.00
+                      </p>
+                      <span
+                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"
+                        ></span>
+                        Success
+                      </span>
+                    </div>
+                    <button
+                      class="material-symbols-outlined text-[#B5A391] hover:text-primary"
+                    >
+                      chevron_right
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Order Row 2 -->
+              <div
+                class="px-8 py-6 hover:bg-surface-bright transition-colors group"
+              >
+                <div
+                  class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+                >
+                  <div class="flex items-center gap-6">
+                    <div
+                      class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300"
+                    >
+                      <span class="material-symbols-outlined text-3xl"
+                        >biotech</span
+                      >
+                    </div>
+                    <div>
+                      <p
+                        class="font-label-sm text-label-sm text-[#B5A391] uppercase"
+                      >
+                        Order #AM-88104
+                      </p>
+                      <h4
+                        class="font-body-lg text-body-lg text-primary font-medium"
+                      >
+                        AuraMed Smart Sensor Kit
+                      </h4>
+                      <p class="text-label-md text-secondary">
+                        Delivered on Aug 12, 2024
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-8">
+                    <div class="text-right">
+                      <p
+                        class="font-label-md text-label-md text-primary font-bold"
+                      >
+                        $1,200.00
+                      </p>
+                      <span
+                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"
+                        ></span>
+                        Success
+                      </span>
+                    </div>
+                    <button
+                      class="material-symbols-outlined text-[#B5A391] hover:text-primary"
+                    >
+                      chevron_right
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Order Row 3 -->
+              <div
+                class="px-8 py-6 hover:bg-surface-bright transition-colors group"
+              >
+                <div
+                  class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+                >
+                  <div class="flex items-center gap-6">
+                    <div
+                      class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300"
+                    >
+                      <span class="material-symbols-outlined text-3xl"
+                        >pill</span
+                      >
+                    </div>
+                    <div>
+                      <p
+                        class="font-label-sm text-label-sm text-[#B5A391] uppercase"
+                      >
+                        Order #AM-87552
+                      </p>
+                      <h4
+                        class="font-body-lg text-body-lg text-primary font-medium"
+                      >
+                        Metabolic Balance Refill
+                      </h4>
+                      <p class="text-label-md text-secondary">
+                        Delivered on June 05, 2024
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-8">
+                    <div class="text-right">
+                      <p
+                        class="font-label-md text-label-md text-primary font-bold"
+                      >
+                        $89.00
+                      </p>
+                      <span
+                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"
+                        ></span>
+                        Success
+                      </span>
+                    </div>
+                    <button
+                      class="material-symbols-outlined text-[#B5A391] hover:text-primary"
+                    >
+                      chevron_right
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Inventory Gauge Preview (Custom Component) -->
+      <section
+        class="mt-12 bg-primary text-on-primary rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative"
+      >
+        <div
+          class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none"
+        ></div>
+        <div class="z-10 max-w-lg">
+          <h3 class="font-headline-md text-headline-md mb-2">
+            Automated Inventory Status
+          </h3>
+          <p class="text-on-primary/80 mb-6">
+            Your AuraMed hub is tracking your current dosage levels. We will
+            automatically prepare your next shipment when levels reach 15%.
+          </p>
+          <div class="space-y-4">
+            <div class="flex justify-between font-label-md text-label-md">
+              <span>Vitality Complex II</span>
+              <span>64% Remaining</span>
+            </div>
+            <div
+              class="h-1.5 w-full bg-on-primary/20 rounded-full overflow-hidden"
+            >
+              <div
+                class="h-full bg-primary-fixed-dim transition-all duration-1000 ease-out"
+                style="width: 64%"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="z-10">
+          <a
+            class="px-8 py-4 bg-white text-primary font-label-md text-label-md rounded-full shadow-lg hover:bg-primary-fixed transition-colors inline-block"
+            href="schedule.html"
+            >Manage Prescriptions</a
+          >
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full bg-surface-container border-t border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10"
+      >
+        <div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
+          <div class="mb-3">
+            <img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto" />
+          </div>
+          <p class="font-body-md text-on-surface-variant max-w-xs">
+            Reliable sophistication in home health technology. Precision
+            medication management for the modern sanctuary.
+          </p>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Shop
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="products.html"
+                >Products &amp; Bundles</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="schedule.html"
+                >Schedule</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="cart.html"
+                >Cart</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Account
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="login.html"
+                >Log In</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="signup.html"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="profile.html"
+                >Profile</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Legal
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-secondary-container">
+        <div
+          class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3"
+        >
+          <p class="font-label-sm text-label-sm text-outline text-center">
+            © 2024 AuraMed Smart Systems. Reliable Sophistication in Health.
+          </p>
+          <div class="flex gap-6">
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Privacy Policy</a
+            >
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/profile.js"></script>
+  </body>
+</html>

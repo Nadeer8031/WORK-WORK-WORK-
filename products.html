@@ -1,248 +1,605 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Products &amp; Bundles | AuraMed Smart Systems</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="js/products.config.js"></script>
-<link rel="stylesheet" href="css/products.css" />
-</head>
-<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
-<!-- TopNavBar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container">
-<div class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4">
-<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"/></a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="home.html">Home</a>
-<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md" href="products.html">Products &amp; Bundles</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="schedule.html">Schedule</a>
-<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="profile.html">Profile</a>
-</nav>
-<div class="flex items-center gap-4 md:gap-5">
-<a aria-label="View cart" class="text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">
-<span class="material-symbols-outlined">shopping_cart</span>
-</a>
-<a class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250" href="login.html">Log In</a>
-<a class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250" href="signup.html">Sign Up</a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden text-on-surface flex items-center justify-center" id="mobile-menu-btn" type="button">
-<span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
-</button>
-</div>
-</div>
-<div class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile" id="mobile-menu">
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="home.html">Home</a>
-<a class="text-primary font-semibold font-label-md text-label-md py-3 border-b border-secondary-container" href="products.html">Products &amp; Bundles</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="schedule.html">Schedule</a>
-<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="profile.html">Profile</a>
-<div class="flex items-center gap-4 py-4">
-<a class="font-label-md text-label-md text-secondary" href="login.html">Log In</a>
-<a class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md" href="signup.html">Sign Up</a>
-</div>
-</div>
-</header>
-<div aria-hidden="true" class="md:hidden" id="mobile-menu-spacer" style="height:0px;overflow:hidden;transition:height 300ms ease;"></div>
-<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<!-- Hero Section -->
-<section class="mb-16">
-<h2 class="font-headline-lg text-headline-lg mb-4 text-on-surface">The Future of Domestic Health</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                Precision medical technology integrated into high-end cabinetry. Designed for the sophisticated professional who values clinical accuracy and aesthetic harmony.
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Products &amp; Bundles | AuraMed Smart Systems</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/products.config.js"></script>
+    <link rel="stylesheet" href="css/products.css" />
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed antialiased"
+  >
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4"
+      >
+        <a
+          class="shrink-0 flex items-center"
+          href="home.html"
+          aria-label="AuraMed Home"
+          ><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"
+        /></a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="home.html"
+            >Home</a
+          >
+          <a
+            class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md"
+            href="products.html"
+            >Products &amp; Bundles</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="schedule.html"
+            >Schedule</a
+          >
+          <a
+            class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md"
+            href="profile.html"
+            >Profile</a
+          >
+        </nav>
+        <div class="flex items-center gap-4 md:gap-5">
+          <a
+            aria-label="View cart"
+            class="text-on-surface-variant hover:text-primary transition-colors duration-250"
+            href="cart.html"
+          >
+            <span class="material-symbols-outlined">shopping_cart</span>
+          </a>
+          <a
+            class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250"
+            href="signup.html"
+            >Sign Up</a
+          >
+          <button
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+            class="md:hidden text-on-surface flex items-center justify-center"
+            id="mobile-menu-btn"
+            type="button"
+          >
+            <span class="material-symbols-outlined" id="mobile-menu-icon"
+              >menu</span
+            >
+          </button>
+        </div>
+      </div>
+      <div
+        class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile"
+        id="mobile-menu"
+      >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="home.html"
+          >Home</a
+        >
+        <a
+          class="text-primary font-semibold font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="products.html"
+          >Products &amp; Bundles</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="schedule.html"
+          >Schedule</a
+        >
+        <a
+          class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container"
+          href="profile.html"
+          >Profile</a
+        >
+        <div class="flex items-center gap-4 py-4">
+          <a
+            class="font-label-md text-label-md text-secondary"
+            href="login.html"
+            >Log In</a
+          >
+          <a
+            class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md"
+            href="signup.html"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </header>
+    <div
+      aria-hidden="true"
+      class="md:hidden"
+      id="mobile-menu-spacer"
+      style="height: 0px; overflow: hidden; transition: height 300ms ease"
+    ></div>
+    <main
+      class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto"
+    >
+      <!-- Hero Section -->
+      <section class="mb-16">
+        <h2 class="font-headline-lg text-headline-lg mb-4 text-on-surface">
+          The Future of Domestic Health
+        </h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          Precision medical technology integrated into high-end cabinetry.
+          Designed for the sophisticated professional who values clinical
+          accuracy and aesthetic harmony.
+        </p>
+      </section>
+      <!-- Individual Products Section (Bento Grid) -->
+      <section class="mb-24">
+        <div
+          class="flex items-center justify-between mb-8 border-b border-outline-variant pb-4"
+        >
+          <h3 class="font-headline-md text-headline-md text-primary">
+            Individual Systems
+          </h3>
+          <span class="text-label-md font-label-md text-secondary"
+            >04 MODELS AVAILABLE</span
+          >
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <!-- Product 1: Large Featured -->
+          <div
+            class="md:col-span-7 group relative overflow-hidden bg-white border border-secondary-container p-8 smooth-shadow flex flex-col justify-between min-h-[500px]"
+          >
+            <div class="relative z-10">
+              <span
+                class="inline-block px-3 py-1 bg-surface-container-high text-primary font-label-sm text-label-sm mb-6"
+                >SIGNATURE SERIES</span
+              >
+              <h4 class="font-headline-md text-headline-md mb-2">
+                AuraMed Grand Pro
+              </h4>
+              <p class="text-on-surface-variant max-w-sm mb-6">
+                Our most comprehensive system featuring 24
+                temperature-controlled medicine bays and integrated biometric
+                scanning.
+              </p>
+              <div class="font-headline-md text-primary mb-8">$2,499.00</div>
+              <button
+                class="bg-primary text-on-primary px-8 py-3 font-label-md text-label-md transition-all hover:opacity-90"
+              >
+                View Specifications
+              </button>
+            </div>
+            <div
+              class="absolute right-0 bottom-0 w-3/4 h-3/4 overflow-hidden -mr-12 -mb-12 opacity-90 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
+            >
+              <img
+                class="w-full h-full object-contain"
+                data-alt="A high-end, luxury smart medicine cabinet with a polished dark mahogany exterior and a subtle, integrated glowing OLED touch panel on its front surface. The lighting is soft and clinical yet warm, reflecting off a marble countertop in a modern high-end bathroom. The style is minimalist and corporate, emphasizing quiet luxury and precision medical technology."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2F2t5q0ZgWZp64iRskt08vTzkK1NlRlzimV8a5MO-I3ZB-WwudJ_C25Uao3-XNfNRfu95uad9MZDe8I1RwmxJbiT8m5uQTLRckY0_vkVYp25T_JdjKd-NpYnCKoIs2Ep62wMWOxqoauny9q_h9fph7hiy-0iix8LthLvw06JVLccgsSy3rJ-K-lXD1gcuzkIoyKk7Ybr3-BYEOjleXrxReTX139XzIAXV3SgK_TWLXhipy5Irv-6MRqI590A0bsgK5VhgfH1bfw"
+              />
+            </div>
+          </div>
+          <!-- Product 2: Slim -->
+          <div
+            class="md:col-span-5 bg-surface-container-low border border-secondary-container p-8 smooth-shadow flex flex-col group h-full"
+          >
+            <div class="h-64 mb-6 overflow-hidden rounded-sm bg-white">
+              <img
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                data-alt="A vertical, slim-profile smart medicine cabinet designed for compact luxury apartments. The unit features a sleek brushed champagne metal finish with a vertical strip of soft white ambient light. The scene is set in a modern dressing room with clean lines and high-key lighting, maintaining a professional and calm aesthetic."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY9vNhJkh2E4y10BCGRURXbbXQ5sfi_zmXoWKNkdwG9O04GuPaU7wFdNannSOH4LXenLFQUBGsbRUr-fs-DB4od-6StkmlU6dM13ioJaHD1iM__VGhsf_u01eGiCAVMYUUsRSgxeHyq5KMCbfq4NHZmVrXFHxJAPMvL4cm9PgI2C54dFtbv2FizJeIbACW659hNAMuawEcpHz-fRsU7qLMNVHscal7h9vS7DG9XdLjPPLumSgC026BtE_N5jR6PRhU_Jg5dZWW-A"
+              />
+            </div>
+            <h4 class="font-headline-md text-headline-md mb-2">
+              AuraMed SlimLine
+            </h4>
+            <p class="text-on-surface-variant text-body-md mb-4">
+              Vertical precision for compact sanctuaries. 12-bay medication
+              management with a mirror-finish exterior.
             </p>
-</section>
-<!-- Individual Products Section (Bento Grid) -->
-<section class="mb-24">
-<div class="flex items-center justify-between mb-8 border-b border-outline-variant pb-4">
-<h3 class="font-headline-md text-headline-md text-primary">Individual Systems</h3>
-<span class="text-label-md font-label-md text-secondary">04 MODELS AVAILABLE</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Product 1: Large Featured -->
-<div class="md:col-span-7 group relative overflow-hidden bg-white border border-secondary-container p-8 smooth-shadow flex flex-col justify-between min-h-[500px]">
-<div class="relative z-10">
-<span class="inline-block px-3 py-1 bg-surface-container-high text-primary font-label-sm text-label-sm mb-6">SIGNATURE SERIES</span>
-<h4 class="font-headline-md text-headline-md mb-2">AuraMed Grand Pro</h4>
-<p class="text-on-surface-variant max-w-sm mb-6">Our most comprehensive system featuring 24 temperature-controlled medicine bays and integrated biometric scanning.</p>
-<div class="font-headline-md text-primary mb-8">$2,499.00</div>
-<button class="bg-primary text-on-primary px-8 py-3 font-label-md text-label-md transition-all hover:opacity-90">View Specifications</button>
-</div>
-<div class="absolute right-0 bottom-0 w-3/4 h-3/4 overflow-hidden -mr-12 -mb-12 opacity-90 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
-<img class="w-full h-full object-contain" data-alt="A high-end, luxury smart medicine cabinet with a polished dark mahogany exterior and a subtle, integrated glowing OLED touch panel on its front surface. The lighting is soft and clinical yet warm, reflecting off a marble countertop in a modern high-end bathroom. The style is minimalist and corporate, emphasizing quiet luxury and precision medical technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2F2t5q0ZgWZp64iRskt08vTzkK1NlRlzimV8a5MO-I3ZB-WwudJ_C25Uao3-XNfNRfu95uad9MZDe8I1RwmxJbiT8m5uQTLRckY0_vkVYp25T_JdjKd-NpYnCKoIs2Ep62wMWOxqoauny9q_h9fph7hiy-0iix8LthLvw06JVLccgsSy3rJ-K-lXD1gcuzkIoyKk7Ybr3-BYEOjleXrxReTX139XzIAXV3SgK_TWLXhipy5Irv-6MRqI590A0bsgK5VhgfH1bfw"/>
-</div>
-</div>
-<!-- Product 2: Slim -->
-<div class="md:col-span-5 bg-surface-container-low border border-secondary-container p-8 smooth-shadow flex flex-col group h-full">
-<div class="h-64 mb-6 overflow-hidden rounded-sm bg-white">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A vertical, slim-profile smart medicine cabinet designed for compact luxury apartments. The unit features a sleek brushed champagne metal finish with a vertical strip of soft white ambient light. The scene is set in a modern dressing room with clean lines and high-key lighting, maintaining a professional and calm aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY9vNhJkh2E4y10BCGRURXbbXQ5sfi_zmXoWKNkdwG9O04GuPaU7wFdNannSOH4LXenLFQUBGsbRUr-fs-DB4od-6StkmlU6dM13ioJaHD1iM__VGhsf_u01eGiCAVMYUUsRSgxeHyq5KMCbfq4NHZmVrXFHxJAPMvL4cm9PgI2C54dFtbv2FizJeIbACW659hNAMuawEcpHz-fRsU7qLMNVHscal7h9vS7DG9XdLjPPLumSgC026BtE_N5jR6PRhU_Jg5dZWW-A"/>
-</div>
-<h4 class="font-headline-md text-headline-md mb-2">AuraMed SlimLine</h4>
-<p class="text-on-surface-variant text-body-md mb-4">Vertical precision for compact sanctuaries. 12-bay medication management with a mirror-finish exterior.</p>
-<div class="mt-auto flex justify-between items-end">
-<div class="font-label-md text-label-md text-primary">$1,250.00</div>
-<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</div>
-<!-- Product 3: Countertop -->
-<div class="md:col-span-6 bg-white border border-secondary-container p-8 smooth-shadow flex flex-col md:flex-row gap-6 group">
-<div class="w-full md:w-1/2 aspect-square bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A countertop smart pill dispenser with a ceramic-like finish and a copper-trimmed interface. The design is elegant and non-medical, looking like a piece of high-end kitchen tech. It sits on a pristine quartz surface under soft morning light. The overall mood is serene, professional, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHL_lNU9CuaJXfAqdkGyfkjpYckTA6dVifqd_jfJX8BXNARlYH6_A47uLmYHHmG6r4_a1SY7k9m3P2589Orvx-lPvCDY3x-x1WPrkf8J2_t-a3ounEYw0f9ApkbZ3_A75UtbvNFCehDwVsu4wFHXnnCuXhGpxTA8WKfjP_eRPQ4V2lgHid4eyOs0oXyTBYj7BI6OYh2yId38g1uW8jCw-ZMjq26oPCCXAnDov3X-R-XbkwbZlDNBJgU6KiKS05DVGpAq9RX2SapQ"/>
-</div>
-<div class="flex flex-col justify-center">
-<h4 class="font-headline-md text-headline-md mb-2">AuraMed Nexus</h4>
-<p class="text-on-surface-variant text-body-md mb-4">The ultimate countertop companion for active medication tracking.</p>
-<div class="font-label-md text-label-md text-primary">$899.00</div>
-<a class="mt-4 inline-block border border-secondary-fixed-dim text-primary px-4 py-2 text-label-md font-label-md w-fit hover:bg-surface-container transition-colors" href="product-nexus.html">Details</a>
-</div>
-</div>
-<!-- Product 4: Travel -->
-<div class="md:col-span-6 bg-surface-container-highest border border-secondary-container p-8 smooth-shadow flex flex-col md:flex-row gap-6 group">
-<div class="w-full md:w-1/2 aspect-square bg-white overflow-hidden">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A travel-sized smart pill case made of leather and brushed aluminum. The case is open, showing glowing blue indicators for different dose slots. It rests on a leather desk mat next to a high-end laptop. The image is styled in a corporate minimalist way, focusing on portability and reliability for traveling professionals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlzgy-HjhnuKT7d8pH6c9cVFul3tdjNyXpU-CVrzpiEwi6b2sPZ0JzFHb0CCKcZ7-HNmYzwZ2IF83QWP31jU2LY9vQPpI6lKAJnZ_q8tLdKyomy7L5KV-AErpkwY2zLZyBARtG3Zkj67aGbnnYQeKB1HH1Hn1KqeJZWlQySHQ-FlDGMUd0KrfxMy1g39_VE-j18LMmTB24Vnk5tSNPuC7Sa3bSQwbW7N_kq07o7JkMdvysJlZGZZFUXI73Fh56nnmY8jNiWx5uMA"/>
-</div>
-<div class="flex flex-col justify-center">
-<h4 class="font-headline-md text-headline-md mb-2">AuraMed Nomad</h4>
-<p class="text-on-surface-variant text-body-md mb-4">Global health synchronization. Smart travel case with LTE connectivity.</p>
-<div class="font-label-md text-label-md text-primary">$450.00</div>
-<button class="mt-4 border border-secondary-fixed-dim text-primary px-4 py-2 text-label-md font-label-md w-fit hover:bg-surface-container transition-colors">Details</button>
-</div>
-</div>
-</div>
-</section>
-<!-- Curated Bundles Section (Asymmetric Layout) -->
-<section>
-<div class="flex items-center justify-between mb-8 border-b border-outline-variant pb-4">
-<h3 class="font-headline-md text-headline-md text-primary">Curated Bundles</h3>
-<span class="text-label-md font-label-md text-secondary">OPTIMIZED HEALTH ECOSYSTEMS</span>
-</div>
-<div class="flex flex-col gap-gutter">
-<!-- Bundle 1: Full Home Ecosystem -->
-<div class="grid grid-cols-1 lg:grid-cols-12 bg-primary-container text-on-primary rounded-lg overflow-hidden min-h-[400px]">
-<div class="lg:col-span-5 relative">
-<img class="w-full h-full object-cover" data-alt="A cinematic, wide-angle shot of a high-end home interior showing both a wall-mounted AuraMed unit and a countertop Nexus device in a coordinated luxury bathroom. The lighting is low and atmospheric with warm wooden textures and cold marble surfaces. The aesthetic is 'Quiet Luxury' for medical management, conveying a sense of comprehensive health security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfe7lQuXHbCcK9JCQxDnw4YJVTJiUBMmM18DlTWz3vfWw4EHiCb9_AbIRHY0Nkv8FB7kBgFqGErZfV22EzjwNYbipORRuh_bZLJPnz7awenHmSD9GZ62jEA7pYOUNbdIT-mwO3C2OXRB_YY97GPfUBi_9M2Sek9PKouWKmOVREgUn__4ApyNXRX2baB6jy9_TcZ8svKqaQSkZxPS1cdYNZD11-gNyXDQNx3t-XVQ37Kxp-PQ81Fkim8-xies_xQcGkNaYH5l8j4w"/>
-<div class="absolute inset-0 bg-primary-container/20"></div>
-</div>
-<div class="lg:col-span-7 p-12 flex flex-col justify-center">
-<div class="flex items-center gap-2 text-primary-fixed-dim mb-4">
-<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="text-label-sm font-label-sm uppercase tracking-widest">Most Selected</span>
-</div>
-<h4 class="font-headline-lg text-headline-lg text-white mb-4">The Complete Sanctuary Bundle</h4>
-<p class="text-on-primary-container text-body-lg mb-8 max-w-xl">
-                            A seamless integration for your master suite and office. Includes the AuraMed Grand Pro, the Nexus Countertop, and a 2-year subscription to AuraMed Concierge Services.
-                        </p>
-<div class="flex items-center gap-8">
-<div class="text-headline-md">$3,150.00 <span class="text-label-md line-through opacity-60 ml-2">$3,398.00</span></div>
-<a class="inline-flex items-center bg-primary-fixed text-on-primary-fixed px-8 py-4 font-label-md text-label-md transition-all hover:bg-primary-fixed-dim" href="product-auracore.html">Explore Bundle</a>
-</div>
-</div>
-</div>
-<!-- Bundle 2 & 3: Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-<!-- Essential Care -->
-<div class="bg-white border border-secondary-container p-10 smooth-shadow relative group">
-<h4 class="font-headline-md text-headline-md mb-2">Essential Professional</h4>
-<p class="text-on-surface-variant mb-10">Pairing the SlimLine with the Nomad for the health-conscious frequent flyer.</p>
-<div class="flex flex-wrap gap-4 mb-8">
-<span class="bg-surface-container px-3 py-1 text-label-sm font-label-sm">SLIMLINE UNIT</span>
-<span class="bg-surface-container px-3 py-1 text-label-sm font-label-sm">NOMAD CASE</span>
-<span class="bg-surface-container px-3 py-1 text-label-sm font-label-sm">LEATHER SLEEVE</span>
-</div>
-<div class="flex justify-between items-center pt-6 border-t border-secondary-container">
-<div class="font-headline-md text-primary">$1,550.00</div>
-<a class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform" href="#">View Details <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></a>
-</div>
-</div>
-<!-- Multi-Family -->
-<div class="bg-surface-container-low border border-secondary-container p-10 smooth-shadow relative group">
-<h4 class="font-headline-md text-headline-md mb-2">Heritage Multi-User</h4>
-<p class="text-on-surface-variant mb-10">Two Grand Pro systems with shared cloud management for multi-generational homes.</p>
-<div class="flex flex-wrap gap-4 mb-8">
-<span class="bg-white px-3 py-1 text-label-sm font-label-sm">2X GRAND PRO</span>
-<span class="bg-white px-3 py-1 text-label-sm font-label-sm">UNLIMITED ACCOUNTS</span>
-<span class="bg-white px-3 py-1 text-label-sm font-label-sm">PRIORITY SUPPORT</span>
-</div>
-<div class="flex justify-between items-center pt-6 border-t border-secondary-container">
-<div class="font-headline-md text-primary">$4,499.00</div>
-<a class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform" href="#">View Details <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></a>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Inventory Gauge Micro-interaction Example -->
-<div class="fixed bottom-8 right-8 z-40">
-<div class="glass-card p-6 rounded-xl shadow-lg border border-secondary-container w-64 hidden md:block">
-<div class="flex justify-between items-center mb-4">
-<span class="text-label-sm font-label-sm text-primary uppercase">Stock Status</span>
-<span class="material-symbols-outlined text-[16px] text-on-primary-container" data-icon="info">info</span>
-</div>
-<div class="space-y-4">
-<div>
-<div class="flex justify-between text-[11px] font-label-md mb-1">
-<span>Grand Pro</span>
-<span>Low Stock</span>
-</div>
-<div class="h-1 bg-secondary-container rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[15%] transition-all duration-1000"></div>
-</div>
-</div>
-<div>
-<div class="flex justify-between text-[11px] font-label-md mb-1">
-<span>Nexus</span>
-<span>In Stock</span>
-</div>
-<div class="h-1 bg-secondary-container rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[85%] transition-all duration-1000"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Footer -->
-<footer class="w-full bg-surface-container border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
-<div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
-<div class="mb-3"><img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto"/></div>
-<p class="font-body-md text-on-surface-variant max-w-xs">Reliable sophistication in home health technology. Precision medication management for the modern sanctuary.</p>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Shop</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="products.html">Products &amp; Bundles</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="schedule.html">Schedule</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">Cart</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Account</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="login.html">Log In</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="signup.html">Sign Up</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="profile.html">Profile</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Legal</h5>
-<ul class="space-y-3">
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a></li>
-<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Terms of Service</a></li>
-</ul>
-</div>
-</div>
-<div class="border-t border-secondary-container">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3">
-<p class="font-label-sm text-label-sm text-outline text-center">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
-<div class="flex gap-6">
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
-<script src="js/products.js"></script>
-
-</body></html>
+            <div class="mt-auto flex justify-between items-end">
+              <div class="font-label-md text-label-md text-primary">
+                $1,250.00
+              </div>
+              <span
+                class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors"
+                data-icon="arrow_forward"
+                >arrow_forward</span
+              >
+            </div>
+          </div>
+          <!-- Product 3: Countertop -->
+          <div
+            class="md:col-span-6 bg-white border border-secondary-container p-8 smooth-shadow flex flex-col md:flex-row gap-6 group"
+          >
+            <div
+              class="w-full md:w-1/2 aspect-square bg-surface-container overflow-hidden"
+            >
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="A countertop smart pill dispenser with a ceramic-like finish and a copper-trimmed interface. The design is elegant and non-medical, looking like a piece of high-end kitchen tech. It sits on a pristine quartz surface under soft morning light. The overall mood is serene, professional, and sophisticated."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHL_lNU9CuaJXfAqdkGyfkjpYckTA6dVifqd_jfJX8BXNARlYH6_A47uLmYHHmG6r4_a1SY7k9m3P2589Orvx-lPvCDY3x-x1WPrkf8J2_t-a3ounEYw0f9ApkbZ3_A75UtbvNFCehDwVsu4wFHXnnCuXhGpxTA8WKfjP_eRPQ4V2lgHid4eyOs0oXyTBYj7BI6OYh2yId38g1uW8jCw-ZMjq26oPCCXAnDov3X-R-XbkwbZlDNBJgU6KiKS05DVGpAq9RX2SapQ"
+              />
+            </div>
+            <div class="flex flex-col justify-center">
+              <h4 class="font-headline-md text-headline-md mb-2">
+                AuraMed Nexus
+              </h4>
+              <p class="text-on-surface-variant text-body-md mb-4">
+                The ultimate countertop companion for active medication
+                tracking.
+              </p>
+              <div class="font-label-md text-label-md text-primary">
+                $899.00
+              </div>
+              <a
+                class="mt-4 inline-block border border-secondary-fixed-dim text-primary px-4 py-2 text-label-md font-label-md w-fit hover:bg-surface-container transition-colors"
+                href="product-nexus.html"
+                >Details</a
+              >
+            </div>
+          </div>
+          <!-- Product 4: Travel -->
+          <div
+            class="md:col-span-6 bg-surface-container-highest border border-secondary-container p-8 smooth-shadow flex flex-col md:flex-row gap-6 group"
+          >
+            <div class="w-full md:w-1/2 aspect-square bg-white overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                data-alt="A travel-sized smart pill case made of leather and brushed aluminum. The case is open, showing glowing blue indicators for different dose slots. It rests on a leather desk mat next to a high-end laptop. The image is styled in a corporate minimalist way, focusing on portability and reliability for traveling professionals."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlzgy-HjhnuKT7d8pH6c9cVFul3tdjNyXpU-CVrzpiEwi6b2sPZ0JzFHb0CCKcZ7-HNmYzwZ2IF83QWP31jU2LY9vQPpI6lKAJnZ_q8tLdKyomy7L5KV-AErpkwY2zLZyBARtG3Zkj67aGbnnYQeKB1HH1Hn1KqeJZWlQySHQ-FlDGMUd0KrfxMy1g39_VE-j18LMmTB24Vnk5tSNPuC7Sa3bSQwbW7N_kq07o7JkMdvysJlZGZZFUXI73Fh56nnmY8jNiWx5uMA"
+              />
+            </div>
+            <div class="flex flex-col justify-center">
+              <h4 class="font-headline-md text-headline-md mb-2">
+                AuraMed Nomad
+              </h4>
+              <p class="text-on-surface-variant text-body-md mb-4">
+                Global health synchronization. Smart travel case with LTE
+                connectivity.
+              </p>
+              <div class="font-label-md text-label-md text-primary">
+                $450.00
+              </div>
+              <button
+                class="mt-4 border border-secondary-fixed-dim text-primary px-4 py-2 text-label-md font-label-md w-fit hover:bg-surface-container transition-colors"
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Curated Bundles Section (Asymmetric Layout) -->
+      <section>
+        <div
+          class="flex items-center justify-between mb-8 border-b border-outline-variant pb-4"
+        >
+          <h3 class="font-headline-md text-headline-md text-primary">
+            Curated Bundles
+          </h3>
+          <span class="text-label-md font-label-md text-secondary"
+            >OPTIMIZED HEALTH ECOSYSTEMS</span
+          >
+        </div>
+        <div class="flex flex-col gap-gutter">
+          <!-- Bundle 1: Full Home Ecosystem -->
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 bg-primary-container text-on-primary rounded-lg overflow-hidden min-h-[400px]"
+          >
+            <div class="lg:col-span-5 relative">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="A cinematic, wide-angle shot of a high-end home interior showing both a wall-mounted AuraMed unit and a countertop Nexus device in a coordinated luxury bathroom. The lighting is low and atmospheric with warm wooden textures and cold marble surfaces. The aesthetic is 'Quiet Luxury' for medical management, conveying a sense of comprehensive health security."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfe7lQuXHbCcK9JCQxDnw4YJVTJiUBMmM18DlTWz3vfWw4EHiCb9_AbIRHY0Nkv8FB7kBgFqGErZfV22EzjwNYbipORRuh_bZLJPnz7awenHmSD9GZ62jEA7pYOUNbdIT-mwO3C2OXRB_YY97GPfUBi_9M2Sek9PKouWKmOVREgUn__4ApyNXRX2baB6jy9_TcZ8svKqaQSkZxPS1cdYNZD11-gNyXDQNx3t-XVQ37Kxp-PQ81Fkim8-xies_xQcGkNaYH5l8j4w"
+              />
+              <div class="absolute inset-0 bg-primary-container/20"></div>
+            </div>
+            <div class="lg:col-span-7 p-12 flex flex-col justify-center">
+              <div class="flex items-center gap-2 text-primary-fixed-dim mb-4">
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  data-icon="star"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span
+                  class="text-label-sm font-label-sm uppercase tracking-widest"
+                  >Most Selected</span
+                >
+              </div>
+              <h4 class="font-headline-lg text-headline-lg text-white mb-4">
+                The Complete Sanctuary Bundle
+              </h4>
+              <p class="text-on-primary-container text-body-lg mb-8 max-w-xl">
+                A seamless integration for your master suite and office.
+                Includes the AuraMed Grand Pro, the Nexus Countertop, and a
+                2-year subscription to AuraMed Concierge Services.
+              </p>
+              <div class="flex items-center gap-8">
+                <div class="text-headline-md">
+                  $3,150.00
+                  <span class="text-label-md line-through opacity-60 ml-2"
+                    >$3,398.00</span
+                  >
+                </div>
+                <a
+                  class="inline-flex items-center bg-primary-fixed text-on-primary-fixed px-8 py-4 font-label-md text-label-md transition-all hover:bg-primary-fixed-dim"
+                  href="product-auracore.html"
+                  >Explore Bundle</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Bundle 2 & 3: Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <!-- Essential Care -->
+            <div
+              class="bg-white border border-secondary-container p-10 smooth-shadow relative group"
+            >
+              <h4 class="font-headline-md text-headline-md mb-2">
+                Essential Professional
+              </h4>
+              <p class="text-on-surface-variant mb-10">
+                Pairing the SlimLine with the Nomad for the health-conscious
+                frequent flyer.
+              </p>
+              <div class="flex flex-wrap gap-4 mb-8">
+                <span
+                  class="bg-surface-container px-3 py-1 text-label-sm font-label-sm"
+                  >SLIMLINE UNIT</span
+                >
+                <span
+                  class="bg-surface-container px-3 py-1 text-label-sm font-label-sm"
+                  >NOMAD CASE</span
+                >
+                <span
+                  class="bg-surface-container px-3 py-1 text-label-sm font-label-sm"
+                  >LEATHER SLEEVE</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center pt-6 border-t border-secondary-container"
+              >
+                <div class="font-headline-md text-primary">$1,550.00</div>
+                <a
+                  class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform"
+                  href="#"
+                  >View Details
+                  <span
+                    class="material-symbols-outlined"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  ></a
+                >
+              </div>
+            </div>
+            <!-- Multi-Family -->
+            <div
+              class="bg-surface-container-low border border-secondary-container p-10 smooth-shadow relative group"
+            >
+              <h4 class="font-headline-md text-headline-md mb-2">
+                Heritage Multi-User
+              </h4>
+              <p class="text-on-surface-variant mb-10">
+                Two Grand Pro systems with shared cloud management for
+                multi-generational homes.
+              </p>
+              <div class="flex flex-wrap gap-4 mb-8">
+                <span class="bg-white px-3 py-1 text-label-sm font-label-sm"
+                  >2X GRAND PRO</span
+                >
+                <span class="bg-white px-3 py-1 text-label-sm font-label-sm"
+                  >UNLIMITED ACCOUNTS</span
+                >
+                <span class="bg-white px-3 py-1 text-label-sm font-label-sm"
+                  >PRIORITY SUPPORT</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center pt-6 border-t border-secondary-container"
+              >
+                <div class="font-headline-md text-primary">$4,499.00</div>
+                <a
+                  class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform"
+                  href="#"
+                  >View Details
+                  <span
+                    class="material-symbols-outlined"
+                    data-icon="chevron_right"
+                    >chevron_right</span
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Inventory Gauge Micro-interaction Example -->
+    <div class="fixed bottom-8 right-8 z-40">
+      <div
+        class="glass-card p-6 rounded-xl shadow-lg border border-secondary-container w-64 hidden md:block"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-label-sm font-label-sm text-primary uppercase"
+            >Stock Status</span
+          >
+          <span
+            class="material-symbols-outlined text-[16px] text-on-primary-container"
+            data-icon="info"
+            >info</span
+          >
+        </div>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-[11px] font-label-md mb-1">
+              <span>Grand Pro</span>
+              <span>Low Stock</span>
+            </div>
+            <div
+              class="h-1 bg-secondary-container rounded-full overflow-hidden"
+            >
+              <div
+                class="h-full bg-primary w-[15%] transition-all duration-1000"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] font-label-md mb-1">
+              <span>Nexus</span>
+              <span>In Stock</span>
+            </div>
+            <div
+              class="h-1 bg-secondary-container rounded-full overflow-hidden"
+            >
+              <div
+                class="h-full bg-primary w-[85%] transition-all duration-1000"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer
+      class="w-full bg-surface-container border-t border-secondary-container"
+    >
+      <div
+        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10"
+      >
+        <div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
+          <div class="mb-3">
+            <img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto" />
+          </div>
+          <p class="font-body-md text-on-surface-variant max-w-xs">
+            Reliable sophistication in home health technology. Precision
+            medication management for the modern sanctuary.
+          </p>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Shop
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="products.html"
+                >Products &amp; Bundles</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="schedule.html"
+                >Schedule</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="cart.html"
+                >Cart</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Account
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="login.html"
+                >Log In</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="signup.html"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="profile.html"
+                >Profile</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4"
+          >
+            Legal
+          </h5>
+          <ul class="space-y-3">
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-secondary-container">
+        <div
+          class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3"
+        >
+          <p class="font-label-sm text-label-sm text-outline text-center">
+            © 2024 AuraMed Smart Systems. Reliable Sophistication in Health.
+          </p>
+          <div class="flex gap-6">
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Privacy Policy</a
+            >
+            <a
+              class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250"
+              href="#"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/products.js"></script>
+  </body>
+</html>
