@@ -131,34 +131,49 @@
 </head>
 <body class="font-body-md text-on-surface bg-surface">
 <!-- TopNavBar -->
-<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-surface border-b border-secondary-container max-w-full mx-auto">
-<div class="flex items-center gap-12">
-<span class="font-headline-md text-headline-md font-semibold text-primary">AuraMed</span>
-<div class="hidden md:flex gap-8">
-<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1 transition-all duration-200" href="#">Products &amp; Bundles</a>
-<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250" href="#">Schedule</a>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<button class="material-symbols-outlined text-on-surface hover:text-primary-container transition-colors duration-250" data-icon="shopping_cart">shopping_cart</button>
-<button class="hidden md:block font-label-md text-label-md text-primary hover:text-primary-container transition-colors duration-250">Login</button>
-<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a health-conscious individual, featuring soft, diffused lighting and a minimalist aesthetic. The background is a clean, off-white surface that echoes the light-mode UI design. The subject's expression is one of calm confidence, dressed in premium medical-tech professional attire in shades of deep burgundy and cream. High-resolution and crisp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBCoIA4oewd0rn8Us23XjkuPG3wnn8Tc8YX3JGtQkMvNPyJe8LqgxtKTNXMc4_Unb0DVyIaZ8Tjh8HLPryEMnHdPF6WaytJ5Fd7RWfcHugDAq4i6vL2nyIrE-KDko_lEKxLw6hPCv95Uk1dzYDF2E8tKiNroUIp5EvJFHPZMDJvetVpJgaIqXQKD3OaQDagwUoos_4SHOJF9_hN6lXRzN_OAPvcyGWvQBiDeqTX5iVy_3nnRQqcjDY_9UmmshFwPBFK_mNiZ8ryQ"/>
-</div>
-</div>
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container">
+<div class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4">
+<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.png" alt="AuraMed" class="h-10 w-auto"/></a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="home.html">Home</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md" href="products.html">Products &amp; Bundles</a>
+<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="schedule.html">Schedule</a>
+<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="profile.html">Profile</a>
 </nav>
+<div class="flex items-center gap-4 md:gap-5">
+<a aria-label="View cart" class="text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">
+<span class="material-symbols-outlined">shopping_cart</span>
+</a>
+<a class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250" href="login.html">Log In</a>
+<a class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250" href="signup.html">Sign Up</a>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden text-on-surface flex items-center justify-center" id="mobile-menu-btn" type="button">
+<span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
+</button>
+</div>
+</div>
+<div class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile" id="mobile-menu">
+<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="home.html">Home</a>
+<a class="text-primary font-semibold font-label-md text-label-md py-3 border-b border-secondary-container" href="products.html">Products &amp; Bundles</a>
+<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="schedule.html">Schedule</a>
+<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="profile.html">Profile</a>
+<div class="flex items-center gap-4 py-4">
+<a class="font-label-md text-label-md text-secondary" href="login.html">Log In</a>
+<a class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md" href="signup.html">Sign Up</a>
+</div>
+</div>
+</header>
 <main class="pt-28 pb-20 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <!-- Breadcrumb & Back -->
 <div class="flex items-center gap-2 mb-8 text-secondary font-label-md text-label-md">
-<a class="hover:text-primary transition-colors" href="#">Products</a>
+<a class="hover:text-primary transition-colors" href="products.html">Products</a>
 <span class="material-symbols-outlined text-[14px]">chevron_right</span>
-<span class="text-primary font-medium">AuraMed Nexus</span>
+<span class="text-primary font-medium">AuraCore Advanced Care Bundle</span>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
 <!-- Left Column: Imagery -->
 <div class="lg:col-span-7 flex flex-col gap-6">
 <div class="hero-zoom relative rounded-lg overflow-hidden border border-secondary-container bg-surface-container-lowest aspect-[4/3] premium-shadow group">
-<img class="w-full h-full object-cover transition-transform duration-700 ease-in-out" data-alt="An ultra-high-end medical device designed with a 'Quiet Luxury' aesthetic, featuring matte cream textures and polished deep burgundy metallic accents. The device is presented in a minimalist, domestic sanctuary setting with soft natural light streaming across its clean, geometric surfaces. The background is a soft-focus warm wood and white cabinetry space, emphasizing reliable sophistication and clinical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqyizNranRcUbMokCxc0owlGX5Kq3b_o9cCXHHzjYwC0sWEFrzuZlgr2qtS0cJd974wWBjNw1vAfYKebs_zK3IGKjpbJEqUaJpFYg9sBaOvW5W_BJOPhadrrGdYgCYP1lTuIUML5JbOByaWQ150_64MdIc_ktewav5uxyQsUsJdS1FvOSw5LBbpduT3eNTa4lrqnZRzSAPwXKGPdLCgemkRGcuXkxJIs6ZlLufJvzTu5Z03-nsWQ3FgpwDAMrS19ffwXFluJOpoQ"/>
+<img class="w-full h-full object-cover transition-transform duration-700 ease-in-out" data-alt="An ultra-high-end medical device designed with a 'Quiet Luxury' aesthetic, featuring matte cream textures and polished deep burgundy metallic accents. The device is presented in a minimalist, domestic sanctuary setting with soft natural light streaming across its clean, geometric surfaces. The background is a soft-focus warm wood and white cabinetry space, emphasizing reliable sophistication and clinical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwNXaARTIl-j-AXaok2dm1NTITAT0Kt05-rGlMQ0WoXI_OQpA23qn75Ypd8z9ecXal2yaqsKpfKGDpewtuAZi_SwzIeyF1R7M5Sfa0XZB92Im6jD5TBpi54PWAa74UAohB2xttm2w35F5Oa6iyRMggyrzFzA052X-7Qi9lSD4zGLXttQi14aEleOli7hYmIqe9aOX22hu881zjaC3Wb02O2BkInKDzJw-zwOwPoE5fTdTvGeycAOEcOaNo7LJqsysJOW-RVTD6LA"/>
 <div class="absolute top-4 left-4">
 <span class="bg-primary-container text-on-primary-fixed-variant px-4 py-1 font-label-sm text-label-sm uppercase tracking-widest rounded-full">Best Seller</span>
 </div>
@@ -182,7 +197,7 @@
 <!-- Right Column: Product Specs & CTAs -->
 <div class="lg:col-span-5 sticky top-28 space-y-8">
 <div>
-<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">AuraMed Nexus</h1>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">AuraCore Advanced Care Bundle</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">A complete synchronization of medication management, vitals monitoring, and clinical-grade reporting for professional home care.</p>
 </div>
 <div class="flex items-baseline gap-4">
@@ -221,13 +236,13 @@
 </select>
 </div>
 </div>
-<button class="w-full py-5 bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-widest rounded-lg hover:opacity-90 transition-all duration-250 flex items-center justify-center gap-3 active:scale-[0.98]">
+<a class="w-full py-5 bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-widest rounded-lg hover:opacity-90 transition-all duration-250 flex items-center justify-center gap-3 active:scale-[0.98]" href="cart.html">
 <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
                         Add to Cart
-                    </button>
-<button class="w-full py-5 border border-secondary-container text-primary font-label-md text-label-md uppercase tracking-widest rounded-lg hover:bg-surface-container transition-all duration-250 active:scale-[0.98]">
+                    </a>
+<a class="w-full py-5 border border-secondary-container text-primary font-label-md text-label-md uppercase tracking-widest rounded-lg hover:bg-surface-container transition-all duration-250 active:scale-[0.98] flex items-center justify-center" href="schedule.html">
                         Schedule a Consultation
-                    </button>
+                    </a>
 </div>
 <div class="grid grid-cols-2 gap-4 pt-4 border-t border-secondary-container">
 <div class="flex items-center gap-3">
@@ -276,14 +291,19 @@
 <h4 class="font-headline-md text-[18px] text-primary">Biometric Sync</h4>
 <p class="font-body-md text-body-md text-on-surface-variant">Real-time vitals monitoring that communicates directly with your care team via encrypted gateways.</p>
 </div>
-<div class="space-y-3"><h4 class="font-headline-md text-[18px] text-primary">Precision Dispensing</h4><p class="font-body-md text-body-md text-on-surface-variant">Our internal rotating dynamo mechanism delivers medicine with clinical accuracy, ensuring every dose is dispensed with absolute precision.</p></div>
+<div class="space-y-3">
+<h4 class="font-headline-md text-[18px] text-primary">Precision Dispensing</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Patented carousel technology ensuring dosage accuracy to 99.9% across all solid oral medications.</p>
+</div>
 </div>
 <div class="relative rounded-lg overflow-hidden h-[400px] mb-12">
 <img class="w-full h-full object-cover" data-alt="A clean, cinematic overhead shot of the AuraMed components laid out on a luxury minimalist surface. The lighting creates subtle, long shadows that define the elegant forms of the medical sensors and the main hub. The deep burgundy color of the logos and detail work stands out against the cream-colored device bodies. The atmosphere is one of high-end technology meeting human-centric design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcLI3yBbxZO_MgA0OL9rUiONmgM9OZsouGdQQHo67G4gONXS4nWXCZq4-Hi7QzDSuTuTmg1XGS_nXNu0ymbT1-yyGtmn-8ZGnYHuc1y9sfQPCq5b8mrLps67SdnbT_yGCaerHmxf-dmCpfNSO69Hbwh5Imt19OZQdHu49hSEBCpnKz6ObI7G4aoPQASuEjQ6fIDTwTQ3RKCW02lTyKgZynZhbJcMCxiOkd_7RHPfln1ng7xdrOhqviGM9OTSc77WVDlOI8DUZLMQ"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary-container/40 to-transparent"></div>
 </div>
 <h3 class="font-headline-md text-headline-md text-primary mb-4">Elevated Reliability</h3>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Crafted from high-performance polymers and featuring a sophisticated internal rotating dynamo, the AuraMed Nexus provides the unyielding reliability of a clinical facility. This mechanism ensures clinical accuracy in every rotation, disappearing into your home's aesthetic while providing supportive, life-critical precision.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Crafted from high-performance polymers used in aerospace applications and finished with a bespoke matte cream texture, AuraMed disappears into your home’s aesthetic while providing the unyielding reliability of a clinical facility. Our 'Reliable Sophistication' philosophy ensures that the technology never feels intrusive, only supportive.
+                        </p>
 </div>
 </div>
 </div>
@@ -311,17 +331,44 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container border-t border-secondary-container mt-20">
-<div class="flex flex-col gap-4 text-center md:text-left">
-<span class="font-headline-md text-headline-md text-primary">AuraMed</span>
-<p class="font-body-md text-body-md text-on-surface max-w-sm">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
+<footer class="w-full bg-surface-container border-t border-secondary-container">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
+<div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
+<div class="mb-3"><img src="assets/logo.png" alt="AuraMed" class="h-11 w-auto"/></div>
+<p class="font-body-md text-on-surface-variant max-w-xs">Reliable sophistication in home health technology. Precision medication management for the modern sanctuary.</p>
 </div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="font-label-sm text-label-sm text-secondary hover:underline decoration-primary-fixed-dim transition-all" href="#">About Us</a>
-<a class="font-label-sm text-label-sm text-secondary hover:underline decoration-primary-fixed-dim transition-all" href="#">Contact Us</a>
-<a class="font-label-sm text-label-sm text-secondary hover:underline decoration-primary-fixed-dim transition-all" href="#">Pricing</a>
-<a class="font-label-sm text-label-sm text-secondary hover:underline decoration-primary-fixed-dim transition-all" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-secondary hover:underline decoration-primary-fixed-dim transition-all" href="#">Terms of Service</a>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Shop</h5>
+<ul class="space-y-3">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="products.html">Products &amp; Bundles</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="schedule.html">Schedule</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">Cart</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Account</h5>
+<ul class="space-y-3">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="login.html">Log In</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="signup.html">Sign Up</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="profile.html">Profile</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Legal</h5>
+<ul class="space-y-3">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-secondary-container">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3">
+<p class="font-label-sm text-label-sm text-outline text-center">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Terms of Service</a>
+</div>
+</div>
 </div>
 </footer>
 <script>
@@ -343,4 +390,19 @@
             fill.style.width = '25%'; // Trigger transition
         });
     </script>
+<script>
+(function () {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var icon = document.getElementById('mobile-menu-icon');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+        var isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        if (icon) icon.textContent = isHidden ? 'close' : 'menu';
+    });
+})();
+</script>
 </body></html>

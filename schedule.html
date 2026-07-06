@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AuraMed | Medication Schedule</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#f7b4c4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c9c6bf",
+                    "on-secondary-container": "#64635c",
+                    "tertiary-container": "#241a0e",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d5c2c5",
+                    "surface-container-low": "#fcf1f2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#524436",
+                    "on-primary-fixed-variant": "#683845",
+                    "tertiary": "#000000",
+                    "secondary-fixed": "#e5e2da",
+                    "outline": "#837376",
+                    "surface-container-highest": "#ebe0e1",
+                    "surface-container": "#f6ebec",
+                    "primary-container": "#350e1b",
+                    "surface-container-high": "#f1e6e6",
+                    "on-primary-container": "#ae7382",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f9eeef",
+                    "surface-tint": "#844f5d",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#ffd9e0",
+                    "inverse-surface": "#352f30",
+                    "on-tertiary-fixed": "#241a0e",
+                    "surface": "#fff8f8",
+                    "secondary-container": "#e2dfd7",
+                    "surface-dim": "#e2d7d8",
+                    "on-surface": "#1f1a1b",
+                    "on-primary-fixed": "#350e1b",
+                    "on-tertiary-container": "#928170",
+                    "on-secondary-fixed": "#1c1c17",
+                    "on-secondary-fixed-variant": "#484741",
+                    "secondary": "#605e58",
+                    "inverse-primary": "#f7b4c4",
+                    "surface-variant": "#ebe0e1",
+                    "on-surface-variant": "#514346",
+                    "tertiary-fixed": "#f4dfcb",
+                    "primary": "#000000",
+                    "on-background": "#1f1a1b",
+                    "background": "#fff8f8",
+                    "surface-bright": "#fff8f8",
+                    "tertiary-fixed-dim": "#d7c3b0",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "headline-md": ["\"Source Serif 4\""]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f8;
+            color: #1f1a1b;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ambient-shadow {
+            box-shadow: 0 20px 40px rgba(132, 79, 93, 0.04);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f6ebec;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #837376;
+            border-radius: 10px;
+        }
+        /* Reveal animation for menu */
+        .action-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: all 0.2s ease-out;
+        }
+        .action-menu.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container">
+<div class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4">
+<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.png" alt="AuraMed" class="h-10 w-auto"/></a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="home.html">Home</a>
+<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="products.html">Products &amp; Bundles</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md" href="schedule.html">Schedule</a>
+<a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="profile.html">Profile</a>
+</nav>
+<div class="flex items-center gap-4 md:gap-5">
+<a aria-label="View cart" class="text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">
+<span class="material-symbols-outlined">shopping_cart</span>
+</a>
+<a class="hidden md:inline-block font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-250" href="login.html">Log In</a>
+<a class="hidden md:inline-flex items-center justify-center bg-primary-container text-white px-5 h-10 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250" href="signup.html">Sign Up</a>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden text-on-surface flex items-center justify-center" id="mobile-menu-btn" type="button">
+<span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
+</button>
+</div>
+</div>
+<div class="md:hidden hidden flex-col bg-surface border-t border-secondary-container px-margin-mobile" id="mobile-menu">
+<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="home.html">Home</a>
+<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="products.html">Products &amp; Bundles</a>
+<a class="text-primary font-semibold font-label-md text-label-md py-3 border-b border-secondary-container" href="schedule.html">Schedule</a>
+<a class="text-on-surface font-label-md text-label-md py-3 border-b border-secondary-container" href="profile.html">Profile</a>
+<div class="flex items-center gap-4 py-4">
+<a class="font-label-md text-label-md text-secondary" href="login.html">Log In</a>
+<a class="bg-primary-container text-white px-5 py-2 rounded-lg font-label-md text-label-md" href="signup.html">Sign Up</a>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
+<!-- Page Header -->
+<div class="mb-12">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Medication Schedule</h1>
+<p class="text-on-surface-variant font-body-md max-w-2xl">Manage your daily intake with clinical precision. Track your remaining inventory and schedule upcoming refills to maintain your health sanctuary.</p>
+</div>
+<!-- Dashboard Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content: Schedule Table -->
+<div class="lg:col-span-8 space-y-gutter">
+<div class="bg-surface-container-lowest border border-secondary-container rounded-lg ambient-shadow overflow-hidden">
+<div class="px-6 py-5 border-b border-secondary-container flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary">Active Prescription</h2>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                            Add Medication
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Medicine Types</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Dosage</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Pills Remaining</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Status</th>
+<th class="px-6 py-4 text-right"></th>
+</tr>
+</thead>
+<!-- BACKEND HOOK: populate #medication-rows with <tr> rows per the pattern above; #medication-empty-row is the default empty state -->
+<tbody class="divide-y divide-secondary-container" id="medication-rows">
+<tr id="medication-empty-row">
+<td class="px-6 py-10 text-center text-secondary font-body-md" colspan="5">
+<div class="flex flex-col items-center gap-3">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="medication">medication</span>
+<span>No medications added yet.</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bento Card: Usage Insights -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container-low p-6 rounded-lg border border-secondary-container">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="insights">insights</span>
+</div>
+<h3 class="font-headline-md text-[20px] text-primary">Adherence Score</h3>
+</div>
+<!-- BACKEND HOOK: fill in #adherence-score / #adherence-note once real dose history exists -->
+<div class="flex items-end gap-2 mb-2">
+<span class="text-[48px] font-headline-lg leading-none" id="adherence-score">—</span>
+<span class="text-on-primary-container font-label-md pb-2" id="adherence-trend"></span>
+</div>
+<p class="text-on-surface-variant font-body-md" id="adherence-note">Your adherence score will appear here once you start tracking doses.</p>
+</div>
+<div class="bg-primary-container p-6 rounded-lg text-white">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-8 h-8 rounded bg-primary-fixed-dim text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="event_note">event_note</span>
+</div>
+<h3 class="font-headline-md text-[20px] text-primary-fixed-dim">Next Consultation</h3>
+</div>
+<!-- BACKEND HOOK: populate #consultation-details when an appointment is booked; shows placeholder otherwise -->
+<div class="mb-4" id="consultation-details">
+<div class="text-[24px] font-headline-md">No upcoming consultation</div>
+<div class="text-primary-fixed-dim font-label-md opacity-80">Book a visit from your Profile page.</div>
+</div>
+<a class="w-full border border-primary-fixed-dim text-primary-fixed-dim py-2 rounded font-label-md hover:bg-primary-fixed-dim hover:text-primary-container transition-all flex items-center justify-center" href="profile.html">Manage Appointments</a>
+</div>
+</div>
+</div>
+<!-- Sidebar: Reminders & Refills -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Mini Calendar / Timeline -->
+<div class="bg-white p-6 rounded-lg border border-secondary-container ambient-shadow">
+<h3 class="font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant mb-4">Today's Timeline</h3>
+<!-- BACKEND HOOK: populate #timeline-entries with dose entries per the pattern in prior versions; #timeline-empty-state is the default -->
+<div class="space-y-6 relative" id="timeline-entries">
+<div class="flex flex-col items-center text-center gap-2 py-6" id="timeline-empty-state">
+<span class="material-symbols-outlined text-3xl text-secondary" data-icon="schedule">schedule</span>
+<p class="font-label-sm text-on-secondary-fixed-variant">No doses scheduled for today.</p>
+</div>
+</div>
+</div>
+<!-- Refill Reminder Card: BACKEND HOOK — show only when a real medication is low on stock; hidden/empty by default -->
+<div class="bg-surface-container-highest p-6 rounded-lg border border-outline-variant" id="refill-alert-card">
+<div class="flex gap-4 items-start">
+<div class="p-3 bg-white rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[28px]" data-icon="notifications">notifications</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] text-primary mb-1">No Refill Alerts</h4>
+<p class="text-on-surface-variant font-label-md mb-4">You'll see a reminder here when a medication is running low.</p>
+<a class="bg-primary text-on-primary w-full py-2.5 rounded font-label-md hover:opacity-90 transition-opacity flex items-center justify-center" href="products.html">Browse Refills</a>
+</div>
+</div>
+</div>
+<!-- Aesthetic Visual Anchor -->
+<div class="rounded-lg overflow-hidden relative h-64 ambient-shadow border border-secondary-container group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A macro cinematic shot of elegant, translucent pharmaceutical capsules arranged in a minimalist, rhythmic pattern on a polished cream stone surface. The lighting is soft and diffused, highlighting the sophisticated 'Quiet Luxury' healthcare brand. Warm, professional color palette of deep burgundy and subtle beiges." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAT2Ml3bBfrRSBQ_YBYs-S0osFhFFpzceWuTfMM-ZGy2f3kiHQIVX3dmNF51hZirg9qMwedhvTBZs83S2ep4h8yu4-sT8oeGrCUYnj1KkY20nk0yWqhs_EnDXf80nxNmNbwdYQP31S-Nn9z_tr4G1dYNd02_XN8aJVoXOiWxWQ6oaKa57ObVohpsBexeqAF5_b-H9fsyG6F9ARumFswDivbd4dY3r1z-7OqZBuu_EjAm4poIbGxwgiavEb5c-ByFGjfDzRfTruTbw')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<div class="text-white font-headline-md text-[20px]">Premium Care</div>
+<div class="text-white/80 font-label-md">Tailored for your sanctuary.</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container border-t border-secondary-container">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
+<div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
+<div class="mb-3"><img src="assets/logo.png" alt="AuraMed" class="h-11 w-auto"/></div>
+<p class="font-body-md text-on-surface-variant max-w-xs">Reliable sophistication in home health technology. Precision medication management for the modern sanctuary.</p>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Shop</h5>
+<ul class="space-y-3">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="products.html">Products &amp; Bundles</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="schedule.html">Schedule</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="cart.html">Cart</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Account</h5>
+<ul class="space-y-3">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="login.html">Log In</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="signup.html">Sign Up</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="profile.html">Profile</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-4">Legal</h5>
+<ul class="space-y-3">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-250" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-secondary-container">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-3">
+<p class="font-label-sm text-label-sm text-outline text-center">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-250" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        function toggleMenu(btn) {
+            // Close all other menus
+            document.querySelectorAll('.action-menu').forEach(menu => {
+                if (menu !== btn.nextElementSibling) {
+                    menu.classList.remove('active');
+                }
+            });
+            // Toggle current
+            const menu = btn.nextElementSibling;
+            menu.classList.toggle('active');
+            
+            // Handle closing when clicking outside
+            const closeMenu = (e) => {
+                if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                    menu.classList.remove('active');
+                    document.removeEventListener('click', closeMenu);
+                }
+            };
+            
+            if (menu.classList.contains('active')) {
+                setTimeout(() => document.addEventListener('click', closeMenu), 1);
+            }
+        }
+
+        // Add visual weight to "Schedule" in nav links since we are on that page
+        // Handled via static HTML above.
+    </script>
+<script>
+(function () {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var icon = document.getElementById('mobile-menu-icon');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+        var isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        if (icon) icon.textContent = isHidden ? 'close' : 'menu';
+    });
+})();
+</script>
+</body></html>
