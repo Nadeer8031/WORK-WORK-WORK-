@@ -1,0 +1,22 @@
+      body {
+        background-color: #f6f3e8; /* Prompt mandated off-white background */
+        color: #1f1a1b;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid #dfdcd4;
+      }
+      .ambient-shadow {
+        box-shadow:
+          0 20px 25px -5px rgba(52, 13, 26, 0.04),
+          0 10px 10px -5px rgba(52, 13, 26, 0.02);
+      }
+    

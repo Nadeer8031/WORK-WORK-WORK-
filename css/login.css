@@ -1,0 +1,25 @@
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .ambient-shadow {
+            box-shadow: 0 20px 40px -10px rgba(53, 14, 27, 0.04);
+        }
+        .login-card {
+            background-color: #ffffff;
+            border: 1px solid #DFDCD4;
+            transition: box-shadow 250ms ease-in-out;
+        }
+        .login-card:hover {
+            box-shadow: 0 20px 40px -5px rgba(53, 14, 27, 0.06);
+        }
+        .custom-input:focus {
+            outline: none;
+            border-bottom-color: #340D1A;
+            box-shadow: none;
+        }
+        .transition-slow {
+            transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    

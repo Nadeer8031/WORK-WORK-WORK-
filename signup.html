@@ -13,124 +13,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "primary-fixed-dim": "#f7b4c4",
-                    "error-container": "#ffdad6",
-                    "on-tertiary": "#ffffff",
-                    "secondary-fixed-dim": "#c9c6bf",
-                    "on-secondary-container": "#64635c",
-                    "tertiary-container": "#241a0e",
-                    "on-primary": "#ffffff",
-                    "on-secondary": "#ffffff",
-                    "outline-variant": "#d5c2c5",
-                    "surface-container-low": "#fcf1f2",
-                    "on-error-container": "#93000a",
-                    "on-tertiary-fixed-variant": "#524436",
-                    "on-primary-fixed-variant": "#683845",
-                    "tertiary": "#000000",
-                    "secondary-fixed": "#e5e2da",
-                    "outline": "#837376",
-                    "surface-container-highest": "#ebe0e1",
-                    "surface-container": "#f6ebec",
-                    "primary-container": "#350e1b",
-                    "surface-container-high": "#f1e6e6",
-                    "on-primary-container": "#ae7382",
-                    "on-error": "#ffffff",
-                    "inverse-on-surface": "#f9eeef",
-                    "surface-tint": "#844f5d",
-                    "error": "#ba1a1a",
-                    "primary-fixed": "#ffd9e0",
-                    "inverse-surface": "#352f30",
-                    "on-tertiary-fixed": "#241a0e",
-                    "surface": "#fff8f8",
-                    "secondary-container": "#e2dfd7",
-                    "surface-dim": "#e2d7d8",
-                    "on-surface": "#1f1a1b",
-                    "on-primary-fixed": "#350e1b",
-                    "on-tertiary-container": "#928170",
-                    "on-secondary-fixed": "#1c1c17",
-                    "on-secondary-fixed-variant": "#484741",
-                    "secondary": "#605e58",
-                    "inverse-primary": "#f7b4c4",
-                    "surface-variant": "#ebe0e1",
-                    "on-surface-variant": "#514346",
-                    "tertiary-fixed": "#f4dfcb",
-                    "primary": "#000000",
-                    "on-background": "#1f1a1b",
-                    "background": "#fff8f8",
-                    "surface-bright": "#fff8f8",
-                    "tertiary-fixed-dim": "#d7c3b0",
-                    "surface-container-lowest": "#ffffff"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "margin-mobile": "20px",
-                    "container-max": "1200px",
-                    "unit": "8px",
-                    "margin-desktop": "64px",
-                    "gutter": "24px"
-            },
-            "fontFamily": {
-                    "body-md": ["Hanken Grotesk"],
-                    "label-sm": ["Hanken Grotesk"],
-                    "label-md": ["Hanken Grotesk"],
-                    "body-lg": ["Hanken Grotesk"],
-                    "headline-lg": ["\"Source Serif 4\""],
-                    "headline-lg-mobile": ["\"Source Serif 4\""],
-                    "headline-md": ["\"Source Serif 4\""]
-            },
-            "fontSize": {
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
-                    "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        body {
-            background-color: #fff8f8; /* background from theme */
-            overflow-x: hidden;
-        }
-        .ambient-shadow {
-            box-shadow: 0 10px 30px -5px rgba(53, 14, 27, 0.04), 0 4px 6px -2px rgba(53, 14, 27, 0.02);
-        }
-        .burgundy-accent {
-            color: #350e1b;
-        }
-        .bg-burgundy {
-            background-color: #350e1b;
-        }
-        .input-focus:focus {
-            border-color: #350e1b;
-            outline: none;
-            box-shadow: 0 0 0 1px #350e1b;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-    </style>
+<script src="js/signup.config.js"></script>
+<link rel="stylesheet" href="css/signup.css" />
 </head>
 <body class="font-body-md text-on-surface selection:bg-primary-fixed-dim selection:text-primary-container">
 <header class="fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-secondary-container">
 <div class="max-w-container-max mx-auto h-20 px-margin-mobile md:px-margin-desktop flex items-center justify-between gap-4">
-<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.png" alt="AuraMed" class="h-10 w-auto"/></a>
+<a class="shrink-0 flex items-center" href="home.html" aria-label="AuraMed Home"><img src="assets/logo.svg" alt="AuraMed" class="h-10 w-auto"/></a>
 <nav class="hidden md:flex items-center gap-8">
 <a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="home.html">Home</a>
 <a class="text-secondary hover:text-primary transition-colors duration-250 pb-1 border-b-2 border-transparent font-label-md text-label-md" href="products.html">Products &amp; Bundles</a>
@@ -166,7 +55,7 @@
 
 <div class="relative z-10">
 <a class="flex items-center gap-2" href="home.html">
-<img src="assets/logo.png" alt="AuraMed" class="h-9 w-auto"/>
+<img src="assets/logo.svg" alt="AuraMed" class="h-9 w-auto"/>
 </a>
 </div>
 <div class="relative z-10 max-w-md">
@@ -181,7 +70,7 @@
 <section class="flex-1 flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface">
 <!-- Mobile Header -->
 <div class="md:hidden w-full mb-12 flex justify-center">
-<img src="assets/logo.png" alt="AuraMed" class="h-9 w-auto"/>
+<img src="assets/logo.svg" alt="AuraMed" class="h-9 w-auto"/>
 </div>
 <div class="w-full max-w-[440px]">
 <div class="mb-10 text-center md:text-left">
@@ -264,7 +153,7 @@
 <footer class="w-full bg-surface-container border-t border-secondary-container">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-14 grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-10">
 <div class="col-span-2 md:col-span-2 pr-4 md:pr-8">
-<div class="mb-3"><img src="assets/logo.png" alt="AuraMed" class="h-11 w-auto"/></div>
+<div class="mb-3"><img src="assets/logo.svg" alt="AuraMed" class="h-11 w-auto"/></div>
 <p class="font-body-md text-on-surface-variant max-w-xs">Reliable sophistication in home health technology. Precision medication management for the modern sanctuary.</p>
 </div>
 <div>
@@ -301,42 +190,6 @@
 </div>
 </div>
 </footer>
-<script>
-        // Password visibility toggle logic (optional enhancement)
-        document.querySelectorAll('input[type="password"]').forEach(input => {
-            input.addEventListener('focus', () => {
-                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#350e1b';
-            });
-            input.addEventListener('blur', () => {
-                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#837376';
-            });
-        });
+<script src="js/signup.js"></script>
 
-        // Simple input highlight
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('focus', () => {
-                const label = input.parentElement.parentElement.querySelector('label');
-                if (label) label.classList.replace('text-outline', 'text-primary');
-            });
-            input.addEventListener('blur', () => {
-                const label = input.parentElement.parentElement.querySelector('label');
-                if (label) label.classList.replace('text-primary', 'text-outline');
-            });
-        });
-    </script>
-<script>
-(function () {
-    var btn = document.getElementById('mobile-menu-btn');
-    var menu = document.getElementById('mobile-menu');
-    var icon = document.getElementById('mobile-menu-icon');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', function () {
-        var isHidden = menu.classList.contains('hidden');
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
-        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-        if (icon) icon.textContent = isHidden ? 'close' : 'menu';
-    });
-})();
-</script>
 </body></html>
