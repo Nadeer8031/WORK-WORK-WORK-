@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AuraMed | Medication Schedule</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#f7b4c4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c9c6bf",
+                    "on-secondary-container": "#64635c",
+                    "tertiary-container": "#241a0e",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d5c2c5",
+                    "surface-container-low": "#fcf1f2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#524436",
+                    "on-primary-fixed-variant": "#683845",
+                    "tertiary": "#000000",
+                    "secondary-fixed": "#e5e2da",
+                    "outline": "#837376",
+                    "surface-container-highest": "#ebe0e1",
+                    "surface-container": "#f6ebec",
+                    "primary-container": "#350e1b",
+                    "surface-container-high": "#f1e6e6",
+                    "on-primary-container": "#ae7382",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f9eeef",
+                    "surface-tint": "#844f5d",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#ffd9e0",
+                    "inverse-surface": "#352f30",
+                    "on-tertiary-fixed": "#241a0e",
+                    "surface": "#fff8f8",
+                    "secondary-container": "#e2dfd7",
+                    "surface-dim": "#e2d7d8",
+                    "on-surface": "#1f1a1b",
+                    "on-primary-fixed": "#350e1b",
+                    "on-tertiary-container": "#928170",
+                    "on-secondary-fixed": "#1c1c17",
+                    "on-secondary-fixed-variant": "#484741",
+                    "secondary": "#605e58",
+                    "inverse-primary": "#f7b4c4",
+                    "surface-variant": "#ebe0e1",
+                    "on-surface-variant": "#514346",
+                    "tertiary-fixed": "#f4dfcb",
+                    "primary": "#000000",
+                    "on-background": "#1f1a1b",
+                    "background": "#fff8f8",
+                    "surface-bright": "#fff8f8",
+                    "tertiary-fixed-dim": "#d7c3b0",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "headline-md": ["\"Source Serif 4\""]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f8;
+            color: #1f1a1b;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ambient-shadow {
+            box-shadow: 0 20px 40px rgba(132, 79, 93, 0.04);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f6ebec;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #837376;
+            border-radius: 10px;
+        }
+        /* Reveal animation for menu */
+        .action-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: all 0.2s ease-out;
+        }
+        .action-menu.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-secondary-container dark:border-on-secondary-fixed-variant h-20">
+<div class="max-w-container-max mx-auto px-margin-desktop h-full flex justify-between items-center">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-semibold text-primary dark:text-primary-fixed-dim">AuraMed</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-md text-label-md hover:text-primary-container dark:hover:text-primary-fixed transition-colors duration-250" href="#">Products &amp; Bundles</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-label-md text-label-md" href="#">Schedule</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim hover:text-primary-container transition-colors">Login</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional close-up portrait of a health-conscious middle-aged user, set against a warm, minimalist cream background with soft lighting that reflects a luxury wellness lifestyle. The aesthetic is bright and clinical yet approachable, aligning with a premium medical technology brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8tk8cW3pIBBlhpTYI9w--Rrqey3KL41WFvAhro3EBG_PTlQzVlt3lbqMCuPua5bxkeY3gtMBn0JiDc8NY55zOneU6PYJNWHCvvYs5KBfA0xkDgMXQ-1WIGRqsT8kblAM9sFxnUqSOqN9PK4mXZGw0JmJoyh9n9xDPif3zMnpd8z6JAsp_6s7VvDxS0AYTqP6wViFQJucvfGRvTNB4B64ug_qpGNLLUHOxcC--I7fFeqGKXc2HlARyzjehnbsjXsJTCY1zlzOMhg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
+<!-- Page Header -->
+<div class="mb-12">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Medication Schedule</h1>
+<p class="text-on-surface-variant font-body-md max-w-2xl">Manage your daily intake with clinical precision. Track your remaining inventory and schedule upcoming refills to maintain your health sanctuary.</p>
+</div>
+<!-- Dashboard Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content: Schedule Table -->
+<div class="lg:col-span-8 space-y-gutter">
+<div class="bg-surface-container-lowest border border-secondary-container rounded-lg ambient-shadow overflow-hidden">
+<div class="px-6 py-5 border-b border-secondary-container flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary">Active Prescription</h2>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                            Add Medication
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Medicine Types</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Dosage</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Pills Remaining</th>
+<th class="px-6 py-4 font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant">Status</th>
+<th class="px-6 py-4 text-right"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-secondary-container">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="medication">medication</span>
+</div>
+<div>
+<div class="font-headline-md text-[18px] text-primary leading-tight">Aura-Calm BP</div>
+<div class="text-on-secondary-fixed-variant font-label-sm">Telmisartan 40mg</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-on-surface">1 Pill Daily</td>
+<td class="px-6 py-5">
+<div class="w-full max-w-[120px]">
+<div class="flex justify-between font-label-sm mb-1">
+<span>24 / 30</span>
+<span class="text-on-primary-container">80%</span>
+</div>
+<div class="h-1.5 w-full bg-secondary-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[80%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-[#e2f0e4] text-[#1e4620] rounded-full font-label-sm border border-[#c4e1cb]">Taken</span>
+</td>
+<td class="px-6 py-5 text-right relative">
+<button class="p-2 hover:bg-secondary-container rounded-full transition-colors text-secondary" onclick="toggleMenu(this)">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+<div class="action-menu absolute right-6 top-14 w-40 bg-white border border-secondary-container rounded-lg shadow-xl z-10 py-2">
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span> Edit
+                                            </button>
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span> Add History
+                                            </button>
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-error-container text-error flex items-center gap-2 border-t border-secondary-container mt-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span> Remove
+                                            </button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="vitamin_pills">vital_signs</span>
+</div>
+<div>
+<div class="font-headline-md text-[18px] text-primary leading-tight">Complex-V7</div>
+<div class="text-on-secondary-fixed-variant font-label-sm">Multivitamin</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-on-surface">2 Pills Daily</td>
+<td class="px-6 py-5">
+<div class="w-full max-w-[120px]">
+<div class="flex justify-between font-label-sm mb-1 text-error">
+<span>4 / 60</span>
+<span>6%</span>
+</div>
+<div class="h-1.5 w-full bg-secondary-container rounded-full overflow-hidden">
+<div class="h-full bg-error w-[6%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full font-label-sm border border-outline-variant">Refill Soon</span>
+</td>
+<td class="px-6 py-5 text-right relative">
+<button class="p-2 hover:bg-secondary-container rounded-full transition-colors text-secondary" onclick="toggleMenu(this)">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+<div class="action-menu absolute right-6 top-14 w-40 bg-white border border-secondary-container rounded-lg shadow-xl z-10 py-2">
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span> Edit
+                                            </button>
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="shopping_basket">shopping_basket</span> Order Refill
+                                            </button>
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-error-container text-error flex items-center gap-2 border-t border-secondary-container mt-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span> Remove
+                                            </button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed-dim flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined" data-icon="fluid_med">fluid_med</span>
+</div>
+<div>
+<div class="font-headline-md text-[18px] text-primary leading-tight">Neuro-Boost Liquid</div>
+<div class="text-on-secondary-fixed-variant font-label-sm">Cognitive Support</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 font-body-md text-on-surface">5ml Morning</td>
+<td class="px-6 py-5">
+<div class="w-full max-w-[120px]">
+<div class="flex justify-between font-label-sm mb-1">
+<span>150 / 300 ml</span>
+<span class="text-on-primary-container">50%</span>
+</div>
+<div class="h-1.5 w-full bg-secondary-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[50%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm border border-secondary-container">Upcoming</span>
+</td>
+<td class="px-6 py-5 text-right relative">
+<button class="p-2 hover:bg-secondary-container rounded-full transition-colors text-secondary" onclick="toggleMenu(this)">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+<div class="action-menu absolute right-6 top-14 w-40 bg-white border border-secondary-container rounded-lg shadow-xl z-10 py-2">
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span> Edit
+                                            </button>
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span> Add Dosage
+                                            </button>
+<button class="w-full text-left px-4 py-2 font-label-md text-label-md hover:bg-error-container text-error flex items-center gap-2 border-t border-secondary-container mt-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span> Remove
+                                            </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bento Card: Usage Insights -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container-low p-6 rounded-lg border border-secondary-container">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="insights">insights</span>
+</div>
+<h3 class="font-headline-md text-[20px] text-primary">Adherence Score</h3>
+</div>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-[48px] font-headline-lg leading-none">94%</span>
+<span class="text-on-primary-container font-label-md pb-2">+2% from last week</span>
+</div>
+<p class="text-on-surface-variant font-body-md">You've missed only one dose in the last 14 days. Exceptional consistency.</p>
+</div>
+<div class="bg-primary-container p-6 rounded-lg text-white">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-8 h-8 rounded bg-primary-fixed-dim text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="event_note">event_note</span>
+</div>
+<h3 class="font-headline-md text-[20px] text-primary-fixed-dim">Next Consultation</h3>
+</div>
+<div class="mb-4">
+<div class="text-[24px] font-headline-md">Dr. Eleanor Vance</div>
+<div class="text-primary-fixed-dim font-label-md opacity-80">Wednesday, Oct 24 • 10:30 AM</div>
+</div>
+<button class="w-full border border-primary-fixed-dim text-primary-fixed-dim py-2 rounded font-label-md hover:bg-primary-fixed-dim hover:text-primary-container transition-all">Prepare Documents</button>
+</div>
+</div>
+</div>
+<!-- Sidebar: Reminders & Refills -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Mini Calendar / Timeline -->
+<div class="bg-white p-6 rounded-lg border border-secondary-container ambient-shadow">
+<h3 class="font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant mb-4">Today's Timeline</h3>
+<div class="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-secondary-container">
+<div class="relative pl-8 flex items-start">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary">08:00 AM - Aura-Calm</div>
+<div class="font-label-sm text-on-secondary-fixed-variant">Taken with breakfast</div>
+</div>
+</div>
+<div class="relative pl-8 flex items-start opacity-60">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary">01:00 PM - Complex-V7</div>
+<div class="font-label-sm text-on-secondary-fixed-variant">Upcoming dose</div>
+</div>
+</div>
+<div class="relative pl-8 flex items-start opacity-60">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-secondary text-white flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary">08:00 PM - Neuro Liquid</div>
+<div class="font-label-sm text-on-secondary-fixed-variant">Before bedtime</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Refill Reminder Card -->
+<div class="bg-surface-container-highest p-6 rounded-lg border border-outline-variant">
+<div class="flex gap-4 items-start">
+<div class="p-3 bg-white rounded-lg">
+<span class="material-symbols-outlined text-error text-[28px]" data-icon="warning">warning</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] text-primary mb-1">Stock Low Alert</h4>
+<p class="text-on-surface-variant font-label-md mb-4">Your Complex-V7 supply will last for only 2 more days.</p>
+<button class="bg-primary text-on-primary w-full py-2.5 rounded font-label-md hover:opacity-90 transition-opacity">Request Auto-Refill</button>
+</div>
+</div>
+</div>
+<!-- Aesthetic Visual Anchor -->
+<div class="rounded-lg overflow-hidden relative h-64 ambient-shadow border border-secondary-container group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A macro cinematic shot of elegant, translucent pharmaceutical capsules arranged in a minimalist, rhythmic pattern on a polished cream stone surface. The lighting is soft and diffused, highlighting the sophisticated 'Quiet Luxury' healthcare brand. Warm, professional color palette of deep burgundy and subtle beiges." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAT2Ml3bBfrRSBQ_YBYs-S0osFhFFpzceWuTfMM-ZGy2f3kiHQIVX3dmNF51hZirg9qMwedhvTBZs83S2ep4h8yu4-sT8oeGrCUYnj1KkY20nk0yWqhs_EnDXf80nxNmNbwdYQP31S-Nn9z_tr4G1dYNd02_XN8aJVoXOiWxWQ6oaKa57ObVohpsBexeqAF5_b-H9fsyG6F9ARumFswDivbd4dY3r1z-7OqZBuu_EjAm4poIbGxwgiavEb5c-ByFGjfDzRfTruTbw')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<div class="text-white font-headline-md text-[20px]">Premium Care</div>
+<div class="text-white/80 font-label-md">Tailored for your sanctuary.</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-low border-t border-secondary-container dark:border-on-secondary-fixed-variant w-full py-12 px-margin-desktop">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">AuraMed</span>
+<p class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim max-w-xs text-center md:text-left">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">About Us</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Contact Us</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Pricing</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Privacy Policy</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        function toggleMenu(btn) {
+            // Close all other menus
+            document.querySelectorAll('.action-menu').forEach(menu => {
+                if (menu !== btn.nextElementSibling) {
+                    menu.classList.remove('active');
+                }
+            });
+            // Toggle current
+            const menu = btn.nextElementSibling;
+            menu.classList.toggle('active');
+            
+            // Handle closing when clicking outside
+            const closeMenu = (e) => {
+                if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                    menu.classList.remove('active');
+                    document.removeEventListener('click', closeMenu);
+                }
+            };
+            
+            if (menu.classList.contains('active')) {
+                setTimeout(() => document.addEventListener('click', closeMenu), 1);
+            }
+        }
+
+        // Add visual weight to "Schedule" in nav links since we are on that page
+        // Handled via static HTML above.
+    </script>
+</body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile | AuraMed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #DFDCD4;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#f7b4c4",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#c9c6bf",
+                        "on-secondary-container": "#64635c",
+                        "tertiary-container": "#241a0e",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#d5c2c5",
+                        "surface-container-low": "#fcf1f2",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#524436",
+                        "on-primary-fixed-variant": "#683845",
+                        "tertiary": "#000000",
+                        "secondary-fixed": "#e5e2da",
+                        "outline": "#837376",
+                        "surface-container-highest": "#ebe0e1",
+                        "surface-container": "#f6ebec",
+                        "primary-container": "#350e1b",
+                        "surface-container-high": "#f1e6e6",
+                        "on-primary-container": "#ae7382",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f9eeef",
+                        "surface-tint": "#844f5d",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffd9e0",
+                        "inverse-surface": "#352f30",
+                        "on-tertiary-fixed": "#241a0e",
+                        "surface": "#fff8f8",
+                        "secondary-container": "#e2dfd7",
+                        "surface-dim": "#e2d7d8",
+                        "on-surface": "#1f1a1b",
+                        "on-primary-fixed": "#350e1b",
+                        "on-tertiary-container": "#928170",
+                        "on-secondary-fixed": "#1c1c17",
+                        "on-secondary-fixed-variant": "#484741",
+                        "secondary": "#605e58",
+                        "inverse-primary": "#f7b4c4",
+                        "surface-variant": "#ebe0e1",
+                        "on-surface-variant": "#514346",
+                        "tertiary-fixed": "#f4dfcb",
+                        "primary": "#000000",
+                        "on-background": "#1f1a1b",
+                        "background": "#fff8f8",
+                        "surface-bright": "#fff8f8",
+                        "tertiary-fixed-dim": "#d7c3b0",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "container-max": "1200px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "headline-lg-mobile": ["\"Source Serif 4\""],
+                        "headline-md": ["\"Source Serif 4\""]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed selection:text-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto bg-surface border-b border-secondary-container">
+<div class="flex items-center gap-12">
+<h1 class="font-headline-md text-headline-md font-semibold text-primary">AuraMed</h1>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary font-label-md text-label-md hover:text-primary-container transition-colors duration-250" href="#">Products &amp; Bundles</a>
+<a class="text-secondary font-label-md text-label-md hover:text-primary-container transition-colors duration-250" href="#">Schedule</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary text-2xl hover:opacity-80 transition-all">shopping_cart</button>
+<div class="h-10 w-10 rounded-full border border-secondary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a person with a serene expression, captured in soft, natural morning light. The setting is a minimalist, high-end interior with neutral taupe and stone colors, reflecting a quiet luxury aesthetic. The image is crisp with high clarity and a shallow depth of field, emphasizing clinical sophistication and personal well-being." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD36g2ta5o2ieZcJ0ft5LiYZULxoW7knF9OQlNnD7FWk8Pgl7fs5dExyRd6ypWreAoQMjUjwE4_q9-fhk0Yqx1CpD44RZBxxzQOnVtDNQFoSex44qxEQ1HQgUbjryA73cQv5kR6JoKd-p0esUDp634nziTIzhbvhYY3QNtmfxfSZ84Nd9kvCJLAizyx9XZ4-PoIPjiEajZ13-JmBi-mwg8zFxqlpCxxMy7xq66B5pOco4qIh8D6jSIyjFQHmeP8meK4tV1D5wr7tw"/>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-[#B5A391] mb-2 block">Member Account</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Welcome, Julianne</h2>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded transition-all hover:opacity-90">Edit Profile</button>
+<button class="px-6 py-3 border border-[#DFDCD4] text-primary font-label-md text-label-md rounded hover:bg-surface-container-low transition-all">Logout</button>
+</div>
+</div>
+</section>
+<!-- Profile Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Personal Info Card -->
+<div class="md:col-span-4 glass-card p-8 rounded-xl flex flex-col gap-8 shadow-[0px_20px_40px_rgba(52,13,26,0.04)]">
+<div class="flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full border-2 border-[#DFDCD4] p-1 mb-4">
+<div class="w-full h-full rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a woman with a professional and calm demeanor, looking directly at the camera with a slight smile. The background is a soft-focus, minimalist health clinic interior with warm cream and beige tones. High-end lighting creates soft shadows, suggesting a premium, reliable atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQhFULFx4DBH0UyOcVi86jZFdBTeEGMRRM3B0m4tEaf8gP8etseHxdSTT_tF90jQxdBRVhktapO6GCWnOnjhfyRG7bk1CVRhPIozdFlvnDC_QANrYC9G0ubILLjl2tOi7LvDE4NK92gtz0k0YTLbHX-42fgIxqLP5McK-dIYNaTckT8k1rF8LKlslqmJ6Ss9oC4xSXJEXDeQSHpow9X-9e6l-ZOzrqahNw3kbzERk7ZpYLwu5Kcwa8qb5LR8S8N6B_tIehDCYd0Q"/>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Julianne V.</h3>
+<p class="text-label-md text-[#B5A391]">Gold Tier Member since 2022</p>
+</div>
+<div class="space-y-4 pt-4 border-t border-[#DFDCD4]">
+<div>
+<label class="text-label-sm text-[#B5A391] uppercase">Email Address</label>
+<p class="font-body-md text-on-surface">j.vance@auramed-concierge.com</p>
+</div>
+<div>
+<label class="text-label-sm text-[#B5A391] uppercase">Contact Number</label>
+<p class="font-body-md text-on-surface">+1 (555) 012-8843</p>
+</div>
+<div>
+<label class="text-label-sm text-[#B5A391] uppercase">Primary Location</label>
+<p class="font-body-md text-on-surface">San Francisco, CA</p>
+</div>
+</div>
+</div>
+<!-- Dashboard / Order History -->
+<div class="md:col-span-8 flex flex-col gap-gutter">
+<!-- Quick Stats -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-2">package_2</span>
+<h4 class="text-label-sm text-[#B5A391] uppercase">Active Subscriptions</h4>
+<p class="font-headline-md text-headline-md">3</p>
+</div>
+<div class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-2">calendar_today</span>
+<h4 class="text-label-sm text-[#B5A391] uppercase">Next Refill</h4>
+<p class="font-headline-md text-headline-md">Oct 14</p>
+</div>
+<div class="hidden md:block bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-2">verified_user</span>
+<h4 class="text-label-sm text-[#B5A391] uppercase">Health Score</h4>
+<p class="font-headline-md text-headline-md">98%</p>
+</div>
+</div>
+<!-- Order History Section -->
+<div class="bg-white border border-[#DFDCD4] rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(0,0,0,0.02)]">
+<div class="px-8 py-6 border-b border-[#DFDCD4] flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-md text-headline-md text-primary">Order History</h3>
+<button class="text-label-md text-primary hover:underline transition-all">View All</button>
+</div>
+<div class="divide-y divide-[#DFDCD4]">
+<!-- Order Row 1 -->
+<div class="px-8 py-6 hover:bg-surface-bright transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">medication</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-[#B5A391] uppercase">Order #AM-88421</p>
+<h4 class="font-body-lg text-body-lg text-primary font-medium">Luxe Wellness Bundle — Q4</h4>
+<p class="text-label-md text-secondary">Delivered on Sept 28, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-label-md text-label-md text-primary font-bold">$249.00</p>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"></span>
+                                            Success
+                                        </span>
+</div>
+<button class="material-symbols-outlined text-[#B5A391] hover:text-primary">chevron_right</button>
+</div>
+</div>
+</div>
+<!-- Order Row 2 -->
+<div class="px-8 py-6 hover:bg-surface-bright transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">biotech</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-[#B5A391] uppercase">Order #AM-88104</p>
+<h4 class="font-body-lg text-body-lg text-primary font-medium">AuraMed Smart Sensor Kit</h4>
+<p class="text-label-md text-secondary">Delivered on Aug 12, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-label-md text-label-md text-primary font-bold">$1,200.00</p>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"></span>
+                                            Success
+                                        </span>
+</div>
+<button class="material-symbols-outlined text-[#B5A391] hover:text-primary">chevron_right</button>
+</div>
+</div>
+</div>
+<!-- Order Row 3 -->
+<div class="px-8 py-6 hover:bg-surface-bright transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">pill</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-[#B5A391] uppercase">Order #AM-87552</p>
+<h4 class="font-body-lg text-body-lg text-primary font-medium">Metabolic Balance Refill</h4>
+<p class="text-label-md text-secondary">Delivered on June 05, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-label-md text-label-md text-primary font-bold">$89.00</p>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"></span>
+                                            Success
+                                        </span>
+</div>
+<button class="material-symbols-outlined text-[#B5A391] hover:text-primary">chevron_right</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inventory Gauge Preview (Custom Component) -->
+<section class="mt-12 bg-primary text-on-primary rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+
+</div>
+<div class="z-10 max-w-lg">
+<h3 class="font-headline-md text-headline-md mb-2">Automated Inventory Status</h3>
+<p class="text-on-primary/80 mb-6">Your AuraMed hub is tracking your current dosage levels. We will automatically prepare your next shipment when levels reach 15%.</p>
+<div class="space-y-4">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Vitality Complex II</span>
+<span>64% Remaining</span>
+</div>
+<div class="h-1.5 w-full bg-on-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim transition-all duration-1000 ease-out" style="width: 64%"></div>
+</div>
+</div>
+</div>
+<div class="z-10">
+<button class="px-8 py-4 bg-white text-primary font-label-md text-label-md rounded-full shadow-lg hover:bg-primary-fixed transition-colors">Manage Prescriptions</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container border-t border-secondary-container">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-md text-headline-md text-primary font-semibold">AuraMed</span>
+<p class="font-label-sm text-label-sm text-secondary">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">About Us</a>
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">Contact Us</a>
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">Pricing</a>
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">Privacy Policy</a>
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">Terms of Service</a>
+</div>
+</footer>
+<script>
+        // Micro-interaction for order rows
+        document.querySelectorAll('.order-row').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(8px)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Atmospheric parallax effect on background
+        window.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 100;
+            const moveY = (e.clientY - window.innerHeight / 2) / 100;
+            document.body.style.backgroundPosition = `${moveX}px ${moveY}px`;
+        });
+    </script>
+</body></html>

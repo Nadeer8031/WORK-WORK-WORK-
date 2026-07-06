@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Cart | AuraMed Smart Systems</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Source+Serif+4:wght@600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Source+Serif+4:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#f7b4c4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c9c6bf",
+                    "on-secondary-container": "#64635c",
+                    "tertiary-container": "#241a0e",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d5c2c5",
+                    "surface-container-low": "#fcf1f2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#524436",
+                    "on-primary-fixed-variant": "#683845",
+                    "tertiary": "#000000",
+                    "secondary-fixed": "#e5e2da",
+                    "outline": "#837376",
+                    "surface-container-highest": "#ebe0e1",
+                    "surface-container": "#f6ebec",
+                    "primary-container": "#350e1b",
+                    "surface-container-high": "#f1e6e6",
+                    "on-primary-container": "#ae7382",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f9eeef",
+                    "surface-tint": "#844f5d",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#ffd9e0",
+                    "inverse-surface": "#352f30",
+                    "on-tertiary-fixed": "#241a0e",
+                    "surface": "#fff8f8",
+                    "secondary-container": "#e2dfd7",
+                    "surface-dim": "#e2d7d8",
+                    "on-surface": "#1f1a1b",
+                    "on-primary-fixed": "#350e1b",
+                    "on-tertiary-container": "#928170",
+                    "on-secondary-fixed": "#1c1c17",
+                    "on-secondary-fixed-variant": "#484741",
+                    "secondary": "#605e58",
+                    "inverse-primary": "#f7b4c4",
+                    "surface-variant": "#ebe0e1",
+                    "on-surface-variant": "#514346",
+                    "tertiary-fixed": "#f4dfcb",
+                    "primary": "#000000",
+                    "on-background": "#1f1a1b",
+                    "background": "#fff8f8",
+                    "surface-bright": "#fff8f8",
+                    "tertiary-fixed-dim": "#d7c3b0",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "headline-md": ["\"Source Serif 4\""]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .luxury-shadow {
+            box-shadow: 0 10px 30px -10px rgba(53, 14, 27, 0.08);
+        }
+        body {
+            background-color: #fff8f8;
+            color: #1f1a1b;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #DFDCD4;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface flex justify-between items-center px-6 md:px-16 lg:px-margin-desktop h-20 max-w-container-max mx-auto border-b border-secondary-container">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md font-semibold text-primary" href="#">AuraMed</a>
+<nav class="hidden md:flex gap-6">
+<a class="text-secondary font-label-md text-label-md hover:text-primary-container transition-colors duration-250" href="#">Products & Bundles</a>
+<a class="text-secondary font-label-md text-label-md hover:text-primary-container transition-colors duration-250" href="#">Schedule</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary font-label-md text-label-md hover:text-primary-container transition-colors duration-250">Login</button>
+<div class="relative">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">3</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-12">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Shopping Cart</h1>
+<p class="text-secondary font-body-md">Review your selections for a more sophisticated health routine.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Cart Items Section -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Item 1 -->
+<div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-surface-container-lowest border border-secondary-container luxury-shadow group transition-all duration-300">
+<div class="w-32 h-32 flex-shrink-0 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end, sleek medical dispensing device with a minimalist cream-colored finish and subtle metallic accents. The device is placed on a polished marble countertop in a warm, domestic health sanctuary setting. The lighting is soft and natural, emphasizing the quiet luxury aesthetic of AuraMed's hardware. Professional photography style, clean and precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp_5RDDXg5869ZHJbj6tz6LRjzbqLfpl-ymnXSZecc4BDPmsmz2GcVeO-JJawuJGg77k-UqWv4KFjoqVU3iIFKR1QISo-tOH7VbJvXcFQMWBBQOY0PBR9ZDrtUaudYwQ58i6B5WEmXJ6M5ijvyxPsvl5-c9i2fYaq1wJFai5rIpfrvGaXi-AnoEKj5uR1KduFmuZ2Nsrl1cQhP_5bZZYp2zbjvpo1rn_chsT-rElU9KUj4XZkpeCFTDrGILUoEZa-C-FeiSaD9Qw"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">AuraSmart Dispenser Pro</h3>
+<button class="text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-secondary font-label-md mb-4">Precision medication management with IoT integration.</p>
+<div class="flex justify-between items-end">
+<div class="flex items-center border border-secondary-container p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container transition-colors" onclick="decrement(this)">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="px-4 font-label-md text-primary quantity-display">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container transition-colors" onclick="increment(this)">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<span class="font-headline-md text-primary">$499.00</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-surface-container-lowest border border-secondary-container luxury-shadow group transition-all duration-300">
+<div class="w-32 h-32 flex-shrink-0 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium subscription card for medical health monitoring services. The design features elegant typography and a soft gradient background in muted rose and cream tones. The imagery suggests a seamless connection between clinical accuracy and lifestyle integration, presented in a minimalist, corporate modern style with plenty of whitespace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA68zvbeu6MQTH-8jq_tWhGE_KyImfxtSz1MBc2VqCWN9oeeBwRQBoR3i3dfEriA2zjXUzSlbIzL2LqzSqsZZkAPW7P-zmyYwRWTubIRILIMCP6vVLe6aCOmUmkygU_grdebyA9fNXGisuRwDNZjBwxQ99SWMtV4l_UB_ZCsdxLlXkdZ6GkGrOlCrViHGqvoDij2-awXVZQayQCkDUwiVOaY3LusWTTr1QmQOTe2a9ij-OrNdA-g0Ek-EftPyu5xfBrq3tZzTlhUg"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">AuraCare Annual Plan</h3>
+<button class="text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-secondary font-label-md mb-4">24/7 Professional monitoring & refill management.</p>
+<div class="flex justify-between items-end">
+<div class="flex items-center border border-secondary-container p-1 opacity-50 cursor-not-allowed">
+<button class="w-8 h-8 flex items-center justify-center" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="px-4 font-label-md text-primary">1</span>
+<button class="w-8 h-8 flex items-center justify-center" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<span class="font-headline-md text-primary">$29.00 / mo</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-surface-container-lowest border border-secondary-container luxury-shadow group transition-all duration-300">
+<div class="w-32 h-32 flex-shrink-0 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sophisticated, minimalist vitamin refill containers crafted from frosted glass with refined rose-gold metallic lids. These are neatly organized in a wooden cabinetry setting that looks both high-end and clinical. The lighting is warm and bright, conveying a sense of health, purity, and professional quality within a modern home environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4isy3rZkB1eZ4k7MrouiqscFFoevl3zWCQdh4q5iegXWsnhGAvR8_3QtLYI5yP9-V8bWFs7eJ1VmQKLSerAV2940QeH4p0NZs99ILX9cv2u1uPaIFyxjjBGqhoOQHvgEXoU97CUGq_u4N1qA9mNKffwzpCL42KmzDsFhBkVVjcIiE80AUcR3q4nBtKmLmCESnjbFJn6oA3KvbHu6HSurRTGaOzSp7JsKPt29VFiG0RPcOiOoOH58F5PVdgSLHlsj0g6XOxLZchg"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">AuraVitals Core Multi</h3>
+<button class="text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-secondary font-label-md mb-4">Personalized nutrient complex, 30-day supply.</p>
+<div class="flex justify-between items-end">
+<div class="flex items-center border border-secondary-container p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container transition-colors" onclick="decrement(this)">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="px-4 font-label-md text-primary quantity-display">2</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-secondary-container transition-colors" onclick="increment(this)">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<div class="text-right">
+<span class="block text-secondary font-label-sm line-through">$45.00</span>
+<span class="font-headline-md text-primary">$38.25</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Section -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container p-8 border border-secondary-container">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Order Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-secondary font-body-md">
+<span>Subtotal</span>
+<span class="text-on-surface">$566.25</span>
+</div>
+<div class="flex justify-between text-secondary font-body-md">
+<span>Shipping</span>
+<span class="text-primary-container font-semibold">Free</span>
+</div>
+<div class="flex justify-between text-secondary font-body-md">
+<span>Estimated Taxes</span>
+<span class="text-on-surface">$45.30</span>
+</div>
+<div class="border-t border-secondary-container pt-4 flex justify-between">
+<span class="font-headline-md text-primary">Total</span>
+<span class="font-headline-md text-primary">$611.55</span>
+</div>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-primary text-on-primary py-4 px-6 font-label-md text-label-md hover:bg-primary-container transition-all duration-250 flex items-center justify-center gap-2 group">
+                            Proceed to Checkout
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full border border-secondary-container text-primary py-4 px-6 font-label-md text-label-md hover:bg-surface-container-high transition-all duration-250">
+                            Continue Shopping
+                        </button>
+</div>
+<div class="mt-8 pt-8 border-t border-secondary-container">
+<p class="text-secondary font-label-sm flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+                            Secure Professional Checkout
+                        </p>
+<p class="text-secondary font-label-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
+                            Complimentary White-Glove Delivery
+                        </p>
+</div>
+</div>
+<!-- Promotion Card -->
+<div class="bg-primary-container p-6 border border-primary text-on-primary-container">
+<p class="font-label-md mb-2">Exclusive Offer</p>
+<p class="font-body-md text-sm mb-4">Add the AuraMed Smart Scale to your order and save 15% on your total today.</p>
+<button class="text-on-primary-container font-bold text-sm underline hover:opacity-80 transition-opacity flex items-center gap-1">
+                        View Product <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop bg-surface-container flex flex-col md:flex-row justify-between items-center gap-gutter border-t border-secondary-container">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-md text-headline-md text-primary">AuraMed</span>
+<p class="text-secondary font-label-sm max-w-xs text-center md:text-left">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-secondary font-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">About Us</a>
+<a class="text-secondary font-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Contact Us</a>
+<a class="text-secondary font-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Pricing</a>
+<a class="text-secondary font-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Privacy Policy</a>
+<a class="text-secondary font-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Terms of Service</a>
+</div>
+</footer>
+<script>
+        function increment(btn) {
+            const display = btn.parentNode.querySelector('.quantity-display');
+            let count = parseInt(display.innerText);
+            display.innerText = count + 1;
+            // Add subtle pulse effect
+            display.classList.add('scale-110');
+            setTimeout(() => display.classList.remove('scale-110'), 200);
+        }
+
+        function decrement(btn) {
+            const display = btn.parentNode.querySelector('.quantity-display');
+            let count = parseInt(display.innerText);
+            if (count > 1) {
+                display.innerText = count - 1;
+                display.classList.add('scale-90');
+                setTimeout(() => display.classList.remove('scale-90'), 200);
+            }
+        }
+
+        // Micro-interaction for primary button
+        document.querySelector('button.bg-primary').addEventListener('mousedown', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+        document.querySelector('button.bg-primary').addEventListener('mouseup', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body></html>

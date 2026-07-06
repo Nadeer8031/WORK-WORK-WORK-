@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | AuraMed Smart Systems</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#f7b4c4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c9c6bf",
+                    "on-secondary-container": "#64635c",
+                    "tertiary-container": "#241a0e",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d5c2c5",
+                    "surface-container-low": "#fcf1f2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#524436",
+                    "on-primary-fixed-variant": "#683845",
+                    "tertiary": "#000000",
+                    "secondary-fixed": "#e5e2da",
+                    "outline": "#837376",
+                    "surface-container-highest": "#ebe0e1",
+                    "surface-container": "#f6ebec",
+                    "primary-container": "#350e1b",
+                    "surface-container-high": "#f1e6e6",
+                    "on-primary-container": "#ae7382",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f9eeef",
+                    "surface-tint": "#844f5d",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#ffd9e0",
+                    "inverse-surface": "#352f30",
+                    "on-tertiary-fixed": "#241a0e",
+                    "surface": "#fff8f8",
+                    "secondary-container": "#e2dfd7",
+                    "surface-dim": "#e2d7d8",
+                    "on-surface": "#1f1a1b",
+                    "on-primary-fixed": "#350e1b",
+                    "on-tertiary-container": "#928170",
+                    "on-secondary-fixed": "#1c1c17",
+                    "on-secondary-fixed-variant": "#484741",
+                    "secondary": "#605e58",
+                    "inverse-primary": "#f7b4c4",
+                    "surface-variant": "#ebe0e1",
+                    "on-surface-variant": "#514346",
+                    "tertiary-fixed": "#f4dfcb",
+                    "primary": "#000000",
+                    "on-background": "#1f1a1b",
+                    "background": "#fff8f8",
+                    "surface-bright": "#fff8f8",
+                    "tertiary-fixed-dim": "#d7c3b0",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "headline-md": ["\"Source Serif 4\""]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ambient-shadow {
+            box-shadow: 0 20px 40px 0 rgba(52, 13, 26, 0.04);
+        }
+        .input-focus-state:focus {
+            outline: none;
+            border-bottom: 2px solid #350e1b;
+        }
+        body {
+            background-color: #fff8f8;
+            color: #1f1a1b;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar (Shell Suppression: Transactional Screen) -->
+<!-- Navigation is hidden on this focused checkout screen to prioritize the transaction flow -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto bg-surface border-b border-secondary-container">
+<div class="font-headline-md text-headline-md font-semibold text-primary">AuraMed</div>
+<div class="flex items-center gap-gutter">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">lock</span>
+                Secure Checkout
+            </span>
+<a class="text-secondary hover:text-primary transition-colors duration-250 flex items-center gap-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">close</span>
+                Cancel
+            </a>
+</div>
+</header>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Shipping & Payment -->
+<div class="lg:col-span-7 space-y-12">
+<!-- Progress Header -->
+<section>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4 text-primary">Complete Your Order</h1>
+<p class="text-on-surface-variant font-body-md max-w-lg">Please provide your shipping and payment information to finalize the purchase of your AuraMed Smart Dispensing System.</p>
+</section>
+<!-- Shipping Address Form -->
+<section class="bg-white p-8 border border-secondary-container ambient-shadow rounded-lg">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary-container">local_shipping</span>
+<h2 class="font-headline-md text-headline-md">Shipping Address</h2>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2 space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">Full Name</label>
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="Dr. Julian Thorne" type="text"/>
+</div>
+<div class="md:col-span-2 space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">Street Address</label>
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="1245 Serenity Lane, Suite 400" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">City</label>
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="San Francisco" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">State</label>
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="CA" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">ZIP</label>
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="94103" type="text"/>
+</div>
+</div>
+</form>
+</section>
+<!-- Payment Information -->
+<section class="bg-white p-8 border border-secondary-container ambient-shadow rounded-lg">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary-container">payments</span>
+<h2 class="font-headline-md text-headline-md">Payment Details</h2>
+</div>
+<div class="space-y-8">
+<!-- Quick Select Cards -->
+<div class="flex gap-4 mb-6">
+<div class="flex-1 p-4 border-2 border-primary-container bg-surface-container-low rounded-lg flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">credit_card</span>
+<span class="font-label-md text-label-md">Credit Card</span>
+</div>
+<div class="w-4 h-4 rounded-full border-4 border-primary-container"></div>
+</div>
+<div class="flex-1 p-4 border border-secondary-container rounded-lg flex items-center justify-between cursor-pointer opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Digital Wallet</span>
+</div>
+<div class="w-4 h-4 rounded-full border border-secondary-container"></div>
+</div>
+</div>
+<!-- Card Inputs -->
+<div class="space-y-6">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">Card Number</label>
+<div class="relative">
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="•••• •••• •••• 4492" type="text"/>
+<div class="absolute right-0 bottom-3 flex gap-2">
+<span class="material-symbols-outlined text-secondary opacity-50">branding_watermark</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">Expiry Date</label>
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="MM / YY" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-[#B5A391]">CVV</label>
+<input class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim" placeholder="•••" type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 py-4 text-secondary">
+<span class="material-symbols-outlined text-sm">shield</span>
+<p class="font-label-sm text-label-sm">Your payment data is encrypted and processed via secure medical-grade protocols.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary (Sticky) -->
+<div class="lg:col-span-5">
+<aside class="sticky top-32 space-y-8">
+<div class="bg-surface-container p-8 border border-secondary-container rounded-lg">
+<h2 class="font-headline-md text-headline-md mb-8">Order Summary</h2>
+<!-- Items -->
+<div class="space-y-6 mb-8">
+<div class="flex gap-4">
+<div class="w-20 h-20 bg-white border border-secondary-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional, high-end close-up photograph of a sleek, minimalist AuraMed medical dispensing device. The device is constructed from brushed aluminum and polished glass, featuring soft, atmospheric light reflections. It is placed in a clean, modern domestic kitchen setting with soft-focus marble countertops and warm ambient lighting. The overall mood is one of reliable sophistication and quiet luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpfCmfoemPfPjeX3Rthn_VsEF9chu1D-1XGHpeALzLQeyppAe3QoowfopIH09NMSfz5rtldziDhp2Y-RhllZAslzV4QYIP23gtlt8k1CU3yUkOuJLzE-pl282aHpuoZr9QdN--OAl-Ysqu46SkdZeTU8gCicpQv1vpAlnNzXbxKxrhdAE0auAF3zzMcqu4wcqnet9PC-cbW3MyN1kXbT7LL6ZlaSIxTn3Z3lvDIbnsmiXfRtwgRB7SDIua7Ko5AAyjEQQVyAceuA"/>
+</div>
+<div class="flex flex-grow flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-[18px] text-primary">AuraMed Elite Gen 2</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Intelligent Dispensing Unit</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-secondary">Qty: 1</span>
+<span class="font-body-md font-semibold text-primary">$1,299.00</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-20 h-20 bg-white border border-secondary-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional studio product shot of a premium medication subscription bundle. The image shows a beautifully designed, high-quality cardbox box with elegant copper-foil typography. Beside the box, a clean glass bottle contains organized, high-quality capsules. The scene is lit with bright, neutral lighting that emphasizes clinical precision and high-end manufacturing. The aesthetic is minimalist and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4o8pbHypIZ2iqF9cE90mNKpi913OCQZYUHt5CfqMie9h4YhyioXDuaIXN1ywfoPSV4Vd7X7y67fcbjxD5A2LyQMwwHQ8qRo89gPSsd--aCTICY6YJQd0X1yKYoSXStCWiAeBO4t-edpwd7a4jjiiuX6V3kUUdSJy1ID1b29OH9GJ67hcHY7PJlqoPZ-ACgVwO_ayVwHoV8FZeJYW-vhgqAj5H8s5UjZZeJKrHcTW_WFQA46m5sallkbaDtA7txFpJndLzoNYXfw"/>
+</div>
+<div class="flex flex-grow flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-[18px] text-primary">Care Bundle</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Annual Precision Subscription</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-secondary">Qty: 1</span>
+<span class="font-body-md font-semibold text-primary">$240.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pricing Breakdown -->
+<div class="border-t border-outline-variant pt-6 space-y-3">
+<div class="flex justify-between font-label-md text-label-md text-secondary">
+<span>Subtotal</span>
+<span>$1,539.00</span>
+</div>
+<div class="flex justify-between font-label-md text-label-md text-secondary">
+<span>Premium Shipping</span>
+<span class="text-on-secondary-fixed-variant">Complimentary</span>
+</div>
+<div class="flex justify-between font-label-md text-label-md text-secondary">
+<span>Estimated Tax</span>
+<span>$123.12</span>
+</div>
+<div class="flex justify-between pt-4 font-headline-md text-headline-md text-primary">
+<span>Total</span>
+<span>$1,662.12</span>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full mt-8 bg-primary-container text-white py-5 rounded-lg font-headline-md text-[18px] hover:opacity-90 transition-opacity duration-200 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">verified_user</span>
+                            Confirm &amp; Pay $1,662.12
+                        </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-4">
+                            By clicking confirm, you agree to AuraMed's Terms of Service.
+                        </p>
+</div>
+<!-- Trust Signals -->
+<div class="flex justify-around items-center px-4">
+<div class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span>
+<span class="font-label-sm text-label-sm text-center">FDA Registered</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined text-primary text-3xl">encrypted</span>
+<span class="font-label-sm text-label-sm text-center">HIPAA Compliant</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined text-primary text-3xl">workspace_premium</span>
+<span class="font-label-sm text-label-sm text-center">2 Year Warranty</span>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer (Restricted Version) -->
+<footer class="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container border-t border-secondary-container">
+<div class="font-headline-md text-headline-md text-primary">AuraMed</div>
+<div class="flex flex-col items-center gap-4">
+<div class="flex gap-8">
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">Privacy Policy</a>
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">Terms of Service</a>
+<a class="text-secondary hover:underline decoration-primary-fixed-dim transition-all font-label-sm text-label-sm" href="#">Support</a>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">© 2024 AuraMed Smart Systems. Reliable Sophistication in Health.</p>
+</div>
+<div class="flex gap-4 opacity-40">
+<span class="material-symbols-outlined">contactless</span>
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+</footer>
+<script>
+        // Micro-interaction for input fields
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.previousElementSibling.style.color = '#350e1b';
+                input.previousElementSibling.style.transition = 'color 0.2s ease';
+            });
+            input.addEventListener('blur', () => {
+                input.previousElementSibling.style.color = '#B5A391';
+            });
+        });
+
+        // Simple Card Format observer
+        const cardInput = document.querySelector('input[placeholder*="4492"]');
+        if(cardInput) {
+            cardInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                let formatted = value.match(/.{1,4}/g)?.join(' ') || '';
+                e.target.value = formatted.substring(0, 19);
+            });
+        }
+    </script>
+</body></html>

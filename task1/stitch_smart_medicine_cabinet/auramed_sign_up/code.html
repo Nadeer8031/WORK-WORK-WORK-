@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up | AuraMed Smart Systems</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#f7b4c4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c9c6bf",
+                    "on-secondary-container": "#64635c",
+                    "tertiary-container": "#241a0e",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#d5c2c5",
+                    "surface-container-low": "#fcf1f2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#524436",
+                    "on-primary-fixed-variant": "#683845",
+                    "tertiary": "#000000",
+                    "secondary-fixed": "#e5e2da",
+                    "outline": "#837376",
+                    "surface-container-highest": "#ebe0e1",
+                    "surface-container": "#f6ebec",
+                    "primary-container": "#350e1b",
+                    "surface-container-high": "#f1e6e6",
+                    "on-primary-container": "#ae7382",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f9eeef",
+                    "surface-tint": "#844f5d",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#ffd9e0",
+                    "inverse-surface": "#352f30",
+                    "on-tertiary-fixed": "#241a0e",
+                    "surface": "#fff8f8",
+                    "secondary-container": "#e2dfd7",
+                    "surface-dim": "#e2d7d8",
+                    "on-surface": "#1f1a1b",
+                    "on-primary-fixed": "#350e1b",
+                    "on-tertiary-container": "#928170",
+                    "on-secondary-fixed": "#1c1c17",
+                    "on-secondary-fixed-variant": "#484741",
+                    "secondary": "#605e58",
+                    "inverse-primary": "#f7b4c4",
+                    "surface-variant": "#ebe0e1",
+                    "on-surface-variant": "#514346",
+                    "tertiary-fixed": "#f4dfcb",
+                    "primary": "#000000",
+                    "on-background": "#1f1a1b",
+                    "background": "#fff8f8",
+                    "surface-bright": "#fff8f8",
+                    "tertiary-fixed-dim": "#d7c3b0",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["\"Source Serif 4\""],
+                    "headline-lg-mobile": ["\"Source Serif 4\""],
+                    "headline-md": ["\"Source Serif 4\""]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f8; /* background from theme */
+            overflow-x: hidden;
+        }
+        .ambient-shadow {
+            box-shadow: 0 10px 30px -5px rgba(53, 14, 27, 0.04), 0 4px 6px -2px rgba(53, 14, 27, 0.02);
+        }
+        .burgundy-accent {
+            color: #350e1b;
+        }
+        .bg-burgundy {
+            background-color: #350e1b;
+        }
+        .input-focus:focus {
+            border-color: #350e1b;
+            outline: none;
+            box-shadow: 0 0 0 1px #350e1b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-fixed-dim selection:text-primary-container">
+<!-- Main Content Wrapper -->
+<main class="min-h-screen flex flex-col md:flex-row items-stretch">
+<!-- Branding / Visual Sidebar (Desktop Only) -->
+<section class="hidden md:flex md:w-5/12 lg:w-1/2 relative bg-surface-container flex-col justify-between p-margin-desktop overflow-hidden border-r border-outline-variant">
+
+<div class="relative z-10">
+<a class="flex items-center gap-2" href="/">
+<span class="font-headline-md text-headline-md font-semibold text-primary">AuraMed</span>
+</a>
+</div>
+<div class="relative z-10 max-w-md">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-6">Experience Reliable Sophistication.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your health journey is personal. AuraMed integrates clinical precision with home sanctuary aesthetics to provide a seamless management experience.</p>
+</div>
+<div class="relative z-10">
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">© 2024 AuraMed Smart Systems</p>
+</div>
+</section>
+<!-- Sign Up Form Section -->
+<section class="flex-1 flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface">
+<!-- Mobile Header -->
+<div class="md:hidden w-full mb-12 flex justify-center">
+<span class="font-headline-md text-headline-md font-semibold text-primary">AuraMed</span>
+</div>
+<div class="w-full max-w-[440px]">
+<div class="mb-10 text-center md:text-left">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Create your account</h2>
+<p class="font-body-md text-on-surface-variant">Join the circle of precision health care.</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Username Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-outline" for="username">Username</label>
+<div class="relative">
+<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="username" name="username" placeholder="e.g. jsmith" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">person</span>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-outline" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="email" name="email" placeholder="name@example.com" type="email"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+</div>
+</div>
+<!-- Password Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-outline" for="password">Password</label>
+<div class="relative">
+<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="password" name="password" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-outline" for="confirm-password">Confirm</label>
+<div class="relative">
+<input class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim" id="confirm-password" name="confirm-password" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">shield</span>
+</div>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 py-2">
+<input class="mt-1 rounded-sm border-secondary-container text-primary-container focus:ring-primary-fixed-dim" id="terms" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface-variant leading-tight" for="terms">
+                            I agree to the <a class="text-primary hover:underline transition-all" href="#">Terms of Service</a> and <a class="text-primary hover:underline transition-all" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 bg-primary-container text-white font-label-md rounded-lg ambient-shadow hover:bg-opacity-90 active:scale-[0.98] transition-all duration-250 flex items-center justify-center gap-2" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Alternative Login -->
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-secondary-container"></div>
+<span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline">OR CONTINUE WITH</span>
+<div class="flex-grow border-t border-secondary-container"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center h-12 border border-secondary-container rounded-lg bg-white font-label-md text-primary hover:bg-surface-container-low transition-all duration-250" type="button">
+                            Google
+                        </button>
+<button class="flex items-center justify-center h-12 border border-secondary-container rounded-lg bg-white font-label-md text-primary hover:bg-surface-container-low transition-all duration-250" type="button">
+                            Apple ID
+                        </button>
+</div>
+<div class="pt-6 text-center">
+<p class="font-body-md text-on-surface-variant">
+                            Already have an account? 
+                            <a class="text-primary font-semibold hover:underline transition-all ml-1" href="#">Log In</a>
+</p>
+</div>
+</form>
+</div>
+</section>
+</main>
+<!-- Simple Footer for Legal -->
+<footer class="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container dark:bg-surface-container-low border-t border-secondary-container">
+<div class="font-headline-md text-headline-md text-primary">AuraMed</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-secondary font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">About Us</a>
+<a class="text-secondary font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Pricing</a>
+<a class="text-secondary font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Privacy Policy</a>
+<a class="text-secondary font-label-sm text-label-sm hover:underline decoration-primary-fixed-dim transition-all" href="#">Terms of Service</a>
+</div>
+<div class="text-on-surface font-label-sm text-label-sm opacity-60">© 2024 AuraMed Smart Systems.</div>
+</footer>
+<script>
+        // Password visibility toggle logic (optional enhancement)
+        document.querySelectorAll('input[type="password"]').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#350e1b';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#837376';
+            });
+        });
+
+        // Simple input highlight
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                const label = input.parentElement.parentElement.querySelector('label');
+                if (label) label.classList.replace('text-outline', 'text-primary');
+            });
+            input.addEventListener('blur', () => {
+                const label = input.parentElement.parentElement.querySelector('label');
+                if (label) label.classList.replace('text-primary', 'text-outline');
+            });
+        });
+    </script>
+</body></html>
