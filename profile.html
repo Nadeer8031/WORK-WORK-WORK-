@@ -138,6 +138,83 @@
     <main
       class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-screen"
     >
+      <!-- Logged-out state: shown until a session exists. BACKEND HOOK: once
+           real auth is wired up, this mini form can be replaced by a redirect
+           to login.html, or left as a lightweight inline login. -->
+      <div
+        id="profile-logged-out"
+        class="max-w-md mx-auto py-24 flex flex-col items-center text-center gap-4"
+      >
+        <span class="material-symbols-outlined text-5xl text-[#B5A391]"
+          >account_circle</span
+        >
+        <h2 class="font-headline-lg text-headline-lg text-primary">
+          Log In to Your Account
+        </h2>
+        <p class="text-secondary font-body-md max-w-sm">
+          Sign in to view your personal info, subscriptions, and order
+          history.
+        </p>
+        <form
+          id="profile-login-form"
+          class="w-full mt-4 space-y-4 text-left"
+          novalidate
+        >
+          <div class="space-y-1">
+            <label class="text-label-sm text-[#B5A391] uppercase"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="profile-login-email"
+              class="w-full border border-[#DFDCD4] rounded px-4 py-3 font-body-md text-on-surface bg-white focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="you@example.com"
+            />
+            <div
+              class="errors font-label-sm text-label-sm text-red-600 min-h-[16px]"
+              id="profile_email_error"
+            ></div>
+          </div>
+          <div class="space-y-1">
+            <label class="text-label-sm text-[#B5A391] uppercase"
+              >Password</label
+            >
+            <div class="relative">
+              <input
+                type="password"
+                id="profile-login-password"
+                class="w-full border border-[#DFDCD4] rounded px-4 py-3 pr-10 font-body-md text-on-surface bg-white focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                id="profile-login-password-toggle"
+                class="absolute right-0 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-slow px-3"
+              >
+                <span class="material-symbols-outlined">visibility</span>
+              </button>
+            </div>
+            <div
+              class="errors font-label-sm text-label-sm text-red-600 min-h-[16px]"
+              id="profile_pass_error"
+            ></div>
+          </div>
+          <button
+            type="submit"
+            class="w-full px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded transition-all hover:opacity-90"
+          >
+            Log In
+          </button>
+        </form>
+        <p class="text-label-md text-secondary mt-2">
+          Don't have an account?
+          <a class="text-primary hover:underline" href="signup.html"
+            >Sign Up</a
+          >
+        </p>
+      </div>
+      <!-- Authenticated profile content: hidden until a session exists -->
+      <div id="profile-authenticated" class="hidden">
       <!-- Header Section -->
       <section class="mb-12">
         <div
@@ -149,20 +226,24 @@
               >Member Account</span
             >
             <h2 class="font-headline-lg text-headline-lg text-primary">
-              Welcome, Julianne
+              Welcome, <span id="profile-greeting-name">Julianne</span>
             </h2>
           </div>
           <div class="flex gap-4">
             <button
+              id="edit-profile-btn"
+              type="button"
               class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded transition-all hover:opacity-90"
             >
               Edit Profile
             </button>
-            <a
+            <button
+              id="logout-btn"
+              type="button"
               class="px-6 py-3 border border-[#DFDCD4] text-primary font-label-md text-label-md rounded hover:bg-surface-container-low transition-all flex items-center"
-              href="login.html"
-              >Logout</a
             >
+              Logout
+            </button>
           </div>
         </div>
       </section>
@@ -187,10 +268,15 @@
               </div>
             </div>
             <h3 class="font-headline-md text-headline-md text-primary">
-              Julianne V.
+              <span id="profile-full-name">Julianne V.</span>
             </h3>
+            <input
+              type="text"
+              id="profile-full-name-input"
+              class="hidden w-full mt-1 text-center font-headline-md text-headline-md text-primary bg-white border border-[#DFDCD4] rounded px-3 py-1"
+            />
             <p class="text-label-md text-[#B5A391]">
-              Gold Tier Member since 2022
+              <span id="profile-tier">Gold Tier Member since 2022</span>
             </p>
           </div>
           <div class="space-y-4 pt-4 border-t border-[#DFDCD4]">
@@ -198,21 +284,40 @@
               <label class="text-label-sm text-[#B5A391] uppercase"
                 >Email Address</label
               >
-              <p class="font-body-md text-on-surface">
+              <p class="font-body-md text-on-surface" id="profile-email">
                 j.vance@auramed-concierge.com
               </p>
+              <input
+                type="email"
+                id="profile-email-input"
+                class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
             </div>
             <div>
               <label class="text-label-sm text-[#B5A391] uppercase"
                 >Contact Number</label
               >
-              <p class="font-body-md text-on-surface">+1 (555) 012-8843</p>
+              <p class="font-body-md text-on-surface" id="profile-phone">
+                +1 (555) 012-8843
+              </p>
+              <input
+                type="tel"
+                id="profile-phone-input"
+                class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
             </div>
             <div>
               <label class="text-label-sm text-[#B5A391] uppercase"
                 >Primary Location</label
               >
-              <p class="font-body-md text-on-surface">San Francisco, CA</p>
+              <p class="font-body-md text-on-surface" id="profile-location">
+                San Francisco, CA
+              </p>
+              <input
+                type="text"
+                id="profile-location-input"
+                class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
             </div>
           </div>
         </div>
@@ -265,176 +370,36 @@
                 Order History
               </h3>
               <button
-                class="text-label-md text-primary hover:underline transition-all"
+                id="order-history-view-all"
+                class="text-label-md text-primary hover:underline transition-all hidden"
               >
                 View All
               </button>
             </div>
-            <div class="divide-y divide-[#DFDCD4]">
-              <!-- Order Row 1 -->
+            <div class="divide-y divide-[#DFDCD4]" id="order-history-list">
+              <!-- BACKEND HOOK: render real order rows here (see the removed
+                   row markup in this file's history for the card pattern).
+                   The empty state below shows automatically whenever there
+                   are no orders, and should be removed once rows are added. -->
               <div
-                class="px-8 py-6 hover:bg-surface-bright transition-colors group"
+                class="flex flex-col items-center justify-center text-center gap-3 px-8 py-16"
+                id="order-history-empty"
               >
-                <div
-                  class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+                <span class="material-symbols-outlined text-4xl text-[#B5A391]"
+                  >receipt_long</span
                 >
-                  <div class="flex items-center gap-6">
-                    <div
-                      class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300"
-                    >
-                      <span class="material-symbols-outlined text-3xl"
-                        >medication</span
-                      >
-                    </div>
-                    <div>
-                      <p
-                        class="font-label-sm text-label-sm text-[#B5A391] uppercase"
-                      >
-                        Order #AM-88421
-                      </p>
-                      <h4
-                        class="font-body-lg text-body-lg text-primary font-medium"
-                      >
-                        Luxe Wellness Bundle — Q4
-                      </h4>
-                      <p class="text-label-md text-secondary">
-                        Delivered on Sept 28, 2024
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-8">
-                    <div class="text-right">
-                      <p
-                        class="font-label-md text-label-md text-primary font-bold"
-                      >
-                        $249.00
-                      </p>
-                      <span
-                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider"
-                      >
-                        <span
-                          class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"
-                        ></span>
-                        Success
-                      </span>
-                    </div>
-                    <button
-                      class="material-symbols-outlined text-[#B5A391] hover:text-primary"
-                    >
-                      chevron_right
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Order Row 2 -->
-              <div
-                class="px-8 py-6 hover:bg-surface-bright transition-colors group"
-              >
-                <div
-                  class="flex flex-col md:flex-row md:items-center justify-between gap-4"
+                <h4 class="font-headline-md text-headline-md text-primary">
+                  No orders yet
+                </h4>
+                <p class="text-secondary font-body-md max-w-sm">
+                  Your completed and in-progress orders will show up here
+                  once you've made a purchase.
+                </p>
+                <a
+                  class="mt-2 inline-flex items-center justify-center bg-primary-container text-white px-6 py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all duration-250"
+                  href="products.html"
+                  >Browse Products &amp; Bundles</a
                 >
-                  <div class="flex items-center gap-6">
-                    <div
-                      class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300"
-                    >
-                      <span class="material-symbols-outlined text-3xl"
-                        >biotech</span
-                      >
-                    </div>
-                    <div>
-                      <p
-                        class="font-label-sm text-label-sm text-[#B5A391] uppercase"
-                      >
-                        Order #AM-88104
-                      </p>
-                      <h4
-                        class="font-body-lg text-body-lg text-primary font-medium"
-                      >
-                        AuraMed Smart Sensor Kit
-                      </h4>
-                      <p class="text-label-md text-secondary">
-                        Delivered on Aug 12, 2024
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-8">
-                    <div class="text-right">
-                      <p
-                        class="font-label-md text-label-md text-primary font-bold"
-                      >
-                        $1,200.00
-                      </p>
-                      <span
-                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider"
-                      >
-                        <span
-                          class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"
-                        ></span>
-                        Success
-                      </span>
-                    </div>
-                    <button
-                      class="material-symbols-outlined text-[#B5A391] hover:text-primary"
-                    >
-                      chevron_right
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Order Row 3 -->
-              <div
-                class="px-8 py-6 hover:bg-surface-bright transition-colors group"
-              >
-                <div
-                  class="flex flex-col md:flex-row md:items-center justify-between gap-4"
-                >
-                  <div class="flex items-center gap-6">
-                    <div
-                      class="w-16 h-16 bg-surface-container rounded flex items-center justify-center text-[#B5A391] group-hover:bg-primary-fixed-dim group-hover:text-primary transition-all duration-300"
-                    >
-                      <span class="material-symbols-outlined text-3xl"
-                        >pill</span
-                      >
-                    </div>
-                    <div>
-                      <p
-                        class="font-label-sm text-label-sm text-[#B5A391] uppercase"
-                      >
-                        Order #AM-87552
-                      </p>
-                      <h4
-                        class="font-body-lg text-body-lg text-primary font-medium"
-                      >
-                        Metabolic Balance Refill
-                      </h4>
-                      <p class="text-label-md text-secondary">
-                        Delivered on June 05, 2024
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-8">
-                    <div class="text-right">
-                      <p
-                        class="font-label-md text-label-md text-primary font-bold"
-                      >
-                        $89.00
-                      </p>
-                      <span
-                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#E8F5E9] text-[#2E7D32] text-[11px] font-bold uppercase tracking-wider"
-                      >
-                        <span
-                          class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"
-                        ></span>
-                        Success
-                      </span>
-                    </div>
-                    <button
-                      class="material-symbols-outlined text-[#B5A391] hover:text-primary"
-                    >
-                      chevron_right
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -478,6 +443,8 @@
           >
         </div>
       </section>
+      </div>
+      <!-- /#profile-authenticated -->
     </main>
     <!-- Footer -->
     <footer
@@ -601,6 +568,7 @@
         </div>
       </div>
     </footer>
+    <script src="js/auth-store.js"></script>
     <script src="js/profile.js"></script>
   </body>
 </html>
