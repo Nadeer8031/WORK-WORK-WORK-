@@ -169,16 +169,21 @@
                 Shipping Address
               </h2>
             </div>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form id="checkoutForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="md:col-span-2 space-y-1">
                 <label class="font-label-md text-label-md text-[#B5A391]"
                   >Full Name</label
                 >
                 <input
                   class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                  id="fullName"
                   placeholder="Dr. Julian Thorne"
                   type="text"
                 />
+                <div
+                  class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                  id="fullName_error"
+                ></div>
               </div>
               <div class="md:col-span-2 space-y-1">
                 <label class="font-label-md text-label-md text-[#B5A391]"
@@ -186,9 +191,14 @@
                 >
                 <input
                   class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                  id="streetAddress"
                   placeholder="1245 Serenity Lane, Suite 400"
                   type="text"
                 />
+                <div
+                  class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                  id="streetAddress_error"
+                ></div>
               </div>
               <div class="space-y-1">
                 <label class="font-label-md text-label-md text-[#B5A391]"
@@ -196,9 +206,14 @@
                 >
                 <input
                   class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                  id="city"
                   placeholder="San Francisco"
                   type="text"
                 />
+                <div
+                  class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                  id="city_error"
+                ></div>
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-1">
@@ -207,9 +222,14 @@
                   >
                   <input
                     class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                    id="state"
                     placeholder="CA"
                     type="text"
                   />
+                  <div
+                    class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                    id="state_error"
+                  ></div>
                 </div>
                 <div class="space-y-1">
                   <label class="font-label-md text-label-md text-[#B5A391]"
@@ -217,9 +237,14 @@
                   >
                   <input
                     class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                    id="zip"
                     placeholder="94103"
                     type="text"
                   />
+                  <div
+                    class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                    id="zip_error"
+                  ></div>
                 </div>
               </div>
             </form>
@@ -251,21 +276,6 @@
                     class="w-4 h-4 rounded-full border-4 border-primary-container"
                   ></div>
                 </div>
-                <!-- <div
-                  class="flex-1 p-4 border border-secondary-container rounded-lg flex items-center justify-between cursor-pointer opacity-60"
-                >
-                  <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined"
-                      >account_balance_wallet</span
-                    >
-                    <span class="font-label-md text-label-md"
-                      >Digital Wallet</span
-                    >
-                  </div>
-                  <div
-                    class="w-4 h-4 rounded-full border border-secondary-container"
-                  ></div>
-                </div> -->
               </div>
               <!-- Card Inputs -->
               <div class="space-y-6">
@@ -276,6 +286,7 @@
                   <div class="relative">
                     <input
                       class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                      id="cardNumber"
                       placeholder="•••• •••• •••• 4492"
                       type="text"
                     />
@@ -286,6 +297,10 @@
                       >
                     </div>
                   </div>
+                  <div
+                    class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                    id="cardNumber_error"
+                  ></div>
                 </div>
                 <div class="grid grid-cols-2 gap-8">
                   <div class="space-y-1">
@@ -294,9 +309,14 @@
                     >
                     <input
                       class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                      id="expiryDate"
                       placeholder="MM / YY"
                       type="text"
                     />
+                    <div
+                      class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                      id="expiryDate_error"
+                    ></div>
                   </div>
                   <div class="space-y-1">
                     <label class="font-label-md text-label-md text-[#B5A391]"
@@ -304,9 +324,14 @@
                     >
                     <input
                       class="w-full border-0 border-b border-secondary-container py-3 px-0 bg-transparent input-focus-state text-primary placeholder:text-secondary-fixed-dim"
+                      id="cvv"
                       placeholder="•••"
                       type="text"
                     />
+                    <div
+                      class="error-message font-label-sm text-label-sm text-error min-h-[16px]"
+                      id="cvv_error"
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -363,6 +388,8 @@
               <!-- CTA -->
               <button
                 class="w-full mt-8 bg-primary-container text-white py-5 rounded-lg font-headline-md text-[18px] hover:opacity-90 transition-opacity duration-200 flex items-center justify-center gap-3"
+                form="checkoutForm"
+                type="submit"
               >
                 <span class="material-symbols-outlined">verified_user</span>
                 <span id="checkout-cta-label">Confirm &amp; Pay $0.00</span>
