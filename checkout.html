@@ -329,78 +329,15 @@
               <h2 class="font-headline-md text-headline-md mb-8">
                 Order Summary
               </h2>
-              <!-- Items -->
-              <div class="space-y-6 mb-8">
-                <div class="flex gap-4">
-                  <div
-                    class="w-20 h-20 bg-white border border-secondary-container rounded-lg overflow-hidden flex-shrink-0"
-                  >
-                    <img
-                      class="w-full h-full object-cover"
-                      data-alt="A professional, high-end close-up photograph of a sleek, minimalist AuraMed medical dispensing device. The device is constructed from brushed aluminum and polished glass, featuring soft, atmospheric light reflections. It is placed in a clean, modern domestic kitchen setting with soft-focus marble countertops and warm ambient lighting. The overall mood is one of reliable sophistication and quiet luxury."
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpfCmfoemPfPjeX3Rthn_VsEF9chu1D-1XGHpeALzLQeyppAe3QoowfopIH09NMSfz5rtldziDhp2Y-RhllZAslzV4QYIP23gtlt8k1CU3yUkOuJLzE-pl282aHpuoZr9QdN--OAl-Ysqu46SkdZeTU8gCicpQv1vpAlnNzXbxKxrhdAE0auAF3zzMcqu4wcqnet9PC-cbW3MyN1kXbT7LL6ZlaSIxTn3Z3lvDIbnsmiXfRtwgRB7SDIua7Ko5AAyjEQQVyAceuA"
-                    />
-                  </div>
-                  <div class="flex flex-grow flex-col justify-between">
-                    <div>
-                      <h3 class="font-headline-md text-[18px] text-primary">
-                        AuraMed Elite Gen 2
-                      </h3>
-                      <p
-                        class="font-label-md text-label-md text-on-surface-variant"
-                      >
-                        Intelligent Dispensing Unit
-                      </p>
-                    </div>
-                    <div class="flex justify-between items-center">
-                      <span class="font-label-md text-label-md text-secondary"
-                        >Qty: 1</span
-                      >
-                      <span class="font-body-md font-semibold text-primary"
-                        >$1,299.00</span
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="flex gap-4">
-                  <div
-                    class="w-20 h-20 bg-white border border-secondary-container rounded-lg overflow-hidden flex-shrink-0"
-                  >
-                    <img
-                      class="w-full h-full object-cover"
-                      data-alt="A professional studio product shot of a premium medication subscription bundle. The image shows a beautifully designed, high-quality cardbox box with elegant copper-foil typography. Beside the box, a clean glass bottle contains organized, high-quality capsules. The scene is lit with bright, neutral lighting that emphasizes clinical precision and high-end manufacturing. The aesthetic is minimalist and sophisticated."
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4o8pbHypIZ2iqF9cE90mNKpi913OCQZYUHt5CfqMie9h4YhyioXDuaIXN1ywfoPSV4Vd7X7y67fcbjxD5A2LyQMwwHQ8qRo89gPSsd--aCTICY6YJQd0X1yKYoSXStCWiAeBO4t-edpwd7a4jjiiuX6V3kUUdSJy1ID1b29OH9GJ67hcHY7PJlqoPZ-ACgVwO_ayVwHoV8FZeJYW-vhgqAj5H8s5UjZZeJKrHcTW_WFQA46m5sallkbaDtA7txFpJndLzoNYXfw"
-                    />
-                  </div>
-                  <div class="flex flex-grow flex-col justify-between">
-                    <div>
-                      <h3 class="font-headline-md text-[18px] text-primary">
-                        Care Bundle
-                      </h3>
-                      <p
-                        class="font-label-md text-label-md text-on-surface-variant"
-                      >
-                        Annual Precision Subscription
-                      </p>
-                    </div>
-                    <div class="flex justify-between items-center">
-                      <span class="font-label-md text-label-md text-secondary"
-                        >Qty: 1</span
-                      >
-                      <span class="font-body-md font-semibold text-primary"
-                        >$240.00</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <!-- Items: BACKEND HOOK — populated live from the shared cart store by checkout.js -->
+              <div class="space-y-6 mb-8" id="checkout-items"></div>
               <!-- Pricing Breakdown -->
               <div class="border-t border-outline-variant pt-6 space-y-3">
                 <div
                   class="flex justify-between font-label-md text-label-md text-secondary"
                 >
                   <span>Subtotal</span>
-                  <span>$1,539.00</span>
+                  <span id="checkout-subtotal">$0.00</span>
                 </div>
                 <div
                   class="flex justify-between font-label-md text-label-md text-secondary"
@@ -414,13 +351,13 @@
                   class="flex justify-between font-label-md text-label-md text-secondary"
                 >
                   <span>Estimated Tax</span>
-                  <span>$123.12</span>
+                  <span id="checkout-tax">$0.00</span>
                 </div>
                 <div
                   class="flex justify-between pt-4 font-headline-md text-headline-md text-primary"
                 >
                   <span>Total</span>
-                  <span>$1,662.12</span>
+                  <span id="checkout-total">$0.00</span>
                 </div>
               </div>
               <!-- CTA -->
@@ -428,7 +365,7 @@
                 class="w-full mt-8 bg-primary-container text-white py-5 rounded-lg font-headline-md text-[18px] hover:opacity-90 transition-opacity duration-200 flex items-center justify-center gap-3"
               >
                 <span class="material-symbols-outlined">verified_user</span>
-                Confirm &amp; Pay $1,662.12
+                <span id="checkout-cta-label">Confirm &amp; Pay $0.00</span>
               </button>
               <p
                 class="text-center font-label-sm text-label-sm text-on-surface-variant mt-4"
@@ -589,6 +526,7 @@
         </div>
       </div>
     </footer>
+    <script src="js/cart-store.js"></script>
     <script src="js/checkout.js"></script>
   </body>
 </html>

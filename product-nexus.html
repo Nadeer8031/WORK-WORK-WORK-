@@ -270,7 +270,7 @@
                       >remove</span
                     >
                   </button>
-                  <span class="flex-1 text-center font-label-md">1</span>
+                  <span class="flex-1 text-center font-label-md" id="nexus-qty">1</span>
                   <button
                     class="p-1 hover:text-primary transition-colors"
                     onclick="
@@ -291,21 +291,23 @@
                 >
                 <select
                   class="w-full border-secondary-container rounded p-2 font-label-md focus:ring-primary focus:border-primary bg-white"
+                  id="nexus-frequency"
                 >
                   <option>One-time Purchase</option>
                   <option>Quarterly Refill (Save 10%)</option>
                 </select>
               </div>
             </div>
-            <a
+            <button
+              type="button"
+              id="nexus-add-to-cart"
               class="w-full py-5 bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-widest rounded-lg hover:opacity-90 transition-all duration-250 flex items-center justify-center gap-3 active:scale-[0.98]"
-              href="cart.html"
             >
               <span class="material-symbols-outlined" data-icon="shopping_bag"
                 >shopping_bag</span
               >
               Add to Cart
-            </a>
+            </button>
             <a
               class="w-full py-5 border border-secondary-container text-primary font-label-md text-label-md uppercase tracking-widest rounded-lg hover:bg-surface-container transition-all duration-250 active:scale-[0.98] flex items-center justify-center"
               href="schedule.html"
@@ -621,6 +623,7 @@
         </div>
       </div>
     </footer>
+    <script src="js/cart-store.js"></script>
     <script src="js/product-nexus.js"></script>
   </body>
 </html>

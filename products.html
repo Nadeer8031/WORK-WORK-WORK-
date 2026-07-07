@@ -182,8 +182,15 @@
               <div class="font-headline-md text-primary mb-8">$2,499.00</div>
               <button
                 class="bg-primary text-on-primary px-8 py-3 font-label-md text-label-md transition-all hover:opacity-90"
+                onclick="addProductToCart({
+                  id: 'grand-pro',
+                  name: 'AuraMed Grand Pro',
+                  subtitle: 'Signature Series',
+                  price: 2499.00,
+                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA2F2t5q0ZgWZp64iRskt08vTzkK1NlRlzimV8a5MO-I3ZB-WwudJ_C25Uao3-XNfNRfu95uad9MZDe8I1RwmxJbiT8m5uQTLRckY0_vkVYp25T_JdjKd-NpYnCKoIs2Ep62wMWOxqoauny9q_h9fph7hiy-0iix8LthLvw06JVLccgsSy3rJ-K-lXD1gcuzkIoyKk7Ybr3-BYEOjleXrxReTX139XzIAXV3SgK_TWLXhipy5Irv-6MRqI590A0bsgK5VhgfH1bfw'
+                })"
               >
-                View Specifications
+                Add to Cart
               </button>
             </div>
             <div
@@ -221,6 +228,14 @@
               <span
                 class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors"
                 data-icon="arrow_forward"
+                title="Add to Cart"
+                onclick="addProductToCart({
+                  id: 'slimline',
+                  name: 'AuraMed SlimLine',
+                  subtitle: 'Compact Sanctuary Model',
+                  price: 1250.00,
+                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCY9vNhJkh2E4y10BCGRURXbbXQ5sfi_zmXoWKNkdwG9O04GuPaU7wFdNannSOH4LXenLFQUBGsbRUr-fs-DB4od-6StkmlU6dM13ioJaHD1iM__VGhsf_u01eGiCAVMYUUsRSgxeHyq5KMCbfq4NHZmVrXFHxJAPMvL4cm9PgI2C54dFtbv2FizJeIbACW659hNAMuawEcpHz-fRsU7qLMNVHscal7h9vS7DG9XdLjPPLumSgC026BtE_N5jR6PRhU_Jg5dZWW-A'
+                })"
                 >arrow_forward</span
               >
             </div>
@@ -280,8 +295,15 @@
               </div>
               <button
                 class="mt-4 border border-secondary-fixed-dim text-primary px-4 py-2 text-label-md font-label-md w-fit hover:bg-surface-container transition-colors"
+                onclick="addProductToCart({
+                  id: 'nomad',
+                  name: 'AuraMed Nomad',
+                  subtitle: 'Global Travel Case',
+                  price: 450.00,
+                  image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlzgy-HjhnuKT7d8pH6c9cVFul3tdjNyXpU-CVrzpiEwi6b2sPZ0JzFHb0CCKcZ7-HNmYzwZ2IF83QWP31jU2LY9vQPpI6lKAJnZ_q8tLdKyomy7L5KV-AErpkwY2zLZyBARtG3Zkj67aGbnnYQeKB1HH1Hn1KqeJZWlQySHQ-FlDGMUd0KrfxMy1g39_VE-j18LMmTB24Vnk5tSNPuC7Sa3bSQwbW7N_kq07o7JkMdvysJlZGZZFUXI73Fh56nnmY8jNiWx5uMA'
+                })"
               >
-                Details
+                Add to Cart
               </button>
             </div>
           </div>
@@ -380,9 +402,14 @@
               >
                 <div class="font-headline-md text-primary">$1,550.00</div>
                 <a
-                  class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform"
-                  href="#"
-                  >View Details
+                  class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform cursor-pointer"
+                  onclick="addProductToCart({
+                    id: 'essential-professional',
+                    name: 'Essential Professional Bundle',
+                    subtitle: 'SlimLine + Nomad + Leather Sleeve',
+                    price: 1550.00
+                  }); return false;"
+                  >Add to Cart
                   <span
                     class="material-symbols-outlined"
                     data-icon="chevron_right"
@@ -418,9 +445,14 @@
               >
                 <div class="font-headline-md text-primary">$4,499.00</div>
                 <a
-                  class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform"
-                  href="#"
-                  >View Details
+                  class="text-primary font-label-md flex items-center gap-2 group-hover:translate-x-2 transition-transform cursor-pointer"
+                  onclick="addProductToCart({
+                    id: 'heritage-multi-user',
+                    name: 'Heritage Multi-User Bundle',
+                    subtitle: '2x Grand Pro, Unlimited Accounts',
+                    price: 4499.00
+                  }); return false;"
+                  >Add to Cart
                   <span
                     class="material-symbols-outlined"
                     data-icon="chevron_right"
@@ -600,6 +632,7 @@
         </div>
       </div>
     </footer>
+    <script src="js/cart-store.js"></script>
     <script src="js/products.js"></script>
   </body>
 </html>

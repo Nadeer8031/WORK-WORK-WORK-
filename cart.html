@@ -212,9 +212,11 @@
               </div>
             </div>
             <div class="space-y-3">
-              <a
-                class="w-full bg-primary text-on-primary py-4 px-6 font-label-md text-label-md hover:bg-primary-container transition-all duration-250 flex items-center justify-center gap-2 group"
-                href="checkout.html"
+              <button
+                type="button"
+                id="checkout-btn"
+                disabled
+                class="w-full bg-primary text-on-primary py-4 px-6 font-label-md text-label-md hover:bg-primary-container transition-all duration-250 flex items-center justify-center gap-2 group disabled:bg-secondary-container disabled:text-secondary disabled:cursor-not-allowed disabled:hover:bg-secondary-container"
               >
                 Proceed to Checkout
                 <span
@@ -222,7 +224,7 @@
                   data-icon="arrow_forward"
                   >arrow_forward</span
                 >
-              </a>
+              </button>
               <a
                 class="w-full border border-secondary-container text-primary py-4 px-6 font-label-md text-label-md hover:bg-surface-container-high transition-all duration-250 flex items-center justify-center"
                 href="products.html"
@@ -398,6 +400,7 @@
         </div>
       </div>
     </footer>
+    <script src="js/cart-store.js"></script>
     <script src="js/cart.js"></script>
   </body>
 </html>

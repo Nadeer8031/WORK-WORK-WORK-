@@ -15,6 +15,29 @@
             const fill = document.querySelector('.inventory-fill');
             fill.style.width = '25%'; // Trigger transition
         });
+
+        // Add to Cart: read the selected quantity/frequency and push the
+        // AuraCore Advanced Care Bundle into the shared cart, then go to cart.
+        (function () {
+            var addBtn = document.getElementById('auracore-add-to-cart');
+            if (!addBtn || !window.AuraCart) return;
+            addBtn.addEventListener('click', function () {
+                var qtyEl = document.getElementById('auracore-qty');
+                var freqEl = document.getElementById('auracore-frequency');
+                var qty = qtyEl ? parseInt(qtyEl.innerText, 10) || 1 : 1;
+                var frequency = freqEl ? freqEl.value : 'One-time Purchase';
+                window.AuraCart.addToCart({
+                    id: 'auracore-bundle',
+                    name: 'AuraCore Advanced Care Bundle',
+                    subtitle: frequency,
+                    price: 1249.0,
+                    image:
+                        'https://lh3.googleusercontent.com/aida-public/AB6AXuDwNXaARTIl-j-AXaok2dm1NTITAT0Kt05-rGlMQ0WoXI_OQpA23qn75Ypd8z9ecXal2yaqsKpfKGDpewtuAZi_SwzIeyF1R7M5Sfa0XZB92Im6jD5TBpi54PWAa74UAohB2xttm2w35F5Oa6iyRMggyrzFzA052X-7Qi9lSD4zGLXttQi14aEleOli7hYmIqe9aOX22hu881zjaC3Wb02O2BkInKDzJw-zwOwPoE5fTdTvGeycAOEcOaNo7LJqsysJOW-RVTD6LA',
+                    qty: qty,
+                });
+                window.location.href = 'cart.html';
+            });
+        })();
     
 
 (function () {

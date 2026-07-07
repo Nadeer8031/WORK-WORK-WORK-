@@ -1,3 +1,18 @@
+        // Add a product/bundle straight from the listing page into the
+        // shared cart, then take the shopper to the cart to confirm it.
+        function addProductToCart(item) {
+            if (!window.AuraCart) return;
+            window.AuraCart.addToCart({
+                id: item.id,
+                name: item.name,
+                subtitle: item.subtitle || '',
+                price: item.price,
+                image: item.image || '',
+                qty: 1
+            });
+            window.location.href = 'cart.html';
+        }
+
         // Simple micro-interaction for inventory bars
         document.addEventListener('DOMContentLoaded', () => {
             const bars = document.querySelectorAll('.h-full.bg-primary');
