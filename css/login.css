@@ -1,28 +1,80 @@
-.material-symbols-outlined {
-  font-variation-settings:
-    "FILL" 0,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 24;
-  display: inline-block;
-  vertical-align: middle;
-}
-.ambient-shadow {
-  box-shadow: 0 20px 40px -10px rgba(53, 14, 27, 0.04);
+/* minimal extra polish */
+body {
+  background: #faf8f9;
 }
 .login-card {
-  background-color: #ffffff;
-  border: 1px solid #dfdcd4;
-  transition: box-shadow 250ms ease-in-out;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(52, 13, 26, 0.08);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
 }
-.login-card:hover {
-  box-shadow: 0 20px 40px -5px rgba(53, 14, 27, 0.06);
+.forgot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  color: #340d1a;
+  padding: 6px 12px 6px 8px;
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: 1px solid transparent;
+  margin-top: 2px !important;
+}
+.forgot-link:hover {
+  background: rgba(52, 13, 26, 0.04);
+  border-color: rgba(52, 13, 26, 0.1);
+  color: #1a060d;
+  transform: scale(1.02);
+}
+.forgot-link:active {
+  transform: scale(0.96);
+}
+.forgot-link .material-symbols-outlined {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+.forgot-link:hover .material-symbols-outlined {
+  transform: translateX(2px);
+}
+/* password toggle stays clean */
+.password-wrapper {
+  position: relative;
+}
+.toggle-password {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b5b62;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.toggle-password:hover {
+  background: rgba(52, 13, 26, 0.04);
+  color: #1a060d;
+}
+.toggle-password .material-symbols-outlined {
+  font-size: 22px;
 }
 .custom-input:focus {
   outline: none;
   border-bottom-color: #340d1a;
-  box-shadow: none;
 }
-.transition-slow {
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+/* center card on page */
+main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* header space */
+  padding-bottom: 40px;
+}
+.max-w-card {
+  max-width: 440px;
+  width: 100%;
 }
