@@ -164,7 +164,7 @@
           <p
             class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant"
           >
-            © 2024 Pill Pal Smart Systems
+            © 2026 Pill Pal Smart Systems
           </p>
         </div>
       </section>
@@ -185,15 +185,82 @@
               Join the circle of precision health care.
             </p>
           </div>
-          <form
+          <form class="signup-form" id="signupForm" novalidate method="GET">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your Username"
+              />
+              <div class="errors" id="username_error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+              />
+              <div class="errors" id="email_error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="pass"
+                name="password"
+                placeholder="Enter your password"
+              />
+              <div class="errors" id="pass_error"></div>
+            </div>
+            <div class="form-group">
+              <label for="confirm_password">Confirm Password</label>
+              <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Confirm your password"
+              />
+              <div class="errors" id="confirm_password_error"></div>
+            </div>
+
+            <div class="form-group terms-group">
+              <label class="terms-label">
+                <input type="checkbox" id="terms" name="terms" required />
+                <span
+                  >I agree to the <a href="#">Terms of Service</a> and
+                  <a href="#">Privacy Policy</a></span
+                >
+              </label>
+              <div class="errors" id="terms_error"></div>
+            </div>
+
+            <button
+              type="submit"
+              class="signup-btn"
+              onclick="return validateForm();"
+            >
+              Sign up
+            </button>
+
+            <p class="signup-link">
+              Already have an account? <a href="./login.html">Login</a>
+            </p>
+          </form>
+          <!-- <form
             action="#"
             class="space-y-6"
             id="signupForm"
             method="POST"
             novalidate
-          >
-            <!-- Username Field -->
-            <div class="space-y-2">
+          > -->
+          <!-- Username Field -->
+          <!-- <div class="space-y-2">
               <label
                 class="font-label-md text-label-md text-outline"
                 for="username"
@@ -216,9 +283,9 @@
                 class="errors font-label-sm text-label-sm text-error min-h-[16px]"
                 id="username_error"
               ></div>
-            </div>
-            <!-- Email Field -->
-            <div class="space-y-2">
+            </div> -->
+          <!-- Email Field -->
+          <!-- <div class="space-y-2">
               <label
                 class="font-label-md text-label-md text-outline"
                 for="email"
@@ -241,11 +308,11 @@
                 class="errors font-label-sm text-label-sm text-error min-h-[16px]"
                 id="email_error"
               ></div>
-            </div>
-            <!-- Password Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <!-- Password Field -->
-              <div class="space-y-2">
+            </div> -->
+          <!-- Password Grid -->
+          <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> -->
+          <!-- Password Field -->
+          <!-- <div class="space-y-2">
                 <label
                   class="font-label-md text-label-md text-outline"
                   for="password"
@@ -268,9 +335,9 @@
                   class="errors font-label-sm text-label-sm text-error min-h-[16px]"
                   id="pass_error"
                 ></div>
-              </div>
-              <!-- Confirm Password Field -->
-              <div class="space-y-2">
+              </div> -->
+          <!-- Confirm Password Field -->
+          <!-- <div class="space-y-2">
                 <label
                   class="font-label-md text-label-md text-outline"
                   for="confirm-password"
@@ -294,9 +361,9 @@
                   id="confirm_password_error"
                 ></div>
               </div>
-            </div>
-            <!-- Terms Checkbox -->
-            <div class="flex items-start gap-3 py-2">
+            </div> -->
+          <!-- Terms Checkbox -->
+          <!-- <div class="flex items-start gap-3 py-2">
               <input
                 class="mt-1 rounded-sm border-secondary-container text-primary-container focus:ring-primary-fixed-dim"
                 id="terms"
@@ -319,22 +386,22 @@
             <div
               class="errors font-label-sm text-label-sm text-error min-h-[16px] -mt-4"
               id="terms_error"
-            ></div>
-            <!-- Submit Button -->
-            <button
+            ></div> -->
+          <!-- Submit Button -->
+          <!-- <button
               class="w-full h-14 bg-primary-container text-white font-label-md rounded-lg ambient-shadow hover:bg-opacity-90 active:scale-[0.98] transition-all duration-250 flex items-center justify-center gap-2"
               type="submit"
             >
               Create Account
               <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-            <!-- Alternative Login -->
-            <div class="relative flex items-center py-4">
-              <div class="flex-grow border-t border-secondary-container"></div>
-              <!-- <span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline">OR CONTINUE WITH</span> -->
-              <div class="flex-grow border-t border-secondary-container"></div>
-            </div>
-            <!-- <div class="grid grid-cols-2 gap-4">
+            </button> -->
+          <!-- Alternative Login -->
+          <!-- <div class="relative flex items-center py-4">
+              <div class="flex-grow border-t border-secondary-container"></div> -->
+          <!-- <span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline">OR CONTINUE WITH</span> -->
+          <!-- <div class="flex-grow border-t border-secondary-container"></div>
+            </div> -->
+          <!-- <div class="grid grid-cols-2 gap-4">
 <button class="flex items-center justify-center h-12 border border-secondary-container rounded-lg bg-white font-label-md text-primary hover:bg-surface-container-low transition-all duration-250" type="button">
                             Google
                         </button>
@@ -342,7 +409,7 @@
                             Apple ID
                         </button>
 </div> -->
-            <div class="pt-6 text-center">
+          <!-- <div class="pt-6 text-center">
               <p class="font-body-md text-on-surface-variant">
                 Already have an account?
                 <a
@@ -352,12 +419,12 @@
                 >
               </p>
             </div>
-          </form>
+          </form> -->
         </div>
       </section>
     </main>
     <!-- Simple Footer for Legal -->
-    
+
     <script src="js/auth-store.js"></script>
     <script src="js/nav-auth.js"></script>
     <script src="js/signup.js"></script>

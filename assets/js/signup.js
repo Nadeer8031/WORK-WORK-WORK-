@@ -1,22 +1,14 @@
-        // Password visibility toggle logic (optional enhancement)
-        document.querySelectorAll('input[type="password"]').forEach(input => {
-            input.addEventListener('focus', () => {
-                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#350e1b';
-            });
-            input.addEventListener('blur', () => {
-                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#837376';
-            });
-        });
-
         // Simple input highlight
-        document.querySelectorAll('input').forEach(input => {
+        // (icon color swap on focus is handled entirely by CSS via #id:focus rules)
+        document.querySelectorAll('.form-group input').forEach(input => {
+            const group = input.closest('.form-group');
+            const label = group ? group.querySelector('label') : null;
+            if (!label) return;
             input.addEventListener('focus', () => {
-                const label = input.parentElement.parentElement.querySelector('label');
-                if (label) label.classList.replace('text-outline', 'text-primary');
+                label.classList.add('label-focused');
             });
             input.addEventListener('blur', () => {
-                const label = input.parentElement.parentElement.querySelector('label');
-                if (label) label.classList.replace('text-primary', 'text-outline');
+                label.classList.remove('label-focused');
             });
         });
     
@@ -63,8 +55,8 @@
   function validateForm() {
     var username = document.getElementById("username").value.trim();
     var email = document.getElementById("email").value.trim();
-    var pass = document.getElementById("password").value;
-    var confirmPass = document.getElementById("confirm-password").value;
+    var pass = document.getElementById("pass").value;
+    var confirmPass = document.getElementById("confirm_password").value;
     var terms = document.getElementById("terms");
 
     var username_error = document.getElementById("username_error");
@@ -152,11 +144,53 @@
   }
 
   form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
     var isValid = validateForm();
-    if (!isValid) {
-      e.preventDefault();
+    if (!isValid) return;
+
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("pass").value;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var email_error = document.getElementById("email_error");
+
+    var originalText = submitBtn ? submitBtn.textContent : "";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Creating account...";
     }
-    // If valid, the browser submits the form normally to the
-    // action/method set on #signupForm, so your PHP backend receives it.
+
+    var formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+
+    fetch("auth/register.php", { method: "POST", body: formData })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        if (data.success) {
+          if (window.AuraAuth) {
+            window.AuraAuth.login({
+              name: data.user.email.split("@")[0],
+              email: data.user.email,
+            });
+          }
+          window.location.href = "home.html";
+        } else {
+          email_error.textContent = data.message || "Could not create your account.";
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        }
+      })
+      .catch(function () {
+        email_error.textContent = "Something went wrong. Please try again.";
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
   });
 })();

@@ -129,15 +129,32 @@
                 if (!validateForm()) return;
 
                 var email = document.getElementById('profile-login-email').value.trim();
-                if (!window.AuraAuth) return;
-                window.AuraAuth.login({
-                    name: email.split('@')[0],
-                    email: email,
-                    phone: '',
-                    location: '',
-                    tier: DEFAULT_TIER,
-                });
-                renderProfile();
+                var password = document.getElementById('profile-login-password').value;
+                var pass_error = document.getElementById('profile_pass_error');
+
+                var formData = new FormData();
+                formData.append('email', email);
+                formData.append('password', password);
+
+                fetch('auth/login.php', { method: 'POST', body: formData })
+                    .then(function (res) { return res.json(); })
+                    .then(function (data) {
+                        if (data.success && window.AuraAuth) {
+                            window.AuraAuth.login({
+                                name: data.user.email.split('@')[0],
+                                email: data.user.email,
+                                phone: '',
+                                location: '',
+                                tier: DEFAULT_TIER,
+                            });
+                            renderProfile();
+                        } else {
+                            pass_error.textContent = data.message || 'Invalid email or password';
+                        }
+                    })
+                    .catch(function () {
+                        pass_error.textContent = 'Something went wrong. Please try again.';
+                    });
             });
         })();
 

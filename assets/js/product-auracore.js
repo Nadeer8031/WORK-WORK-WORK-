@@ -1,14 +1,34 @@
         // Micro-interaction: Update quantity count
         // Note: Inline logic added directly to button onclick for simplicity in this demo.
-        
-        // Micro-interaction: Image Hover Effects
-        document.querySelectorAll('.cursor-pointer').forEach(thumb => {
-            thumb.addEventListener('mouseenter', function() {
-                const mainImg = document.querySelector('.hero-zoom img');
-                const tempSrc = this.querySelector('img').src;
-                // In a real app, we would swap sources here.
+
+        var AURACORE_BASE_PRICE = 2299.0;
+
+        // Image gallery: clicking a thumbnail swaps the main hero image and
+        // marks that thumbnail as the active one.
+        (function () {
+            var heroImg = document.getElementById('auracore-hero-img');
+            var thumbs = document.querySelectorAll('#auracore-thumbnails [data-thumb]');
+            if (!heroImg || !thumbs.length) return;
+
+            function selectThumb(thumb) {
+                var img = thumb.querySelector('img');
+                if (!img) return;
+                heroImg.src = img.src;
+                heroImg.setAttribute('data-alt', img.getAttribute('data-alt') || '');
+                thumbs.forEach(function (t) {
+                    t.classList.remove('thumb-active', 'border-2', 'border-primary');
+                    t.classList.add('border', 'border-secondary-container');
+                });
+                thumb.classList.remove('border', 'border-secondary-container');
+                thumb.classList.add('thumb-active', 'border-2', 'border-primary');
+            }
+
+            thumbs.forEach(function (thumb) {
+                thumb.addEventListener('click', function () {
+                    selectThumb(thumb);
+                });
             });
-        });
+        })();
 
         // Initialize inventory bar animation
         window.addEventListener('load', () => {
@@ -16,8 +36,30 @@
             fill.style.width = '25%'; // Trigger transition
         });
 
+        // Delivery frequency: applies a 10% discount to the displayed price
+        // when the Quarterly Refill option is selected.
+        (function () {
+            var freqEl = document.getElementById('auracore-frequency');
+            var priceEl = document.getElementById('auracore-price');
+            if (!freqEl || !priceEl) return;
+
+            function currentUnitPrice() {
+                return freqEl.value.indexOf('Save 10%') !== -1
+                    ? AURACORE_BASE_PRICE * 0.9
+                    : AURACORE_BASE_PRICE;
+            }
+
+            function updatePriceDisplay() {
+                priceEl.textContent = '$' + currentUnitPrice().toFixed(2);
+            }
+
+            freqEl.addEventListener('change', updatePriceDisplay);
+            updatePriceDisplay();
+        })();
+
         // Add to Cart: read the selected quantity/frequency and push the
-        // AuraCore Advanced Care Bundle into the shared cart, then go to cart.
+        // Pill Pal Buddy Home Bundle into the shared cart, applying the
+        // quarterly discount if selected, then go to cart.
         (function () {
             var addBtn = document.getElementById('auracore-add-to-cart');
             if (!addBtn || !window.AuraCart) return;
@@ -26,11 +68,15 @@
                 var freqEl = document.getElementById('auracore-frequency');
                 var qty = qtyEl ? parseInt(qtyEl.innerText, 10) || 1 : 1;
                 var frequency = freqEl ? freqEl.value : 'One-time Purchase';
+                var unitPrice =
+                    frequency.indexOf('Save 10%') !== -1
+                        ? AURACORE_BASE_PRICE * 0.9
+                        : AURACORE_BASE_PRICE;
                 window.AuraCart.addToCart({
-                    id: 'auracore-bundle',
-                    name: 'AuraCore Advanced Care Bundle',
+                    id: 'pill-pal-buddy-home-bundle',
+                    name: 'Pill Pal Buddy Home Bundle',
                     subtitle: frequency,
-                    price: 1249.0,
+                    price: unitPrice,
                     image:
                         'https://lh3.googleusercontent.com/aida-public/AB6AXuDwNXaARTIl-j-AXaok2dm1NTITAT0Kt05-rGlMQ0WoXI_OQpA23qn75Ypd8z9ecXal2yaqsKpfKGDpewtuAZi_SwzIeyF1R7M5Sfa0XZB92Im6jD5TBpi54PWAa74UAohB2xttm2w35F5Oa6iyRMggyrzFzA052X-7Qi9lSD4zGLXttQi14aEleOli7hYmIqe9aOX22hu881zjaC3Wb02O2BkInKDzJw-zwOwPoE5fTdTvGeycAOEcOaNo7LJqsysJOW-RVTD6LA',
                     qty: qty,
