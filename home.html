@@ -292,24 +292,24 @@
       >
         <div class="mb-16">
           <h2 class="font-headline-md text-headline-md text-on-surface mb-2">
-            Systems &amp; Subscriptions
+            Systems &amp; Bundles
           </h2>
           <p class="text-on-surface-variant font-body-md text-body-md">
             Choose the level of care that fits your lifestyle.
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          <!-- Tier 1 -->
+          <!-- Tier 1: The Product -->
           <div
             class="p-8 border border-secondary-container bg-surface rounded-sm hover:border-primary transition-colors flex flex-col"
           >
             <div
               class="font-label-sm text-label-sm text-on-surface-variant mb-6 uppercase tracking-widest"
             >
-              Essential Care
+              Pill Pal Buddy
             </div>
             <div class="mb-8">
-              <span class="font-headline-md text-headline-md">$1,299</span>
+              <span class="font-headline-md text-headline-md">$1,249</span>
               <span
                 class="font-label-md text-label-md text-on-surface-variant italic"
                 >one-time</span
@@ -320,43 +320,50 @@
                 <span class="material-symbols-outlined text-primary text-sm"
                   >check</span
                 >
-                Smart Mirror Interface
+                FDA Registered
               </li>
               <li class="flex items-center gap-3 text-body-md font-body-md">
                 <span class="material-symbols-outlined text-primary text-sm"
                   >check</span
                 >
-                Basic Visual Alarms
+                Priority Shipping
               </li>
               <li class="flex items-center gap-3 text-body-md font-body-md">
                 <span class="material-symbols-outlined text-primary text-sm"
                   >check</span
                 >
-                AuraMed App (Standard)
+                24/7 Concierge
               </li>
             </ul>
-            <a
+            <button
+              type="button"
               class="w-full py-4 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all text-center block"
-              href="signup.html"
+              onclick="addProductToCart({
+                id: 'pill-pal-buddy',
+                name: 'Pill Pal Buddy',
+                subtitle: 'Countertop Companion',
+                price: 1249.00,
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBqyizNranRcUbMokCxc0owlGX5Kq3b_o9cCXHHzjYwC0sWEFrzuZlgr2qtS0cJd974wWBjNw1vAfYKebs_zK3IGKjpbJEqUaJpFYg9sBaOvW5W_BJOPhadrrGdYgCYP1lTuIUML5JbOByaWQ150_64MdIc_ktewav5uxyQsUsJdS1FvOSw5LBbpduT3eNTa4lrqnZRzSAPwXKGPdLCgemkRGcuXkxJIs6ZlLufJvzTu5Z03-nsWQ3FgpwDAMrS19ffwXFluJOpoQ'
+              })"
             >
-              Select Essential
-            </a>
+              Add to Cart
+            </button>
           </div>
-          <!-- Tier 2 (Highlighted) -->
+          <!-- Tier 2 (Highlighted): Home Bundle -->
           <div
             class="p-8 border-2 border-primary bg-primary text-on-primary rounded-sm shadow-2xl scale-105 z-10 flex flex-col"
           >
             <div
               class="font-label-sm text-label-sm text-primary-fixed-dim mb-2 uppercase tracking-widest flex justify-between items-center"
             >
-              Professional
+              Home Bundle
               <span
                 class="bg-primary-fixed text-primary px-2 py-0.5 rounded-full text-[10px]"
                 >MOST POPULAR</span
               >
             </div>
             <div class="mb-8">
-              <span class="font-headline-md text-headline-md">$1,899</span>
+              <span class="font-headline-md text-headline-md">$2,299</span>
               <span class="font-label-md text-label-md opacity-70 italic"
                 >one-time</span
               >
@@ -367,48 +374,48 @@
                   class="material-symbols-outlined text-primary-fixed-dim text-sm"
                   >check</span
                 >
-                Automated Inventory Trays
+                2x Pill Pal Buddy
               </li>
               <li class="flex items-center gap-3 text-body-md font-body-md">
                 <span
                   class="material-symbols-outlined text-primary-fixed-dim text-sm"
                   >check</span
                 >
-                Multi-Modal Alarm Sync
+                Feature Placeholder
               </li>
               <li class="flex items-center gap-3 text-body-md font-body-md">
                 <span
                   class="material-symbols-outlined text-primary-fixed-dim text-sm"
                   >check</span
                 >
-                Family Cloud Monitoring
+                Feature Placeholder
               </li>
               <li class="flex items-center gap-3 text-body-md font-body-md">
                 <span
                   class="material-symbols-outlined text-primary-fixed-dim text-sm"
                   >check</span
                 >
-                Biometric Security Access
+                Feature Placeholder
               </li>
             </ul>
             <a
               class="w-full py-4 bg-on-primary text-primary font-label-md text-label-md hover:bg-primary-fixed transition-all text-center block"
-              href="signup.html"
+              href="product-auracore.html"
             >
-              Select Professional
+              Explore Bundle
             </a>
           </div>
-          <!-- Tier 3 -->
+          <!-- Tier 3: Traveler Bundle -->
           <div
             class="p-8 border border-secondary-container bg-surface rounded-sm hover:border-primary transition-colors flex flex-col"
           >
             <div
               class="font-label-sm text-label-sm text-on-surface-variant mb-6 uppercase tracking-widest"
             >
-              Enterprise
+              Traveler Bundle
             </div>
             <div class="mb-8">
-              <span class="font-headline-md text-headline-md">$3,499</span>
+              <span class="font-headline-md text-headline-md">$1,650</span>
               <span
                 class="font-label-md text-label-md text-on-surface-variant italic"
                 >one-time</span
@@ -419,27 +426,33 @@
                 <span class="material-symbols-outlined text-primary text-sm"
                   >check</span
                 >
-                Custom In-Wall Integration
+                Pill Pal Buddy
               </li>
               <li class="flex items-center gap-3 text-body-md font-body-md">
                 <span class="material-symbols-outlined text-primary text-sm"
                   >check</span
                 >
-                24/7 Concierge Support
+                Feature Placeholder
               </li>
               <li class="flex items-center gap-3 text-body-md font-body-md">
                 <span class="material-symbols-outlined text-primary text-sm"
                   >check</span
                 >
-                Pharmacy Auto-Refill API
+                Feature Placeholder
               </li>
             </ul>
-            <a
+            <button
+              type="button"
               class="w-full py-4 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all text-center block"
-              href="#contact"
+              onclick="addProductToCart({
+                id: 'pill-pal-buddy-traveler-bundle',
+                name: 'Pill Pal Buddy Traveler Bundle',
+                subtitle: 'Pill Pal Buddy + Placeholder Feature',
+                price: 1650.00
+              })"
             >
-              Contact Sales
-            </a>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
@@ -696,6 +709,7 @@
     </footer>
     <script src="js/auth-store.js"></script>
     <script src="js/nav-auth.js"></script>
+    <script src="js/cart-store.js"></script>
     <script src="js/home.js"></script>
   </body>
 </html>
