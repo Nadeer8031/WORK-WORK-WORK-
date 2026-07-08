@@ -81,10 +81,40 @@
         passErr.textContent = "";
       }
 
-      if (valid) {
-        // Navigate to home
-        window.location.href = "home.html";
-      }
+      if (!valid) return;
+
+      var originalText = loginLink.textContent;
+      loginLink.textContent = "Signing in...";
+      loginLink.setAttribute("aria-busy", "true");
+
+      var formData = new FormData();
+      formData.append("email", email);
+      formData.append("password", pass);
+
+      fetch("auth/login.php", { method: "POST", body: formData })
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          if (data.success) {
+            if (window.AuraAuth) {
+              window.AuraAuth.login({
+                name: data.user.email.split("@")[0],
+                email: data.user.email,
+              });
+            }
+            window.location.href = "home.html";
+          } else {
+            passErr.textContent = data.message || "Invalid email or password.";
+            loginLink.textContent = originalText;
+            loginLink.removeAttribute("aria-busy");
+          }
+        })
+        .catch(function () {
+          passErr.textContent = "Something went wrong. Please try again.";
+          loginLink.textContent = originalText;
+          loginLink.removeAttribute("aria-busy");
+        });
     });
   }
 })();
