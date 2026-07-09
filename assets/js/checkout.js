@@ -239,15 +239,6 @@ if(cardInput) {
     });
 
     function processOrder() {
-        // Get current user
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        
-        if (!currentUser) {
-            alert('Please log in to complete your order.');
-            window.location.href = 'login.html';
-            return;
-        }
-
         // Get cart items
         const cart = window.AuraCart ? window.AuraCart.getCart() : [];
         if (!cart.length) {
@@ -276,34 +267,29 @@ if(cardInput) {
             status: 'Processing'
         };
 
-        // Save order to user's orders
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const userIndex = users.findIndex(u => u.email === currentUser.email);
-        
-        if (userIndex !== -1) {
-            if (!users[userIndex].orders) {
-                users[userIndex].orders = [];
+        // Optionally attach the order to a logged-in user's account if one
+        // exists, but this is no longer required to complete checkout.
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+        if (currentUser) {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userIndex = users.findIndex(u => u.email === currentUser.email);
+            if (userIndex !== -1) {
+                if (!users[userIndex].orders) {
+                    users[userIndex].orders = [];
+                }
+                users[userIndex].orders.push(order);
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(users[userIndex]));
             }
-            users[userIndex].orders.push(order);
-            
-            // Update localStorage
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Update current user
-            const updatedUser = users[userIndex];
-            localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-            
-            // Clear cart
-            if (window.AuraCart) {
-                window.AuraCart.clearCart();
-            }
-            
-            // Show confirmation popup, then redirect to profile on continue
-            showOrderSuccessModal(order);
-        } else {
-            alert('User not found. Please log in again.');
-            window.location.href = 'login.html';
         }
+
+        // Clear cart
+        if (window.AuraCart) {
+            window.AuraCart.clearCart();
+        }
+
+        // Show confirmation popup regardless of login state
+        showOrderSuccessModal(order);
     }
 
     function showOrderSuccessModal(order) {
