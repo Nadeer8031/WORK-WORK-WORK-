@@ -7,7 +7,7 @@
             input.addEventListener('focus', () => {
                 label.classList.add('label-focused');
             });
-            input.addEventListener('blur', () => {
+            input.addEventListener('blur', () => { 
                 label.classList.remove('label-focused');
             });
         });
@@ -144,53 +144,17 @@
   }
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
+    if (!validateForm()) {
+      e.preventDefault(); // stop submission only on invalid input
+      return;
+    }
 
-    var isValid = validateForm();
-    if (!isValid) return;
-
-    var email = document.getElementById("email").value.trim();
-    var password = document.getElementById("pass").value;
+    // Validation passed — show loading state and let the form POST to register.php normally
     var submitBtn = form.querySelector('button[type="submit"]');
-    var email_error = document.getElementById("email_error");
-
-    var originalText = submitBtn ? submitBtn.textContent : "";
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Creating account...";
     }
-
-    var formData = new FormData();
-    formData.append("email", email);
-    formData.append("password", password);
-
-    fetch("auth/register.php", { method: "POST", body: formData })
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (data) {
-        if (data.success) {
-          if (window.AuraAuth) {
-            window.AuraAuth.login({
-              name: data.user.email.split("@")[0],
-              email: data.user.email,
-            });
-          }
-          window.location.href = "home.html";
-        } else {
-          email_error.textContent = data.message || "Could not create your account.";
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-          }
-        }
-      })
-      .catch(function () {
-        email_error.textContent = "Something went wrong. Please try again.";
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-        }
-      });
+    // Form will now submit naturally via action="./auth/register.php" method="POST"
   });
 })();

@@ -185,7 +185,7 @@
               Join the circle of precision health care.
             </p>
           </div>
-          <form class="signup-form" id="signupForm" novalidate method="GET">
+          <form class="signup-form" id="signupForm" action="auth/register.php" method="POST" novalidate>
             <div class="form-group">
               <label for="username">Username</label>
               <input
@@ -195,6 +195,42 @@
                 placeholder="Enter your Username"
               />
               <div class="errors" id="username_error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">phone</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Enter your Username"
+              />
+              <div class="errors" id="phone_error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender: </label>
+              
+              <label>
+
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                />
+                <span>male</span>
+              </label>
+              
+              <label>
+
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                />
+                <span>female</span>
+              </label>
+
             </div>
 
             <div class="form-group">
@@ -243,7 +279,7 @@
             <button
               type="submit"
               class="signup-btn"
-              onclick="return validateForm();"
+              name="submit"
             >
               Sign up
             </button>

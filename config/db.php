@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
+$host = "localhost"; 
 $username = "root";
 $password = "";
-$database = "SmartMedicineCabinet";
+$database = "conference";
 
 $conn = mysqli_connect(
     $host,
