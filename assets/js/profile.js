@@ -4,17 +4,14 @@
 
         function renderProfile() {
             var session = window.AuraAuth ? window.AuraAuth.getSession() : null;
-            var loggedOut = document.getElementById('profile-logged-out');
-            var authed = document.getElementById('profile-authenticated');
 
+            // Safety net: nav-auth.js already redirects logged-out visitors
+            // to login.html before this runs, but bail out cleanly if this
+            // ever executes without a session.
             if (!session) {
-                loggedOut.classList.remove('hidden');
-                authed.classList.add('hidden');
+                window.location.replace('login.html');
                 return;
             }
-
-            loggedOut.classList.add('hidden');
-            authed.classList.remove('hidden');
 
             setText('profile-greeting-name', firstName(session.name));
             setText('profile-full-name', session.name);
@@ -37,126 +34,6 @@
             if (!name) return 'there';
             return name.split(' ')[0];
         }
-
-        // ---- Mini inline login form (logged-out state) ----
-        // Validation rules are kept identical to login.html/login.js so the
-        // two forms behave the same way.
-        // BACKEND HOOK: once real auth exists, keep validateForm() as the
-        // client-side check, but replace the AuraAuth.login(...) call below
-        // with a real API request; on success, call AuraAuth.login() with
-        // the fields the server returns.
-        (function () {
-            var passwordInput = document.getElementById('profile-login-password');
-            var visibilityBtn = document.getElementById('profile-login-password-toggle');
-            if (passwordInput && visibilityBtn) {
-                visibilityBtn.addEventListener('click', function () {
-                    var type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                    passwordInput.setAttribute('type', type);
-                    visibilityBtn.querySelector('.material-symbols-outlined').textContent =
-                        type === 'password' ? 'visibility' : 'visibility_off';
-                });
-            }
-
-            var form = document.getElementById('profile-login-form');
-            if (!form) return;
-
-            function validateForm() {
-                var email = document.getElementById('profile-login-email').value.trim();
-                var pass = document.getElementById('profile-login-password').value;
-                var email_error = document.getElementById('profile_email_error');
-                var pass_error = document.getElementById('profile_pass_error');
-
-                email_error.textContent = '';
-                pass_error.textContent = '';
-
-                var valid = true;
-                var atIndex = email.indexOf('@');
-                var dotIndex = email.lastIndexOf('.com');
-
-                // Email validation
-                if (email === '') {
-                    email_error.textContent = 'Email Address cannot be empty';
-                    valid = false;
-                } else if (
-                    atIndex === -1 ||
-                    atIndex === 0 ||
-                    dotIndex <= atIndex + 1 ||
-                    !email.endsWith('.com') ||
-                    email.length > dotIndex + 4
-                ) {
-                    if (!email.endsWith('.com')) {
-                        email_error.textContent = 'Email must end with .com';
-                    } else if (email.length > dotIndex + 4) {
-                        email_error.textContent = 'Nothing should come after .com';
-                    } else if (atIndex === -1) {
-                        email_error.textContent = 'Email must contain @';
-                    } else if (atIndex === 0) {
-                        email_error.textContent = 'Email must not start with @';
-                    } else if (dotIndex <= atIndex + 1) {
-                        email_error.textContent = 'Email must contain a domain (ex: @gmail)';
-                    } else {
-                        email_error.textContent = 'Invalid Email Address';
-                    }
-                    valid = false;
-                }
-
-                // Password validation
-                if (pass === '') {
-                    pass_error.textContent = 'Please enter your password';
-                    valid = false;
-                } else if (/\s/.test(pass)) {
-                    pass_error.textContent = 'Password cannot contain spaces';
-                    valid = false;
-                } else if (pass.length < 8) {
-                    pass_error.textContent = 'Password must be at least 8 characters';
-                    valid = false;
-                } else if (pass.length > 16) {
-                    pass_error.textContent = 'Password must be less than 16 characters';
-                    valid = false;
-                } else if (!/[A-Z]/.test(pass)) {
-                    pass_error.textContent = 'Password must contain at least one uppercase letter';
-                    valid = false;
-                } else if (!/[0-9]/.test(pass)) {
-                    pass_error.textContent = 'Password must contain at least one number';
-                    valid = false;
-                }
-
-                return valid;
-            }
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                if (!validateForm()) return;
-
-                var email = document.getElementById('profile-login-email').value.trim();
-                var password = document.getElementById('profile-login-password').value;
-                var pass_error = document.getElementById('profile_pass_error');
-
-                var formData = new FormData();
-                formData.append('email', email);
-                formData.append('password', password);
-
-                fetch('auth/login.php', { method: 'POST', body: formData })
-                    .then(function (res) { return res.json(); })
-                    .then(function (data) {
-                        if (data.success && window.AuraAuth) {
-                            window.AuraAuth.login({
-                                name: data.user.email.split('@')[0],
-                                email: data.user.email,
-                                phone: '',
-                                location: '',
-                                tier: DEFAULT_TIER,
-                            });
-                            renderProfile();
-                        } else {
-                            pass_error.textContent = data.message || 'Invalid email or password';
-                        }
-                    })
-                    .catch(function () {
-                        pass_error.textContent = 'Something went wrong. Please try again.';
-                    });
-            });
-        })();
 
         // ---- Edit Profile ----
         (function () {
@@ -206,7 +83,7 @@
             if (!logoutBtn) return;
             logoutBtn.addEventListener('click', function () {
                 if (window.AuraAuth) window.AuraAuth.logout();
-                renderProfile();
+                window.location.href = 'login.html';
             });
         })();
 

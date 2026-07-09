@@ -10,14 +10,13 @@
      no one is logged in, and shows them once a session exists.
    - Swaps the "Log In" / "Sign Up" buttons for a "Log Out" button when
      logged in.
-   - Pages that must never be shown to a logged-out visitor (currently
-     just schedule.html) redirect straight to login.html if visited
-     directly without a session. profile.html is intentionally left out
-     of this list since it already shows its own inline login prompt
-     when logged out.
+   - Pages that must never be shown to a logged-out visitor (schedule.html
+     and profile.html) redirect straight to login.html if visited
+     directly without a session. login.html is the single, shared login
+     screen for the whole site — no page keeps its own inline login form.
 */
 (function () {
-  var GUARDED_PAGES = ["schedule.html"];
+  var GUARDED_PAGES = ["schedule.html", "profile.html"];
 
   function currentPage() {
     var path = window.location.pathname;
@@ -49,7 +48,7 @@
       e.preventDefault();
       fetch("auth/logout.php").catch(function () {});
       if (window.AuraAuth) window.AuraAuth.logout();
-      window.location.href = "home.html";
+      window.location.href = "login.html";
     });
     return logout;
   }

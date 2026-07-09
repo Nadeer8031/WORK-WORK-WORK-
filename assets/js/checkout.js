@@ -267,22 +267,6 @@ if(cardInput) {
             status: 'Processing'
         };
 
-        // Optionally attach the order to a logged-in user's account if one
-        // exists, but this is no longer required to complete checkout.
-        const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-        if (currentUser) {
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const userIndex = users.findIndex(u => u.email === currentUser.email);
-            if (userIndex !== -1) {
-                if (!users[userIndex].orders) {
-                    users[userIndex].orders = [];
-                }
-                users[userIndex].orders.push(order);
-                localStorage.setItem('users', JSON.stringify(users));
-                localStorage.setItem('currentUser', JSON.stringify(users[userIndex]));
-            }
-        }
-
         // Clear cart
         if (window.AuraCart) {
             window.AuraCart.clearCart();
@@ -293,31 +277,44 @@ if(cardInput) {
     }
 
     function showOrderSuccessModal(order) {
+        // If the shopper is logged in, "Continue" takes them to their
+        // profile/order history. If not, it takes them to the shared
+        // login page first so they can log in and then see the order.
+        const isLoggedIn = !!(window.AuraAuth && window.AuraAuth.isLoggedIn());
+        const continueDestination = isLoggedIn
+            ? 'profile.html?order=' + encodeURIComponent(JSON.stringify(order))
+            : 'login.html';
+
         const modal = document.getElementById('orderSuccessModal');
         if (!modal) {
             // Fallback if the modal markup isn't present
-            window.location.href = 'profile.html?order=' + encodeURIComponent(JSON.stringify(order));
+            window.location.href = continueDestination;
             return;
         }
 
         const idLabel = document.getElementById('orderSuccessId');
         if (idLabel) idLabel.textContent = 'Order #' + order.id;
 
+        const continueLabel = document.getElementById('orderSuccessContinue');
+        if (continueLabel && !isLoggedIn) {
+            continueLabel.textContent = 'Log In to View My Order';
+        }
+
         modal.classList.remove('hidden');
         modal.classList.add('flex');
 
-        const goToProfile = function () {
-            window.location.href = 'profile.html?order=' + encodeURIComponent(JSON.stringify(order));
+        const goToNext = function () {
+            window.location.href = continueDestination;
         };
 
         const continueBtn = document.getElementById('orderSuccessContinue');
         if (continueBtn) {
-            continueBtn.addEventListener('click', goToProfile, { once: true });
+            continueBtn.addEventListener('click', goToNext, { once: true });
         }
 
-        // Clicking outside the card also continues to the profile page
+        // Clicking outside the card also continues to the next step
         modal.addEventListener('click', function (e) {
-            if (e.target === modal) goToProfile();
+            if (e.target === modal) goToNext();
         }, { once: true });
     }
 })();
