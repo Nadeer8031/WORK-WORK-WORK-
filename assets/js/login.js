@@ -37,10 +37,11 @@
     });
   }
 
-  // Login link validation
-  const loginLink = document.getElementById("loginLink");
-  if (loginLink) {
-    loginLink.addEventListener("click", function (e) {
+  var form = document.getElementById("loginForm");
+  var loginButton = document.getElementById("loginButton");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
 
       const email = document.getElementById("email").value.trim();
@@ -49,7 +50,6 @@
       const passErr = document.getElementById("pass_error");
       let valid = true;
 
-      // Email validation
       if (!email) {
         emailErr.textContent = "Email is required.";
         valid = false;
@@ -60,7 +60,6 @@
         emailErr.textContent = "";
       }
 
-      // Password validation
       if (!pass) {
         passErr.textContent = "Password is required.";
         valid = false;
@@ -83,9 +82,11 @@
 
       if (!valid) return;
 
-      var originalText = loginLink.textContent;
-      loginLink.textContent = "Signing in...";
-      loginLink.setAttribute("aria-busy", "true");
+      var originalText = loginButton ? loginButton.textContent : "Log In";
+      if (loginButton) {
+        loginButton.textContent = "Signing in...";
+        loginButton.disabled = true;
+      }
 
       var formData = new FormData();
       formData.append("email", email);
@@ -99,21 +100,25 @@
           if (data.success) {
             if (window.AuraAuth) {
               window.AuraAuth.login({
-                name: data.user.email.split("@")[0],
-                email: data.user.email,
+                name: data.user.username,
+                email: data.user.email
               });
             }
             window.location.href = "home.html";
           } else {
             passErr.textContent = data.message || "Invalid email or password.";
-            loginLink.textContent = originalText;
-            loginLink.removeAttribute("aria-busy");
+            if (loginButton) {
+              loginButton.textContent = originalText;
+              loginButton.disabled = false;
+            }
           }
         })
         .catch(function () {
           passErr.textContent = "Something went wrong. Please try again.";
-          loginLink.textContent = originalText;
-          loginLink.removeAttribute("aria-busy");
+          if (loginButton) {
+            loginButton.textContent = originalText;
+            loginButton.disabled = false;
+          }
         });
     });
   }

@@ -553,6 +553,37 @@
         </div>
       </div>
     </footer>
+    <!-- Order Success Modal -->
+    <div
+      id="orderSuccessModal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary/40 backdrop-blur-sm px-margin-mobile"
+    >
+      <div
+        class="bg-surface rounded-2xl shadow-xl max-w-sm w-full p-8 text-center"
+      >
+        <div
+          class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-primary-container/15"
+        >
+          <span class="material-symbols-outlined text-primary-container text-4xl">check_circle</span>
+        </div>
+        <h2 class="font-headline-md text-[22px] text-primary mb-2">Thank You!</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-1">
+          Your order has been submitted successfully.
+        </p>
+        <p
+          id="orderSuccessId"
+          class="font-label-md text-label-md text-secondary mb-6"
+        ></p>
+        <button
+          id="orderSuccessContinue"
+          type="button"
+          class="w-full inline-flex items-center justify-center bg-primary-container text-white h-11 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all duration-250"
+        >
+          View My Orders
+        </button>
+      </div>
+    </div>
+
     <script src="assets/js/auth-store.js"></script>
     <script src="assets/js/nav-auth.js"></script>
     <script src="assets/js/cart-store.js"></script>

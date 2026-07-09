@@ -54,18 +54,24 @@
 
   function validateForm() {
     var username = document.getElementById("username").value.trim();
+    var phone = document.getElementById("phone").value.trim();
+    var gender = document.querySelector('input[name="gender"]:checked');
     var email = document.getElementById("email").value.trim();
     var pass = document.getElementById("pass").value;
     var confirmPass = document.getElementById("confirm_password").value;
     var terms = document.getElementById("terms");
 
     var username_error = document.getElementById("username_error");
+    var phone_error = document.getElementById("phone_error");
+    var gender_error = document.getElementById("gender_error");
     var email_error = document.getElementById("email_error");
     var pass_error = document.getElementById("pass_error");
     var confirm_password_error = document.getElementById("confirm_password_error");
     var terms_error = document.getElementById("terms_error");
 
     username_error.textContent = "";
+    phone_error.textContent = "";
+    gender_error.textContent = "";
     email_error.textContent = "";
     pass_error.textContent = "";
     confirm_password_error.textContent = "";
@@ -77,6 +83,19 @@
 
     if (username === "") {
       username_error.textContent = "Username cannot be empty";
+      valid = false;
+    }
+
+    if (phone === "") {
+      phone_error.textContent = "Phone number cannot be empty";
+      valid = false;
+    } else if (!/^[0-9()+\-\s]{8,20}$/.test(phone)) {
+      phone_error.textContent = "Enter a valid phone number";
+      valid = false;
+    }
+
+    if (!gender) {
+      gender_error.textContent = "Please select a gender";
       valid = false;
     }
 
@@ -144,17 +163,54 @@
   }
 
   form.addEventListener("submit", function (e) {
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalText = submitBtn ? submitBtn.textContent : "Sign up";
+
     if (!validateForm()) {
-      e.preventDefault(); // stop submission only on invalid input
+      e.preventDefault();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
       return;
     }
 
-    // Validation passed — show loading state and let the form POST to register.php normally
-    var submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Creating account...";
     }
-    // Form will now submit naturally via action="./auth/register.php" method="POST"
+
+    // var formData = new FormData();
+    // formData.append("email", email);
+    // formData.append("password", password);
+
+    // fetch("auth/register.php", { method: "POST", body: formData })
+    //   .then(function (res) {
+    //     return res.json();
+    //   })
+    //   .then(function (data) {
+    //     if (data.success) {
+    //       if (window.AuraAuth) {
+    //         window.AuraAuth.login({
+    //           name: data.user.email.split("@")[0],
+    //           email: data.user.email,
+    //         });
+    //       }
+    //       window.location.href = "home.html";
+    //     } else {
+    //       email_error.textContent = data.message || "Could not create your account.";
+    //       if (submitBtn) {
+    //         submitBtn.disabled = false;
+    //         submitBtn.textContent = originalText;
+    //       }
+    //     }
+    //   })
+    //   .catch(function () {
+    //     email_error.textContent = "Something went wrong. Please try again.";
+    //     if (submitBtn) {
+    //       submitBtn.disabled = false;
+    //       submitBtn.textContent = originalText;
+    //     }
+    //   });
   });
 })();

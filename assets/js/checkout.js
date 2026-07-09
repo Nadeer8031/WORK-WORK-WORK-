@@ -298,11 +298,40 @@ if(cardInput) {
                 window.AuraCart.clearCart();
             }
             
-            // Redirect to profile with order confirmation
-            window.location.href = 'profile.html?order=' + encodeURIComponent(JSON.stringify(order));
+            // Show confirmation popup, then redirect to profile on continue
+            showOrderSuccessModal(order);
         } else {
             alert('User not found. Please log in again.');
             window.location.href = 'login.html';
         }
+    }
+
+    function showOrderSuccessModal(order) {
+        const modal = document.getElementById('orderSuccessModal');
+        if (!modal) {
+            // Fallback if the modal markup isn't present
+            window.location.href = 'profile.html?order=' + encodeURIComponent(JSON.stringify(order));
+            return;
+        }
+
+        const idLabel = document.getElementById('orderSuccessId');
+        if (idLabel) idLabel.textContent = 'Order #' + order.id;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        const goToProfile = function () {
+            window.location.href = 'profile.html?order=' + encodeURIComponent(JSON.stringify(order));
+        };
+
+        const continueBtn = document.getElementById('orderSuccessContinue');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', goToProfile, { once: true });
+        }
+
+        // Clicking outside the card also continues to the profile page
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) goToProfile();
+        }, { once: true });
     }
 })();

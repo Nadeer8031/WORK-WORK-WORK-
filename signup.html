@@ -198,12 +198,12 @@
             </div>
 
             <div class="form-group">
-              <label for="phone">phone</label>
+              <label for="phone">Phone</label>
               <input
                 type="text"
                 id="phone"
                 name="phone"
-                placeholder="Enter your Username"
+                placeholder="Enter your phone number"
               />
               <div class="errors" id="phone_error"></div>
             </div>
@@ -230,7 +230,7 @@
                 />
                 <span>female</span>
               </label>
-
+              <div class="errors" id="gender_error"></div>
             </div>
 
             <div class="form-group">
@@ -288,174 +288,6 @@
               Already have an account? <a href="./login.html">Login</a>
             </p>
           </form>
-          <!-- <form
-            action="#"
-            class="space-y-6"
-            id="signupForm"
-            method="POST"
-            novalidate
-          > -->
-          <!-- Username Field -->
-          <!-- <div class="space-y-2">
-              <label
-                class="font-label-md text-label-md text-outline"
-                for="username"
-                >Username</label
-              >
-              <div class="relative">
-                <input
-                  class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
-                  id="username"
-                  name="username"
-                  placeholder="e.g. jsmith"
-                  type="text"
-                />
-                <span
-                  class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
-                  >person</span
-                >
-              </div>
-              <div
-                class="errors font-label-sm text-label-sm text-error min-h-[16px]"
-                id="username_error"
-              ></div>
-            </div> -->
-          <!-- Email Field -->
-          <!-- <div class="space-y-2">
-              <label
-                class="font-label-md text-label-md text-outline"
-                for="email"
-                >Email Address</label
-              >
-              <div class="relative">
-                <input
-                  class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
-                  id="email"
-                  name="email"
-                  placeholder="name@example.com"
-                  type="email"
-                />
-                <span
-                  class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
-                  >mail</span
-                >
-              </div>
-              <div
-                class="errors font-label-sm text-label-sm text-error min-h-[16px]"
-                id="email_error"
-              ></div>
-            </div> -->
-          <!-- Password Grid -->
-          <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> -->
-          <!-- Password Field -->
-          <!-- <div class="space-y-2">
-                <label
-                  class="font-label-md text-label-md text-outline"
-                  for="password"
-                  >Password</label
-                >
-                <div class="relative">
-                  <input
-                    class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
-                    id="password"
-                    name="password"
-                    placeholder="••••••••"
-                    type="password"
-                  />
-                  <span
-                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
-                    >lock</span
-                  >
-                </div>
-                <div
-                  class="errors font-label-sm text-label-sm text-error min-h-[16px]"
-                  id="pass_error"
-                ></div>
-              </div> -->
-          <!-- Confirm Password Field -->
-          <!-- <div class="space-y-2">
-                <label
-                  class="font-label-md text-label-md text-outline"
-                  for="confirm-password"
-                  >Confirm</label
-                >
-                <div class="relative">
-                  <input
-                    class="w-full h-12 px-4 bg-white border border-secondary-container rounded-lg font-body-md input-focus transition-all duration-250 placeholder:text-secondary-fixed-dim"
-                    id="confirm-password"
-                    name="confirm-password"
-                    placeholder="••••••••"
-                    type="password"
-                  />
-                  <span
-                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-[20px]"
-                    >shield</span
-                  >
-                </div>
-                <div
-                  class="errors font-label-sm text-label-sm text-error min-h-[16px]"
-                  id="confirm_password_error"
-                ></div>
-              </div>
-            </div> -->
-          <!-- Terms Checkbox -->
-          <!-- <div class="flex items-start gap-3 py-2">
-              <input
-                class="mt-1 rounded-sm border-secondary-container text-primary-container focus:ring-primary-fixed-dim"
-                id="terms"
-                type="checkbox"
-              />
-              <label
-                class="font-label-md text-label-md text-on-surface-variant leading-tight"
-                for="terms"
-              >
-                I agree to the
-                <a class="text-primary hover:underline transition-all" href="#"
-                  >Terms of Service</a
-                >
-                and
-                <a class="text-primary hover:underline transition-all" href="#"
-                  >Privacy Policy</a
-                >.
-              </label>
-            </div>
-            <div
-              class="errors font-label-sm text-label-sm text-error min-h-[16px] -mt-4"
-              id="terms_error"
-            ></div> -->
-          <!-- Submit Button -->
-          <!-- <button
-              class="w-full h-14 bg-primary-container text-white font-label-md rounded-lg ambient-shadow hover:bg-opacity-90 active:scale-[0.98] transition-all duration-250 flex items-center justify-center gap-2"
-              type="submit"
-            >
-              Create Account
-              <span class="material-symbols-outlined">arrow_forward</span>
-            </button> -->
-          <!-- Alternative Login -->
-          <!-- <div class="relative flex items-center py-4">
-              <div class="flex-grow border-t border-secondary-container"></div> -->
-          <!-- <span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline">OR CONTINUE WITH</span> -->
-          <!-- <div class="flex-grow border-t border-secondary-container"></div>
-            </div> -->
-          <!-- <div class="grid grid-cols-2 gap-4">
-<button class="flex items-center justify-center h-12 border border-secondary-container rounded-lg bg-white font-label-md text-primary hover:bg-surface-container-low transition-all duration-250" type="button">
-                            Google
-                        </button>
-<button class="flex items-center justify-center h-12 border border-secondary-container rounded-lg bg-white font-label-md text-primary hover:bg-surface-container-low transition-all duration-250" type="button">
-                            Apple ID
-                        </button>
-</div> -->
-          <!-- <div class="pt-6 text-center">
-              <p class="font-body-md text-on-surface-variant">
-                Already have an account?
-                <a
-                  class="text-primary font-semibold hover:underline transition-all ml-1"
-                  href="login.html"
-                  >Log In</a
-                >
-              </p>
-            </div>
-          </form> -->
         </div>
       </section>
     </main>

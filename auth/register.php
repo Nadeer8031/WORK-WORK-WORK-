@@ -1,77 +1,224 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
+
+include __DIR__ . '/../config/db.php';
+/** @var mysqli $conn */
+
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $values = $_POST;
+
+        $username = mysqli_real_escape_string($conn, trim($_POST['username']));
+        $phone = mysqli_real_escape_string($conn, trim($_POST['phone']));
+        $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+        $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+        $terms = isset($_POST['terms']);
+
+        $errorMsg = [];
+        // $$emailErr = "";
+        
+        if(empty($username) || empty($phone) || empty($gender) || empty($email) || empty($password) || empty($confirm_password)){
+
+            $errorMsg[] = "You must fill all the fields!";
+
+        } elseif (!$terms) {
+            
+            $errorMsg[] = "Please accept the Terms.";
+
+        } elseif(!preg_match("/^[a-zA-Z]+$/", $username)){
+            $errorMsg[] = "Name must contain letters only!";
+
+        } elseif (!in_array($gender, ['male', 'female'], true)) {
+            $errorMsg[] = "Please select a valid gender.";
+
+        } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            
+            $errorMsg[] = "Invalid email!";
+
+        } elseif(strlen($password) < 8){
+            
+            $errorMsg[] = "Password must be at least 8 characters!";
+
+        } elseif($password !== $confirm_password){
+            
+            $errorMsg[] = "Passwords don't match!";
+
+        } else{
+
+            $checkSql = "SELECT user_id FROM users WHERE user_email = ?";
+            $checkStmt = mysqli_prepare($conn, $checkSql);
+
+            if ($checkStmt) {
+                mysqli_stmt_bind_param($checkStmt, 's', $email);
+                mysqli_stmt_execute($checkStmt);
+                mysqli_stmt_store_result($checkStmt);
+
+                if (mysqli_stmt_num_rows($checkStmt) > 0) {
+                    $errorMsg[] = "The email already exists";
+                }
+
+                mysqli_stmt_close($checkStmt);
+            } else {
+                $errorMsg[] = "Server error. Please try again.";
+            }
+
+            if (empty($errorMsg)) {
+                $hashpassword = password_hash($password, PASSWORD_DEFAULT);
+
+                $insertSql = "INSERT INTO users (username, gender, phone, user_email, user_password)
+                            VALUES (?, ?, ?, ?, ?)";
+                $insertStmt = mysqli_prepare($conn, $insertSql);
+
+                if ($insertStmt) {
+                    mysqli_stmt_bind_param($insertStmt, 'sssss', $username, $gender, $phone, $email, $hashpassword);
+                    if (mysqli_stmt_execute($insertStmt)) {
+
+                        // if (mysqli_stmt_execute($insertStmt)) {
+
+    // الحصول على user_id الذي تم إنشاؤه
+                        $userId = mysqli_insert_id($conn);
+
+                        // إضافة Profile للمستخدم
+                        $profileSql = "INSERT INTO profiles (user_id, username, gender, phone)
+                                    VALUES (?, ?, ?, ?)";
+
+                        $profileStmt = mysqli_prepare($conn, $profileSql);
+
+                        mysqli_stmt_bind_param(
+                            $profileStmt,
+                            "isss",
+                            $userId,
+                            $username,
+                            $gender,
+                            $phone
+                        );
+
+                        mysqli_stmt_execute($profileStmt);
+                        mysqli_stmt_close($profileStmt);
+
+                        mysqli_stmt_close($insertStmt);
+                        mysqli_close($conn);
+
+                        header("Location: ../login.html");
+                        exit();}
+
 }
 
-// Use shared DB connection
-require_once __DIR__ . '/../config/db.php';
 
-$errors = [];
+//                     $userId = mysqli_insert_id($conn);
 
-if (isset($_POST['submit'])) {
+// $profileSql = "INSERT INTO profiles (user_id, username, email, phone, gender)
+//                VALUES (?, ?, ?, ?, ?)";
 
-    $username         = mysqli_real_escape_string($conn, trim($_POST['username'] ?? ''));
-    $phone            = mysqli_real_escape_string($conn, trim($_POST['phone'] ?? ''));
-    $gender           = mysqli_real_escape_string($conn, trim($_POST['gender'] ?? ''));
-    $email            = mysqli_real_escape_string($conn, trim($_POST['email'] ?? ''));
-    $password         = trim($_POST['password'] ?? '');
-    $confirm_password = trim($_POST['confirm_password'] ?? '');
+// $profileStmt = mysqli_prepare($conn, $profileSql);
 
-    // --- Validation ---
-    if (empty($username)) {
-        $errors[] = "Username is required.";
-    }
+// mysqli_stmt_bind_param(
+//     $profileStmt,
+//     "issss",
+//     $userId,
+//     $username,
+//     $email,
+//     $phone,
+//     $gender
+// );
 
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "A valid email address is required.";
-    }
+// mysqli_stmt_execute($profileStmt);
+// mysqli_stmt_close($profileStmt);
 
-    if (empty($phone)) {
-        $errors[] = "Phone number is required.";
-    }
 
-    if (empty($gender)) {
-        $errors[] = "Please select a gender.";
-    }
+// mysqli_stmt_close($insertStmt);
+// mysqli_close($conn);
+// header("Location: ../login.html");
+// exit();
 
-    if (empty($password)) {
-        $errors[] = "Password is required.";
-    } elseif (strlen($password) < 8) {
-        $errors[] = "Password must be at least 8 characters.";
-    }
 
-    if ($password !== $confirm_password) {
-        $errors[] = "Passwords do not match.";
-    }
 
-    // Check if email already exists
-    if (count($errors) === 0) {
-        $check = mysqli_query($conn, "SELECT user_id FROM users WHERE user_email = '$email' LIMIT 1");
-        if ($check && mysqli_num_rows($check) > 0) {
-            $errors[] = "An account with this email already exists.";
-        }
-    }
 
-    // --- Insert ---
-    if (count($errors) === 0) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                        mysqli_stmt_close($insertStmt);
+                        mysqli_close($conn);
+                        header("Location: ../login.html");
+                        exit();
+                    }
+                    $errorMsg[] = "Registration failed: " . mysqli_stmt_error($insertStmt);
+                    mysqli_stmt_close($insertStmt);
+                }
+                // else {
+                //     $errorMsg[] = "Registration failed: " . mysqli_error($conn);
+                // }
+            }
+        
+    
+    
 
-        $sql = "INSERT INTO users (username, phone, gender, user_email, user_password)
-                VALUES ('$username', '$phone', '$gender', '$email', '$hashed_password')";
 
-        if (mysqli_query($conn, $sql)) {
-            $_SESSION['success'] = "Account created successfully! Please log in.";
-            header('Location: ../login.html');
-            exit();
-        } else {
-            $errors[] = "Registration failed: " . mysqli_error($conn);
-        }
-    }
+$check = mysqli_prepare(
+    $conn,
+    "SELECT id FROM users WHERE user_email=? OR username=?"
+);
 
-    // Return errors as JSON if there are any (for JS handling), or redirect back
-    $_SESSION['register_errors'] = $errors;
-    $_SESSION['register_old']    = compact('username', 'phone', 'gender', 'email');
-    header('Location: ../signup.html');
+mysqli_stmt_bind_param($check, "ss", $email, $username);
+mysqli_stmt_execute($check);
+mysqli_stmt_store_result($check);
+
+if (mysqli_stmt_num_rows($check) > 0) {
+    die("Username or Email already exists.");
+}
+
+mysqli_stmt_close($check);
+
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+$sql = "INSERT INTO users
+(username, phone, gender, user_email, user_password)
+VALUES
+(?,?,?,?,?)";
+
+$stmt = mysqli_prepare($conn, $sql);
+
+mysqli_stmt_bind_param(
+    $stmt,
+    "sssss",
+    $username,
+    $phone,
+    $gender,
+    $email,
+    $hashedPassword
+);
+
+
+
+
+
+$stmt = $conn->prepare("
+INSERT INTO users
+(username, email, user_password, gender)
+VALUES (?, ?, ?, ?)
+");
+
+
+
+$stmt->bind_param(
+    "ssss",
+    $username,
+    $email,
+    $hashedPassword,
+    $gender
+);
+
+if (mysqli_stmt_execute($stmt)) {
+
+    $_SESSION["username"] = $username;
+
+    header("Location: ./login.html");
     exit();
+
+} else {
+
+    die("Registration failed.");
+
 }
-?>
+
+mysqli_stmt_close($stmt);
+mysqli_close($conn);

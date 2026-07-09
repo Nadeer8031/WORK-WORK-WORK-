@@ -2,7 +2,7 @@
 
 session_start();
 header('Content-Type: application/json');
-include '../config/db.php';
+include __DIR__ . '/../config/db.php';
 
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
@@ -12,7 +12,10 @@ if (empty($email) || empty($password)) {
     exit();
 }
 
-$sql = "SELECT u_id, u_email, u_password FROM users WHERE u_email = ?";
+// $sql = "SELECT user_id, user_email, user_password FROM users WHERE user_email = ?";
+$sql = "SELECT user_id, username, user_email, user_password
+        FROM users
+        WHERE user_email = ?";
 $stmt = mysqli_prepare($conn, $sql);
 
 if (!$stmt) {
@@ -28,17 +31,18 @@ $user = mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
 
-if ($user && password_verify($password, $user['u_password'])) {
+if ($user && password_verify($password, $user['user_password'])) {
     // Regenerate the session id on login to help prevent session fixation
     session_regenerate_id(true);
 
-    $_SESSION['user_id'] = $user['u_id'];
-    $_SESSION['user_email'] = $user['u_email'];
+    $_SESSION['user_id'] = $user['user_id'];
+    $_SESSION['user_email'] = $user['user_email'];
 
     echo json_encode([
         'success' => true,
         'user' => [
-            'email' => $user['u_email'],
+            "username" => $user["username"],
+            'email' => $user['user_email']
         ],
     ]);
 } else {
