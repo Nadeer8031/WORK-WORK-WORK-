@@ -142,234 +142,242 @@
            without a session redirects straight to login.html, so everything
            below can assume a logged-in user. -->
       <div id="profile-authenticated">
-      <!-- Header Section -->
-      <section class="mb-12">
-        <div
-          class="flex flex-col md:flex-row md:items-end justify-between gap-6"
-        >
-          <div>
-            <span
-              class="font-label-sm text-label-sm uppercase tracking-widest text-[#B5A391] mb-2 block"
-              >Member Account</span
-            >
-            <h2 class="font-headline-lg text-headline-lg text-primary">
-              Welcome, <span id="profile-greeting-name">Julianne</span>
-            </h2>
-          </div>
-          <div class="flex gap-4">
-            <button
-              id="edit-profile-btn"
-              type="button"
-              class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded transition-all hover:opacity-90"
-            >
-              Edit Profile
-            </button>
-            <button
-              id="logout-btn"
-              type="button"
-              class="px-6 py-3 border border-[#DFDCD4] text-primary font-label-md text-label-md rounded hover:bg-surface-container-low transition-all flex items-center"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      </section>
-      <!-- Profile Bento Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-        <!-- Personal Info Card -->
-        <div
-          class="md:col-span-4 glass-card p-8 rounded-xl flex flex-col gap-8 shadow-[0px_20px_40px_rgba(52,13,26,0.04)]"
-        >
-          <div class="flex flex-col items-center text-center">
-            <div
-              class="w-24 h-24 rounded-full border-2 border-[#DFDCD4] p-1 mb-4"
-            >
-              <div
-                class="w-full h-full rounded-full overflow-hidden bg-surface-container"
+        <!-- Header Section -->
+        <section class="mb-12">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between gap-6"
+          >
+            <div>
+              <span
+                class="font-label-sm text-label-sm uppercase tracking-widest text-[#B5A391] mb-2 block"
+                >Member Account</span
               >
-                <img
-                  class="w-full h-full object-cover"
-                  data-alt="Close-up portrait of a woman with a professional and calm demeanor, looking directly at the camera with a slight smile. The background is a soft-focus, minimalist health clinic interior with warm cream and beige tones. High-end lighting creates soft shadows, suggesting a premium, reliable atmosphere."
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQhFULFx4DBH0UyOcVi86jZFdBTeEGMRRM3B0m4tEaf8gP8etseHxdSTT_tF90jQxdBRVhktapO6GCWnOnjhfyRG7bk1CVRhPIozdFlvnDC_QANrYC9G0ubILLjl2tOi7LvDE4NK92gtz0k0YTLbHX-42fgIxqLP5McK-dIYNaTckT8k1rF8LKlslqmJ6Ss9oC4xSXJEXDeQSHpow9X-9e6l-ZOzrqahNw3kbzERk7ZpYLwu5Kcwa8qb5LR8S8N6B_tIehDCYd0Q"
+              <h2 class="font-headline-lg text-headline-lg text-primary">
+                Welcome, <span id="profile-greeting-name">Julianne</span>
+              </h2>
+            </div>
+            <div class="flex gap-4">
+              <button
+                id="edit-profile-btn"
+                type="button"
+                class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded transition-all hover:opacity-90"
+              >
+                Edit Profile
+              </button>
+              <button
+                id="logout-btn"
+                type="button"
+                class="px-6 py-3 border border-[#DFDCD4] text-primary font-label-md text-label-md rounded hover:bg-surface-container-low transition-all flex items-center"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- Profile Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <!-- Personal Info Card -->
+          <div
+            class="md:col-span-4 glass-card p-8 rounded-xl flex flex-col gap-8 shadow-[0px_20px_40px_rgba(52,13,26,0.04)]"
+          >
+            <div class="flex flex-col items-center text-center">
+              <div
+                class="w-24 h-24 rounded-full border-2 border-[#DFDCD4] p-1 mb-4"
+              >
+                <div
+                  class="w-full h-full rounded-full overflow-hidden bg-surface-container relative"
+                >
+                  <img
+                    id="femalePic"
+                    class="w-full h-full object-cover absolute inset-0 hidden"
+                    src="./assets/images/female pic.jpeg"
+                    alt="Close-up portrait of a woman with a professional and calm demeanor..."
+                  />
+                  <img
+                    id="malePic"
+                    class="w-full h-full object-cover absolute inset-0 hidden"
+                    src="./assets/images/male pic.jpeg"
+                    alt="male pfp"
+                  />
+                </div>
+              </div>
+              <h3 class="font-headline-md text-headline-md text-primary">
+                <span id="profile-full-name">Julianne V.</span>
+              </h3>
+              <input
+                type="text"
+                id="profile-full-name-input"
+                class="hidden w-full mt-1 text-center font-headline-md text-headline-md text-primary bg-white border border-[#DFDCD4] rounded px-3 py-1"
+              />
+              <p class="text-label-md text-[#B5A391]">
+                <span id="profile-tier">Gold Tier Member since 2022</span>
+              </p>
+            </div>
+            <div class="space-y-4 pt-4 border-t border-[#DFDCD4]">
+              <div>
+                <label class="text-label-sm text-[#B5A391] uppercase"
+                  >Email Address</label
+                >
+                <p class="font-body-md text-on-surface" id="profile-email">
+                  j.vance@auramed-concierge.com
+                </p>
+                <input
+                  type="email"
+                  id="profile-email-input"
+                  class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label class="text-label-sm text-[#B5A391] uppercase"
+                  >Phone Number</label
+                >
+                <p class="font-body-md text-on-surface" id="profile-phone">
+                  +1 (555) 012-8843
+                </p>
+                <input
+                  type="tel"
+                  id="profile-phone-input"
+                  class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label class="text-label-sm text-[#B5A391] uppercase"
+                  >Gender</label
+                >
+                <p class="font-body-md text-on-surface" id="profile-location">
+                  San Francisco, CA
+                </p>
+                <input
+                  type="text"
+                  id="profile-location-input"
+                  class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
             </div>
-            <h3 class="font-headline-md text-headline-md text-primary">
-              <span id="profile-full-name">Julianne V.</span>
-            </h3>
-            <input
-              type="text"
-              id="profile-full-name-input"
-              class="hidden w-full mt-1 text-center font-headline-md text-headline-md text-primary bg-white border border-[#DFDCD4] rounded px-3 py-1"
-            />
-            <p class="text-label-md text-[#B5A391]">
-              <span id="profile-tier">Gold Tier Member since 2022</span>
-            </p>
           </div>
-          <div class="space-y-4 pt-4 border-t border-[#DFDCD4]">
-            <div>
-              <label class="text-label-sm text-[#B5A391] uppercase"
-                >Email Address</label
+          <!-- Dashboard / Order History -->
+          <div class="md:col-span-8 flex flex-col gap-gutter">
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+              <div
+                class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
               >
-              <p class="font-body-md text-on-surface" id="profile-email">
-                j.vance@auramed-concierge.com
-              </p>
-              <input
-                type="email"
-                id="profile-email-input"
-                class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-            <div>
-              <label class="text-label-sm text-[#B5A391] uppercase"
-                >Contact Number</label
+                <span class="material-symbols-outlined text-primary mb-2"
+                  >package_2</span
+                >
+                <h4 class="text-label-sm text-[#B5A391] uppercase">
+                  Active Subscriptions
+                </h4>
+                <p class="font-headline-md text-headline-md">3</p>
+              </div>
+              <div
+                class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
               >
-              <p class="font-body-md text-on-surface" id="profile-phone">
-                +1 (555) 012-8843
-              </p>
-              <input
-                type="tel"
-                id="profile-phone-input"
-                class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-            <div>
-              <label class="text-label-sm text-[#B5A391] uppercase"
-                >Gender</label
+                <span class="material-symbols-outlined text-primary mb-2"
+                  >calendar_today</span
+                >
+                <h4 class="text-label-sm text-[#B5A391] uppercase">
+                  Next Refill
+                </h4>
+                <p class="font-headline-md text-headline-md">Oct 14</p>
+              </div>
+              <div
+                class="hidden md:block bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
               >
-              <p class="font-body-md text-on-surface" id="profile-location">
-                San Francisco, CA
-              </p>
-              <input
-                type="text"
-                id="profile-location-input"
-                class="hidden w-full font-body-md text-on-surface bg-white border border-[#DFDCD4] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-              />
+                <span class="material-symbols-outlined text-primary mb-2"
+                  >verified_user</span
+                >
+                <h4 class="text-label-sm text-[#B5A391] uppercase">
+                  Health Score
+                </h4>
+                <p class="font-headline-md text-headline-md">98%</p>
+              </div>
             </div>
-          </div>
-        </div>
-        <!-- Dashboard / Order History -->
-        <div class="md:col-span-8 flex flex-col gap-gutter">
-          <!-- Quick Stats -->
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+            <!-- Order History Section -->
             <div
-              class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
+              class="bg-white border border-[#DFDCD4] rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(0,0,0,0.02)]"
             >
-              <span class="material-symbols-outlined text-primary mb-2"
-                >package_2</span
+              <div
+                class="px-8 py-6 border-b border-[#DFDCD4] flex justify-between items-center bg-surface-container-low"
               >
-              <h4 class="text-label-sm text-[#B5A391] uppercase">
-                Active Subscriptions
-              </h4>
-              <p class="font-headline-md text-headline-md">3</p>
-            </div>
-            <div
-              class="bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
-            >
-              <span class="material-symbols-outlined text-primary mb-2"
-                >calendar_today</span
-              >
-              <h4 class="text-label-sm text-[#B5A391] uppercase">
-                Next Refill
-              </h4>
-              <p class="font-headline-md text-headline-md">Oct 14</p>
-            </div>
-            <div
-              class="hidden md:block bg-surface-container-lowest border border-[#DFDCD4] p-6 rounded-lg"
-            >
-              <span class="material-symbols-outlined text-primary mb-2"
-                >verified_user</span
-              >
-              <h4 class="text-label-sm text-[#B5A391] uppercase">
-                Health Score
-              </h4>
-              <p class="font-headline-md text-headline-md">98%</p>
-            </div>
-          </div>
-          <!-- Order History Section -->
-          <div
-            class="bg-white border border-[#DFDCD4] rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(0,0,0,0.02)]"
-          >
-            <div
-              class="px-8 py-6 border-b border-[#DFDCD4] flex justify-between items-center bg-surface-container-low"
-            >
-              <h3 class="font-headline-md text-headline-md text-primary">
-                Order History
-              </h3>
-              <button
-                id="order-history-view-all"
-                class="text-label-md text-primary hover:underline transition-all hidden"
-              >
-                View All
-              </button>
-            </div>
-            <div class="divide-y divide-[#DFDCD4]" id="order-history-list">
-              <!-- BACKEND HOOK: render real order rows here (see the removed
+                <h3 class="font-headline-md text-headline-md text-primary">
+                  Order History
+                </h3>
+                <button
+                  id="order-history-view-all"
+                  class="text-label-md text-primary hover:underline transition-all hidden"
+                >
+                  View All
+                </button>
+              </div>
+              <div class="divide-y divide-[#DFDCD4]" id="order-history-list">
+                <!-- BACKEND HOOK: render real order rows here (see the removed
                    row markup in this file's history for the card pattern).
                    The empty state below shows automatically whenever there
                    are no orders, and should be removed once rows are added. -->
-              <div
-                class="flex flex-col items-center justify-center text-center gap-3 px-8 py-16"
-                id="order-history-empty"
-              >
-                <span class="material-symbols-outlined text-4xl text-[#B5A391]"
-                  >receipt_long</span
+                <div
+                  class="flex flex-col items-center justify-center text-center gap-3 px-8 py-16"
+                  id="order-history-empty"
                 >
-                <h4 class="font-headline-md text-headline-md text-primary">
-                  No orders yet
-                </h4>
-                <p class="text-secondary font-body-md max-w-sm">
-                  Your completed and in-progress orders will show up here
-                  once you've made a purchase.
-                </p>
-                <a
-                  class="mt-2 inline-flex items-center justify-center bg-primary-container text-white px-6 py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all duration-250"
-                  href="products.html"
-                  >Browse Products &amp; Bundles</a
-                >
+                  <span
+                    class="material-symbols-outlined text-4xl text-[#B5A391]"
+                    >receipt_long</span
+                  >
+                  <h4 class="font-headline-md text-headline-md text-primary">
+                    No orders yet
+                  </h4>
+                  <p class="text-secondary font-body-md max-w-sm">
+                    Your completed and in-progress orders will show up here once
+                    you've made a purchase.
+                  </p>
+                  <a
+                    class="mt-2 inline-flex items-center justify-center bg-primary-container text-white px-6 py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all duration-250"
+                    href="products.html"
+                    >Browse Products &amp; Bundles</a
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Inventory Gauge Preview (Custom Component) -->
-      <section
-        class="mt-12 bg-primary text-on-primary rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative"
-      >
-        <div
-          class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none"
-        ></div>
-        <div class="z-10 max-w-lg">
-          <h3 class="font-headline-md text-headline-md mb-2">
-            Automated Inventory Status
-          </h3>
-          <p class="text-on-primary/80 mb-6">
-            Your AuraMed hub is tracking your current dosage levels. We will
-            automatically prepare your next shipment when levels reach 15%.
-          </p>
-          <div class="space-y-4">
-            <div class="flex justify-between font-label-md text-label-md">
-              <span>Vitality Complex II</span>
-              <span>64% Remaining</span>
-            </div>
-            <div
-              class="h-1.5 w-full bg-on-primary/20 rounded-full overflow-hidden"
-            >
+        <!-- Inventory Gauge Preview (Custom Component) -->
+        <section
+          class="mt-12 bg-primary text-on-primary rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative"
+        >
+          <div
+            class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none"
+          ></div>
+          <div class="z-10 max-w-lg">
+            <h3 class="font-headline-md text-headline-md mb-2">
+              Automated Inventory Status
+            </h3>
+            <p class="text-on-primary/80 mb-6">
+              Your AuraMed hub is tracking your current dosage levels. We will
+              automatically prepare your next shipment when levels reach 15%.
+            </p>
+            <div class="space-y-4">
+              <div class="flex justify-between font-label-md text-label-md">
+                <span>Vitality Complex II</span>
+                <span>64% Remaining</span>
+              </div>
               <div
-                class="h-full bg-primary-fixed-dim transition-all duration-1000 ease-out"
-                style="width: 64%"
-              ></div>
+                class="h-1.5 w-full bg-on-primary/20 rounded-full overflow-hidden"
+              >
+                <div
+                  class="h-full bg-primary-fixed-dim transition-all duration-1000 ease-out"
+                  style="width: 64%"
+                ></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="z-10">
-          <a
-            class="px-8 py-4 bg-white text-primary font-label-md text-label-md rounded-full shadow-lg hover:bg-primary-fixed transition-colors inline-block"
-            href="schedule.html"
-            >Manage Prescriptions</a
-          >
-        </div>
-      </section>
+          <div class="z-10">
+            <a
+              class="px-8 py-4 bg-white text-primary font-label-md text-label-md rounded-full shadow-lg hover:bg-primary-fixed transition-colors inline-block"
+              href="schedule.html"
+              >Manage Prescriptions</a
+            >
+          </div>
+        </section>
       </div>
       <!-- /#profile-authenticated -->
     </main>

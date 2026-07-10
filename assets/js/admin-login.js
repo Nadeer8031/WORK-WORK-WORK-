@@ -91,8 +91,8 @@
                 email: email,
               });
             }
-            // redirect to home.html (simulated)
-            window.location.href = 'home.html';
+            // redirect to the admin dashboard
+            window.location.href = 'dashboard.html';
           } else {
             passErr.textContent = 'Invalid email or password.';
             loginBtn.querySelector('span').textContent = originalText;
