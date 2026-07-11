@@ -41,22 +41,22 @@
 })();
 
 // Micro-interaction for input fields
-document.querySelectorAll('input').forEach(input => {
-    input.addEventListener('focus', () => {
+document.querySelectorAll('input').forEach(function(input) {
+    input.addEventListener('focus', function() {
         input.previousElementSibling.style.color = '#350e1b';
         input.previousElementSibling.style.transition = 'color 0.2s ease';
     });
-    input.addEventListener('blur', () => {
+    input.addEventListener('blur', function() {
         input.previousElementSibling.style.color = '#B5A391';
     });
 });
 
 // Simple Card Format observer
-const cardInput = document.querySelector('input[placeholder*="4492"]');
-if(cardInput) {
-    cardInput.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, '');
-        let formatted = value.match(/.{1,4}/g)?.join(' ') || '';
+var cardInput = document.querySelector('input[placeholder*="4492"]');
+if (cardInput) {
+    cardInput.addEventListener('input', function(e) {
+        var value = e.target.value.replace(/\D/g, '');
+        var formatted = value.match(/.{1,4}/g) ? value.match(/.{1,4}/g).join(' ') : '';
         e.target.value = formatted.substring(0, 19);
     });
 }
@@ -83,11 +83,7 @@ if(cardInput) {
     }
     btn.addEventListener('click', function () {
         var isHidden = menu.classList.contains('hidden');
-        if (isHidden) {
-            openMenu();
-        } else {
-            closeMenu();
-        }
+        if (isHidden) { openMenu(); } else { closeMenu(); }
     });
     window.addEventListener('resize', function () {
         if (spacer && !menu.classList.contains('hidden')) {
@@ -98,40 +94,36 @@ if(cardInput) {
 
 // ===== CHECKOUT VALIDATION & ORDER PROCESSING =====
 (function () {
-    const checkoutForm = document.getElementById('checkoutForm');
+    var checkoutForm = document.getElementById('checkoutForm');
     if (!checkoutForm) return;
 
-    // Get all form fields
-    const fullName = document.getElementById('fullName');
-    const streetAddress = document.getElementById('streetAddress');
-    const city = document.getElementById('city');
-    const state = document.getElementById('state');
-    const zip = document.getElementById('zip');
-    const cardNumber = document.getElementById('cardNumber');
-    const expiryDate = document.getElementById('expiryDate');
-    const cvv = document.getElementById('cvv');
+    var fullName = document.getElementById('fullName');
+    var streetAddress = document.getElementById('streetAddress');
+    var city = document.getElementById('city');
+    var state = document.getElementById('state');
+    var zip = document.getElementById('zip');
+    var cardNumber = document.getElementById('cardNumber');
+    var expiryDate = document.getElementById('expiryDate');
+    var cvv = document.getElementById('cvv');
 
-    // Error display elements
-    const fullNameError = document.getElementById('fullName_error');
-    const streetAddressError = document.getElementById('streetAddress_error');
-    const cityError = document.getElementById('city_error');
-    const stateError = document.getElementById('state_error');
-    const zipError = document.getElementById('zip_error');
-    const cardNumberError = document.getElementById('cardNumber_error');
-    const expiryDateError = document.getElementById('expiryDate_error');
-    const cvvError = document.getElementById('cvv_error');
+    var fullNameError = document.getElementById('fullName_error');
+    var streetAddressError = document.getElementById('streetAddress_error');
+    var cityError = document.getElementById('city_error');
+    var stateError = document.getElementById('state_error');
+    var zipError = document.getElementById('zip_error');
+    var cardNumberError = document.getElementById('cardNumber_error');
+    var expiryDateError = document.getElementById('expiryDate_error');
+    var cvvError = document.getElementById('cvv_error');
 
     function validateCheckoutForm() {
-        // Clear all errors
-        const errors = [fullNameError, streetAddressError, cityError, stateError, 
+        var errors = [fullNameError, streetAddressError, cityError, stateError,
                        zipError, cardNumberError, expiryDateError, cvvError];
-        errors.forEach(el => {
+        errors.forEach(function(el) {
             if (el) el.textContent = '';
         });
 
-        let valid = true;
+        var valid = true;
 
-        // Validate Full Name
         if (!fullName || fullName.value.trim() === '') {
             if (fullNameError) fullNameError.textContent = 'Full name is required';
             valid = false;
@@ -140,19 +132,16 @@ if(cardInput) {
             valid = false;
         }
 
-        // Validate Street Address
         if (!streetAddress || streetAddress.value.trim() === '') {
             if (streetAddressError) streetAddressError.textContent = 'Street address is required';
             valid = false;
         }
 
-        // Validate City
         if (!city || city.value.trim() === '') {
             if (cityError) cityError.textContent = 'City is required';
             valid = false;
         }
 
-        // Validate State
         if (!state || state.value.trim() === '') {
             if (stateError) stateError.textContent = 'State is required';
             valid = false;
@@ -161,7 +150,6 @@ if(cardInput) {
             valid = false;
         }
 
-        // Validate ZIP
         if (!zip || zip.value.trim() === '') {
             if (zipError) zipError.textContent = 'ZIP code is required';
             valid = false;
@@ -170,8 +158,7 @@ if(cardInput) {
             valid = false;
         }
 
-        // Validate Card Number
-        const cardNum = cardNumber ? cardNumber.value.replace(/\s/g, '') : '';
+        var cardNum = cardNumber ? cardNumber.value.replace(/\s/g, '') : '';
         if (cardNum === '') {
             if (cardNumberError) cardNumberError.textContent = 'Card number is required';
             valid = false;
@@ -180,22 +167,21 @@ if(cardInput) {
             valid = false;
         }
 
-        // Validate Expiry Date
         if (!expiryDate || expiryDate.value.trim() === '') {
             if (expiryDateError) expiryDateError.textContent = 'Expiry date is required';
             valid = false;
         } else {
-            const expiry = expiryDate.value.trim();
+            var expiry = expiryDate.value.trim();
             if (!/^\d{2}\s*\/\s*\d{2}$/.test(expiry)) {
                 if (expiryDateError) expiryDateError.textContent = 'Use MM/YY format';
                 valid = false;
             } else {
-                const parts = expiry.split('/');
-                const month = parseInt(parts[0].trim());
-                const year = parseInt(parts[1].trim());
-                const currentDate = new Date();
-                const currentYear = currentDate.getFullYear() % 100;
-                const currentMonth = currentDate.getMonth() + 1;
+                var parts = expiry.split('/');
+                var month = parseInt(parts[0].trim());
+                var year = parseInt(parts[1].trim());
+                var currentDate = new Date();
+                var currentYear = currentDate.getFullYear() % 100;
+                var currentMonth = currentDate.getMonth() + 1;
 
                 if (month < 1 || month > 12) {
                     if (expiryDateError) expiryDateError.textContent = 'Invalid month';
@@ -207,7 +193,6 @@ if(cardInput) {
             }
         }
 
-        // Validate CVV
         if (!cvv || cvv.value.trim() === '') {
             if (cvvError) cvvError.textContent = 'CVV is required';
             valid = false;
@@ -219,44 +204,44 @@ if(cardInput) {
         return valid;
     }
 
-    // Handle form submission
     checkoutForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        const isValid = validateCheckoutForm();
-        
+
+        var isValid = validateCheckoutForm();
+
         if (!isValid) {
-            // Scroll to first error
-            const firstError = document.querySelector('.error-message:not(:empty)');
+            var firstError = document.querySelector('.error-message:not(:empty)');
             if (firstError) {
                 firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             return;
         }
 
-        // Process the order
         processOrder();
     });
 
     function processOrder() {
-        // Get cart items
-        const cart = window.AuraCart ? window.AuraCart.getCart() : [];
+        var cart = window.AuraCart ? window.AuraCart.getCart() : [];
         if (!cart.length) {
             window.location.href = 'cart.html';
             return;
         }
 
-        // Create order object
-        const order = {
-            id: 'ORD-' + Date.now().toString().slice(-8),
+        var totals = window.AuraCart.getTotals(cart);
+        var orderCode = 'ORD-' + Date.now().toString().slice(-8);
+
+        var order = {
+            id: orderCode,
             date: new Date().toISOString(),
-            items: cart.map(item => ({
-                name: item.name,
-                quantity: item.qty,
-                price: item.price,
-                subtotal: (item.price * item.qty)
-            })),
-            totals: window.AuraCart.getTotals(cart),
+            items: cart.map(function(item) {
+                return {
+                    name: item.name,
+                    quantity: item.qty,
+                    price: item.price,
+                    subtotal: (item.price * item.qty)
+                };
+            }),
+            totals: totals,
             shipping: {
                 fullName: fullName.value.trim(),
                 streetAddress: streetAddress.value.trim(),
@@ -267,35 +252,63 @@ if(cardInput) {
             status: 'Processing'
         };
 
-        // Clear cart
-        if (window.AuraCart) {
-            window.AuraCart.clearCart();
+        var isLoggedIn = !!(window.AuraAuth && window.AuraAuth.isLoggedIn());
+
+        if (!isLoggedIn) {
+            if (window.AuraCart) {
+                window.AuraCart.clearCart();
+            }
+            showOrderSuccessModal(order);
+            return;
         }
 
-        // Show confirmation popup regardless of login state
-        showOrderSuccessModal(order);
+        // Send order to backend for logged-in users
+        fetch('auth/orders.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                items: cart.map(function(item) {
+                    var match = /^product-(\d+)$/.exec(String(item.id));
+                    return {
+                        product_id: match ? parseInt(match[1], 10) : 0,
+                        price: item.price,
+                        qty: item.qty
+                    };
+                })
+            })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(result) {
+            if (result.success) {
+                order.id = 'ORD-' + result.order_id;
+            }
+            if (window.AuraCart) {
+                window.AuraCart.clearCart();
+            }
+            showOrderSuccessModal(order);
+        })
+        .catch(function() {
+            if (window.AuraCart) {
+                window.AuraCart.clearCart();
+            }
+            showOrderSuccessModal(order);
+        });
     }
 
     function showOrderSuccessModal(order) {
-        // If the shopper is logged in, "Continue" takes them to their
-        // profile/order history. If not, it takes them to the shared
-        // login page first so they can log in and then see the order.
-        const isLoggedIn = !!(window.AuraAuth && window.AuraAuth.isLoggedIn());
-        const continueDestination = isLoggedIn
-            ? 'profile.html?order=' + encodeURIComponent(JSON.stringify(order))
-            : 'login.html';
+        var isLoggedIn = !!(window.AuraAuth && window.AuraAuth.isLoggedIn());
+        var continueDestination = isLoggedIn ? 'profile.html' : 'login.html';
 
-        const modal = document.getElementById('orderSuccessModal');
+        var modal = document.getElementById('orderSuccessModal');
         if (!modal) {
-            // Fallback if the modal markup isn't present
             window.location.href = continueDestination;
             return;
         }
 
-        const idLabel = document.getElementById('orderSuccessId');
+        var idLabel = document.getElementById('orderSuccessId');
         if (idLabel) idLabel.textContent = 'Order #' + order.id;
 
-        const continueLabel = document.getElementById('orderSuccessContinue');
+        var continueLabel = document.getElementById('orderSuccessContinue');
         if (continueLabel && !isLoggedIn) {
             continueLabel.textContent = 'Log In to View My Order';
         }
@@ -303,16 +316,15 @@ if(cardInput) {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
 
-        const goToNext = function () {
+        var goToNext = function () {
             window.location.href = continueDestination;
         };
 
-        const continueBtn = document.getElementById('orderSuccessContinue');
+        var continueBtn = document.getElementById('orderSuccessContinue');
         if (continueBtn) {
             continueBtn.addEventListener('click', goToNext, { once: true });
         }
 
-        // Clicking outside the card also continues to the next step
         modal.addEventListener('click', function (e) {
             if (e.target === modal) goToNext();
         }, { once: true });

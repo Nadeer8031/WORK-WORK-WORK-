@@ -78,11 +78,17 @@
     terms_error.textContent = "";
 
     var valid = true;
-    var atIndex = email.indexOf("@");
-    var dotIndex = email.lastIndexOf(".com");
+    // RFC-5322-lite check, good enough for client-side validation. This
+    // matches what the server actually accepts (FILTER_VALIDATE_EMAIL),
+    // instead of the old check which rejected any address that didn't end
+    // in ".com" (e.g. name@company.org, name@school.edu).
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (username === "") {
       username_error.textContent = "Username cannot be empty";
+      valid = false;
+    } else if (!/^[a-zA-Z]+$/.test(username)) {
+      username_error.textContent = "Username must contain letters only";
       valid = false;
     }
 
@@ -102,26 +108,8 @@
     if (email === "") {
       email_error.textContent = "Email Address cannot be empty";
       valid = false;
-    } else if (
-      atIndex === -1 ||
-      atIndex === 0 ||
-      dotIndex <= atIndex + 1 ||
-      !email.endsWith(".com") ||
-      email.length > dotIndex + 4
-    ) {
-      if (!email.endsWith(".com")) {
-        email_error.textContent = "Email must end with .com";
-      } else if (email.length > dotIndex + 4) {
-        email_error.textContent = "Nothing should come after .com";
-      } else if (atIndex === -1) {
-        email_error.textContent = "Email must contain @";
-      } else if (atIndex === 0) {
-        email_error.textContent = "Email must not start with @";
-      } else if (dotIndex <= atIndex + 1) {
-        email_error.textContent = "Email must contain a domain (ex: @gmail)";
-      } else {
-        email_error.textContent = "Invalid Email Address";
-      }
+    } else if (!emailPattern.test(email)) {
+      email_error.textContent = "Please enter a valid email address";
       valid = false;
     }
 
@@ -175,42 +163,38 @@
       return;
     }
 
+    e.preventDefault();
+
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = "Creating account...";
     }
 
-    // var formData = new FormData();
-    // formData.append("email", email);
-    // formData.append("password", password);
+    var formData = new FormData(form);
 
-    // fetch("auth/register.php", { method: "POST", body: formData })
-    //   .then(function (res) {
-    //     return res.json();
-    //   })
-    //   .then(function (data) {
-    //     if (data.success) {
-    //       if (window.AuraAuth) {
-    //         window.AuraAuth.login({
-    //           name: data.user.email.split("@")[0],
-    //           email: data.user.email,
-    //         });
-    //       }
-    //       window.location.href = "home.html";
-    //     } else {
-    //       email_error.textContent = data.message || "Could not create your account.";
-    //       if (submitBtn) {
-    //         submitBtn.disabled = false;
-    //         submitBtn.textContent = originalText;
-    //       }
-    //     }
-    //   })
-    //   .catch(function () {
-    //     email_error.textContent = "Something went wrong. Please try again.";
-    //     if (submitBtn) {
-    //       submitBtn.disabled = false;
-    //       submitBtn.textContent = originalText;
-    //     }
-    //   });
+    fetch("auth/register.php", { method: "POST", body: formData })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        if (data.success) {
+          window.location.href = "login.html";
+        } else {
+          var errEl = document.getElementById("email_error");
+          if (errEl) errEl.textContent = data.message || "Could not create your account.";
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        }
+      })
+      .catch(function () {
+        var errEl = document.getElementById("email_error");
+        if (errEl) errEl.textContent = "Something went wrong. Please try again.";
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
   });
 })();

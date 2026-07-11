@@ -25,7 +25,7 @@ include '../includes/header.php';
 
 <div class="max-w-container-max mx-auto">
   <h1 class="font-headline-md text-headline-md text-on-surface mb-4">
-    Welcome back<?php echo $user ? ', ' . htmlspecialchars($user['u_email']) : ''; ?>
+    Welcome back<?php echo $user ? ', ' . htmlspecialchars($user['user_email']) : ''; ?>
   </h1>
   <p class="font-body-md text-secondary mb-8">
     This is your dashboard. Recent orders, refill reminders, and account

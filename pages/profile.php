@@ -29,7 +29,7 @@ include '../includes/header.php';
     <div class="space-y-6">
       <div>
         <p class="font-label-md text-label-md text-on-surface-variant mb-1">Email Address</p>
-        <p class="font-body-md text-on-surface"><?php echo $user ? htmlspecialchars($user['u_email']) : ''; ?></p>
+        <p class="font-body-md text-on-surface"><?php echo $user ? htmlspecialchars($user['user_email']) : ''; ?></p>
       </div>
     </div>
 

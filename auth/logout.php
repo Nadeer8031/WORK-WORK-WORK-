@@ -1,12 +1,10 @@
 <?php
-
 session_start();
-header('Content-Type: application/json');
 
 // Clear all session data
 $_SESSION = array();
 
-// Destroy the session cookie itself, if one is set
+// Destroy the session cookie
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(
@@ -22,7 +20,5 @@ if (ini_get("session.use_cookies")) {
 
 session_destroy();
 
-echo json_encode(['success' => true]);
+header("Location: ../login.html");
 exit();
-
-?>
