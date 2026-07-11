@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+        // Add visual weight to "Schedule" in nav links since we are on that page
+        // Handled via static HTML above.
+    
+
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
 (function () {
     var btn = document.getElementById('mobile-menu-btn');
     var menu = document.getElementById('mobile-menu');
@@ -30,6 +37,7 @@
 })();
 
 // ==========================================================================
+<<<<<<< HEAD
 // Medication Schedule: DB-backed with localStorage pill counts
 // ==========================================================================
 (function () {
@@ -41,6 +49,18 @@
     var pillCounts = {};
     var currentRemoveId = null;
     var confirmations = {};
+=======
+// Medication Schedule: Add / Edit / Remove
+// ==========================================================================
+(function () {
+    var STORAGE_KEY = 'auramed_medications';
+
+    // ---------- STATE ----------
+    /** @type {{id:number, name:string, dose:string, totalPills:number, availablePills:number, time:string}[]} */
+    var medications = [];
+    var nextMedicationId = 1;
+    var currentRemoveId = null;
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
 
     // ---------- DOM REFS ----------
     var addBtn = document.getElementById('addMedicationBtn');
@@ -73,6 +93,7 @@
     var refillTitle = document.getElementById('refill-alert-title');
     var refillText = document.getElementById('refill-alert-text');
 
+<<<<<<< HEAD
     if (!addBtn || !rowsBody || !modalOverlay || !form) return;
 
     // ---------- PILL COUNTS (localStorage) ----------
@@ -152,11 +173,46 @@
         confirmations[id] = new Date().toISOString();
         saveConfirmations();
         renderAll();
+=======
+    // Bail out quietly if this page doesn't have the schedule markup.
+    if (!addBtn || !rowsBody || !modalOverlay || !form) return;
+
+    // ---------- PERSISTENCE ----------
+    function loadMedications() {
+        try {
+            var raw = window.localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                var parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) medications = parsed;
+            }
+        } catch (e) {
+            medications = [];
+        }
+        nextMedicationId = medications.reduce(function (max, m) {
+            return Math.max(max, m.id + 1);
+        }, 1);
+    }
+
+    function saveMedications() {
+        try {
+            window.localStorage.setItem(STORAGE_KEY, JSON.stringify(medications));
+        } catch (e) {
+            /* localStorage unavailable — state still works for this session */
+        }
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     }
 
     // ---------- HELPERS ----------
     function escapeHtml(str) {
+<<<<<<< HEAD
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+=======
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     }
 
     function formatTime(timeStr) {
@@ -170,17 +226,28 @@
         return h12 + ':' + m + ' ' + period;
     }
 
+<<<<<<< HEAD
     function getStatus(id) {
         var pc = getPillCount(id);
         if (pc.available <= 0) {
             return { label: 'Empty', classes: 'bg-error-container text-on-error-container' };
         }
         if (pc.total > 0 && pc.available / pc.total <= 0.2) {
+=======
+    function getStatus(med) {
+        var total = Number(med.totalPills) || 0;
+        var available = Number(med.availablePills) || 0;
+        if (available <= 0) {
+            return { label: 'Empty', classes: 'bg-error-container text-on-error-container' };
+        }
+        if (total > 0 && available / total <= 0.2) {
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
             return { label: 'Low Stock', classes: 'bg-amber-100 text-amber-800' };
         }
         return { label: 'Active', classes: 'bg-green-100 text-green-800' };
     }
 
+<<<<<<< HEAD
     // ---------- API ----------
     function apiGet(url) {
         return fetch(url).then(function (r) { return r.json(); });
@@ -224,6 +291,11 @@
 
     // ---------- RENDER ----------
     function renderTable() {
+=======
+    // ---------- RENDER ----------
+    function renderTable() {
+        // Clear any previously rendered rows (keep the empty-state row in the DOM).
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
         Array.prototype.slice.call(rowsBody.children).forEach(function (row) {
             if (row !== emptyRow) row.remove();
         });
@@ -235,19 +307,28 @@
         emptyRow.classList.add('hidden');
 
         medications.forEach(function (med) {
+<<<<<<< HEAD
             var pc = getPillCount(med.id);
             var status = getStatus(med.id);
+=======
+            var status = getStatus(med);
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
             var tr = document.createElement('tr');
             tr.innerHTML =
                 '<td class="px-6 py-4 font-body-md text-on-surface">' + escapeHtml(med.name) + '</td>' +
                 '<td class="px-6 py-4 font-body-md text-on-surface-variant">' + escapeHtml(med.dose) + '</td>' +
+<<<<<<< HEAD
                 '<td class="px-6 py-4 font-body-md text-on-surface-variant">' + Number(pc.available) + ' / ' + Number(pc.total) + '</td>' +
+=======
+                '<td class="px-6 py-4 font-body-md text-on-surface-variant">' + Number(med.availablePills) + ' / ' + Number(med.totalPills) + '</td>' +
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
                 '<td class="px-6 py-4 font-body-md text-on-surface-variant">' + formatTime(med.time) + '</td>' +
                 '<td class="px-6 py-4">' +
                     '<span class="inline-flex items-center px-3 py-1 rounded-full font-label-sm text-label-sm ' + status.classes + '">' + status.label + '</span>' +
                 '</td>' +
                 '<td class="px-6 py-4 text-right">' +
                     '<div class="flex items-center justify-end gap-2">' +
+<<<<<<< HEAD
                         (function () {
                             var inWindow = isInTimeWindow(med);
                             var confirmed = hasConfirmedToday(med.id);
@@ -261,6 +342,8 @@
                                 '<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>' +
                             '</button>';
                         })() +
+=======
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
                         '<button type="button" class="edit-med-btn p-1.5 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" aria-label="Edit medication" data-id="' + med.id + '">' +
                             '<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>' +
                         '</button>' +
@@ -285,19 +368,30 @@
                 openRemoveConfirm(id);
             });
         });
+<<<<<<< HEAD
         rowsBody.querySelectorAll('.confirm-med').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var id = parseInt(this.dataset.confirm, 10);
                 confirmDose(id);
             });
         });
+=======
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     }
 
     function renderTimeline() {
         if (!timelineEntries || !timelineEmptyState) return;
+<<<<<<< HEAD
         Array.prototype.slice.call(timelineEntries.children).forEach(function (el) {
             if (el !== timelineEmptyState) el.remove();
         });
+=======
+
+        Array.prototype.slice.call(timelineEntries.children).forEach(function (el) {
+            if (el !== timelineEmptyState) el.remove();
+        });
+
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
         if (medications.length === 0) {
             timelineEmptyState.classList.remove('hidden');
             return;
@@ -307,6 +401,10 @@
         var sorted = medications.slice().sort(function (a, b) {
             return (a.time || '').localeCompare(b.time || '');
         });
+<<<<<<< HEAD
+=======
+
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
         sorted.forEach(function (med) {
             var entry = document.createElement('div');
             entry.className = 'flex items-start gap-3';
@@ -322,20 +420,37 @@
 
     function renderRefillAlert() {
         if (!refillCard || !refillTitle || !refillText) return;
+<<<<<<< HEAD
         var lowStock = medications.filter(function (med) {
             var s = getStatus(med.id);
             return s.label === 'Low Stock' || s.label === 'Empty';
         });
+=======
+
+        var lowStock = medications.filter(function (med) {
+            var s = getStatus(med);
+            return s.label === 'Low Stock' || s.label === 'Empty';
+        });
+
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
         if (lowStock.length === 0) {
             refillTitle.textContent = 'No Refill Alerts';
             refillText.textContent = "You'll see a reminder here when a medication is running low.";
             return;
         }
+<<<<<<< HEAD
         var first = lowStock[0];
         var pc = getPillCount(first.id);
         if (lowStock.length === 1) {
             refillTitle.textContent = 'Refill Needed';
             refillText.textContent = escapeHtml(first.name) + ' has ' + Number(pc.available) + ' pill(s) left. Consider reordering soon.';
+=======
+
+        var first = lowStock[0];
+        if (lowStock.length === 1) {
+            refillTitle.textContent = 'Refill Needed';
+            refillText.textContent = escapeHtml(first.name) + ' has ' + Number(first.availablePills) + ' pill(s) left. Consider reordering soon.';
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
         } else {
             refillTitle.textContent = 'Refills Needed';
             refillText.textContent = lowStock.length + ' medications are running low, including ' + escapeHtml(first.name) + '.';
@@ -386,15 +501,23 @@
     }
 
     function openEditModal(med) {
+<<<<<<< HEAD
         var pc = getPillCount(med.id);
+=======
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
         modalTitle.textContent = 'Edit Medication';
         modalConfirm.textContent = 'Save Changes';
         form.dataset.mode = 'edit';
         fieldId.value = med.id;
         fieldName.value = med.name;
         fieldDose.value = med.dose;
+<<<<<<< HEAD
         fieldTotal.value = pc.total;
         fieldAvailable.value = pc.available;
+=======
+        fieldTotal.value = med.totalPills;
+        fieldAvailable.value = med.availablePills;
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
         fieldTime.value = med.time;
         clearFormError();
         openModal();
@@ -426,6 +549,7 @@
 
         if (form.dataset.mode === 'edit') {
             var id = parseInt(fieldId.value, 10);
+<<<<<<< HEAD
             setPillCount(id, total, available);
             renderAll();
             closeModal();
@@ -452,6 +576,30 @@
                 }
             });
         }
+=======
+            var med = medications.find(function (m) { return m.id === id; });
+            if (med) {
+                med.name = name;
+                med.dose = dose;
+                med.totalPills = total;
+                med.availablePills = available;
+                med.time = time;
+            }
+        } else {
+            medications.push({
+                id: nextMedicationId++,
+                name: name,
+                dose: dose,
+                totalPills: total,
+                availablePills: available,
+                time: time
+            });
+        }
+
+        saveMedications();
+        renderAll();
+        closeModal();
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     });
 
     addBtn.addEventListener('click', openAddModal);
@@ -480,6 +628,7 @@
 
     removeConfirmBtn.addEventListener('click', function () {
         if (currentRemoveId === null) return;
+<<<<<<< HEAD
         var removeId = currentRemoveId;
 
         apiDelete('auth/schedules.php', { schedule_id: removeId }).then(function () {
@@ -494,12 +643,22 @@
         }).catch(function () {
             closeRemoveConfirm();
         });
+=======
+        medications = medications.filter(function (m) { return m.id !== currentRemoveId; });
+        saveMedications();
+        renderAll();
+        closeRemoveConfirm();
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     });
     removeCancelBtn.addEventListener('click', closeRemoveConfirm);
     removeOverlay.addEventListener('click', function (e) {
         if (e.target === removeOverlay) closeRemoveConfirm();
     });
 
+<<<<<<< HEAD
+=======
+    // Escape key closes whichever modal is open.
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     document.addEventListener('keydown', function (e) {
         if (e.key !== 'Escape') return;
         if (!modalOverlay.classList.contains('hidden')) closeModal();
@@ -507,6 +666,7 @@
     });
 
     // ---------- INIT ----------
+<<<<<<< HEAD
     loadPillCounts();
     loadConfirmations();
     loadMedications().then(function () {
@@ -514,4 +674,8 @@
     });
 
     setInterval(function () { renderAll(); }, 60000);
+=======
+    loadMedications();
+    renderAll();
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
 })();

@@ -45,6 +45,17 @@
                 emailErr.textContent = 'Please enter a valid email address.';
                 valid = false;
             }
+<<<<<<< HEAD
+=======
+            // redirect to the admin dashboard
+            window.location.href = 'dashboard.html';
+          } else {
+            passErr.textContent = 'Invalid email or password.';
+            loginBtn.querySelector('span').textContent = originalText;
+            loginBtn.removeAttribute('aria-busy');
+          }
+        }, 1200);
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
 
             if (!pass) {
                 passErr.textContent = 'Password is required.';

@@ -5,15 +5,23 @@ header("Content-Type: application/json");
 
 include __DIR__ . '/../config/db.php';
 
+<<<<<<< HEAD
 if (!isset($_SESSION["user_id"])) {
 
     echo json_encode([
         "success" => false
+=======
+if(!isset($_SESSION["user_id"])){
+
+    echo json_encode([
+        "success"=>false
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     ]);
 
     exit();
 }
 
+<<<<<<< HEAD
 $userId = $_SESSION["user_id"];
 
 $username = trim($_POST["username"] ?? '');
@@ -49,12 +57,22 @@ if ($email !== '') {
 }
 
 $sql = "UPDATE profiles
+=======
+$userId=$_SESSION["user_id"];
+
+$username=trim($_POST["username"]);
+$phone=trim($_POST["phone"]);
+$gender=trim($_POST["gender"]);
+
+$sql="UPDATE profiles
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
 SET
 username=?,
 phone=?,
 gender=?
 WHERE user_id=?";
 
+<<<<<<< HEAD
 $stmt = mysqli_prepare($conn, $sql);
 
 mysqli_stmt_bind_param(
@@ -102,10 +120,43 @@ if (mysqli_stmt_execute($stmt)) {
             $userId
         );
     }
+=======
+$stmt=mysqli_prepare($conn,$sql);
+
+mysqli_stmt_bind_param(
+$stmt,
+"sssi",
+$username,
+$phone,
+$gender,
+$userId
+);
+
+if(mysqli_stmt_execute($stmt)){
+
+    // تحديث جدول users أيضاً
+    $userSql = "UPDATE users
+                SET username = ?,
+                    phone = ?,
+                    gender = ?
+                WHERE user_id = ?";
+
+    $userStmt = mysqli_prepare($conn, $userSql);
+
+    mysqli_stmt_bind_param(
+        $userStmt,
+        "sssi",
+        $username,
+        $phone,
+        $gender,
+        $userId
+    );
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
 
     mysqli_stmt_execute($userStmt);
     mysqli_stmt_close($userStmt);
 
+<<<<<<< HEAD
     // Keep the session email in sync so get_profile.php / other checks
     // reflect the change immediately without requiring a re-login.
     if ($email !== '') {
@@ -120,9 +171,27 @@ if (mysqli_stmt_execute($stmt)) {
 
     echo json_encode([
         "success" => false
+=======
+    echo json_encode([
+        "success"=>true
+    ]);
+
+}
+
+
+
+else{
+
+    echo json_encode([
+        "success"=>false
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
     ]);
 
 }
 
 mysqli_stmt_close($stmt);
+<<<<<<< HEAD
 mysqli_close($conn);
+=======
+mysqli_close($conn);
+>>>>>>> d9a8e223b93787d047bf28b01ae134ecf793f383
